@@ -100,6 +100,8 @@
   .weightbar{width:170px; height:15px; border:1px solid #4a3a22; border-radius:8px; overflow:hidden; background:#120d06;}
   .weightbar .wfill{height:100%; background:linear-gradient(90deg,#6b4d20,#c98f3d); transition:width .25s;}
   .weightbar.full .wfill{background:linear-gradient(90deg,#8f2f24,#d05040);}
+  .weightbar.chilled{border-color:#5a8aa8; box-shadow:0 0 10px rgba(154,208,232,.4);}
+  .weightbar.chilled .wfill{background:linear-gradient(90deg,#3a6a8a,#9ad0e8);}
   .embers{display:flex; gap:5px; align-items:center; min-height:15px;}
   .ember{width:12px; height:12px; border-radius:50%; background:radial-gradient(circle at 35% 30%, #ffb35c, #d1461f); box-shadow:0 0 9px rgba(255,120,40,.85); animation:flick 1.4s infinite alternate;}
   @keyframes flick{from{opacity:.7; transform:scale(.9);} to{opacity:1; transform:scale(1.08);}}
@@ -290,6 +292,7 @@ const PAL={
   w:'#6b6f78',W:'#9aa0ab',o:'#d08a2e',g:'#5a7a4a',G:'#7a9a62',
   m:'#3a4252',M:'#5a6478',y:'#8a8f9a',E:'#ffca5f',v:'#1c1430',V:'#332654',t:'#e8e4d8',
   F:'#ff8f3c',Y:'#ffd98a',B:'#7fa8d8',z:'#6e6e76',Z:'#b5b5bc',X:'#6b4d20',x:'#3a2a16',P:'#4a4038',
+  I:'#9ad0e8',i:'#5a8aa8',u:'#7a6a9a',U:'#4a3c66',
 };
 const SPRITES={
 player_d1:[
@@ -527,6 +530,131 @@ cagewright:[
 "....MM..MM......",
 "....mm..mm......",
 "...mmm..mmm....."],
+/* ---- v3 foes ---- */
+frostWisp:[
+"....II......",
+"...IIII.....",
+"..IIiIII....",
+"..IieiII....",
+"..IIiiII....",
+"...IIII.....",
+"..I.II.I....",
+"....II......",
+"...I..I.....",
+"....I.......",
+"............"],
+wispMother:[
+"....IIII......",
+"...IIIIII.....",
+"..IIiiiIII....",
+".IIieiieiII...",
+".IIiiiiiiII...",
+"..IIiiiiII....",
+"...IIIIII.....",
+"..I.IIII.I....",
+"....I..I......",
+"...I....I.....",
+"....I..I......",
+".....II......."],
+boar:[
+"................",
+"...bb...........",
+"..bbbb....b.....",
+".bbHbbbbbbbb....",
+"beHHbbbbbbbbb...",
+"bbtbbbbbbbbbb...",
+".bbbbbbbbbbbb...",
+"..bbb..bbb.b....",
+"..bb....bb......",
+"..dd....dd......",
+"................"],
+stag:[
+".y..y...y..y....",
+".yy.y...y.yy....",
+"..yyy...yyy.....",
+"...kk...kk......",
+"...kkkkkkk......",
+"...kekkkkk......",
+"....kkkkkkkkk...",
+".....kkkkkkkk...",
+".....kk....kk...",
+".....kk....kk...",
+".....bb....bb...",
+"................"],
+graveLantern:[
+"....vvvv....",
+"...vvvvvv...",
+"...vx..xv...",
+"...vxGGxv...",
+"...vxGgxv...",
+"...vx..xv...",
+"...vvvvvv...",
+"....vvvv....",
+".....vv.....",
+"....v..v....",
+"...v....v...",
+"............"],
+shepherd:[
+"....uuuu....s.",
+"...uuuuuu...s.",
+"..uuUUUUu...s.",
+"..uUeeeUu..ss.",
+"..uUUUUUu..s..",
+"...uuuuu...s..",
+"...UUUUU..ss..",
+"..uUUUUUu.s...",
+".uuUUUUUuus...",
+".u.UUUUU.s....",
+"...UUUUU......",
+"...UU.UU......",
+"...bb.bb......"],
+smothering:[
+"....zzzz........",
+"..zzzzzzzz......",
+".zzZZZZZZzz.....",
+"zzZZeZZeZZzz....",
+"zZZZZZZZZZZz....",
+"zZZZZZZZZZZzz...",
+"zzZZZZZZZZZZz...",
+".zzZZZZZZZZzz...",
+"..zzzzzzzzzz....",
+"...zz..zz.......",
+"................"],
+tollmaster:[
+".....mmmm.......",
+"....mmmmmm......",
+"....mEEEEm......",
+"....mmmmmm......",
+"...MMMMMMMM.....",
+"..yMMMMMMMMy....",
+".yyMMMMMMMMyy...",
+".y.MMMMMMMM.y...",
+"yy.MMMMMMMM.yy..",
+"y..MMMMMMMM..y..",
+"y..MMoooMMM..y..",
+"yy.MooYooMM.yy..",
+"...MoYYYoMM.....",
+"...MMoooMMM.....",
+"....MM..MM......",
+"....mm..mm......",
+"...mmm..mmm....."],
+merchant:[
+"....hhhh....",
+"...hhhhhh...",
+"..hhffffhh..",
+"..hfefefh...",
+"...hffffh...",
+"....CCCC....",
+"...CCCCCC...",
+"..fCCCCCCf..",
+"..XCCCCCCX..",
+"...CC..CC...",
+"...bb..bb...",
+"............"],
+/* ---- v3 node icons ---- */
+n_M:["...YYYY...","..YooooY..",".Yo.oo.oY.",".YooooooY.",".Yo.oo.oY.","..YooooY..","...YYYY...","..xxxxxx..","..........",".........."],
+n_Q:["...YYYY...","..Y....Y..",".......Y..","......Y...",".....Y....",".....Y....","..........",".....Y....","..........",".........."],
+n_BOSS2:["..y....y..",".y.y..y.y.",".y.y..y.y.","..y....y..",".y.y..y.y.",".y.y..y.y.","..y....y..","..........","..........",".........."],
 /* ---- second idle frames ---- */
 wolf2:[
 "................",
@@ -784,12 +912,22 @@ const NEW_FOES={
   mireLeech: {name:'Mire Leech', spr:'mireLeech', scale:4.4, hp:18, lore:'The bog keeps what it catches, and it is always hungry.', pattern:'Drains 5 and heals itself 3. Coils for 6 block every third turn.', ai:t=>t%3===2?{blk:6,lbl:'Coil'}:{atk:5,heal:3,lbl:'Drain'}},
   emberMoth: {name:'Ember Moth', spr:'emberMoth', scale:4, hp:12, lore:'Drawn to the lantern — and to everything the lantern keeps alive.', pattern:'Sips the Light: 3 damage and steals 1 of your Embers. Flutters for +1 Strength every third turn.', ai:t=>t%3===0?{buff:1,lbl:'Flutter'}:{atk:3,drainEmber:1,lbl:'Sip the Light'}},
   cagewright:{name:'The Cage-Wright', spr:'cagewright', scale:5.4, hp:54, elite:true, lore:'Every cage on the road came from the same cold hands.', pattern:'Elite. Forge Cage (2 Broken Wheels into your discard) → Iron Fist 12 → Clamp (5 damage, 10 block) → Strike 8. Repeats.', ai:t=>{const c=t%4; if(c===0)return{junk:2,lbl:'Forge Cage'}; if(c===1)return{atk:12,lbl:'Iron Fist'}; if(c===2)return{blk:10,atk:5,lbl:'Clamp'}; return{atk:8,lbl:'Strike'};}},
+  /* v3 roster */
+  frostWisp: {name:'Frostback Wisp', spr:'frostWisp', scale:4.2, hp:15, lore:'Where it drifts, the cold gets into the straps and buckles.', pattern:'Frost Nip: 4 damage and CHILLS you (pack capacity −2 next turn). Gusts for 6 otherwise.', ai:t=>t%2===0?{atk:4,chill:2,lbl:'Frost Nip'}:{atk:6,lbl:'Gust'}},
+  wispMother:{name:'Wisp-Mother', spr:'wispMother', scale:4.4, hp:14, explode:6, lore:'Do not stand close when the light goes out of it.', pattern:'Lashes for 5; kindles its young (+1 Strength) every third turn. EXPLODES for 6 damage when slain.', ai:t=>t%3===2?{buff:1,lbl:'Kindle Young'}:{atk:5,lbl:'Lash'}},
+  boar:      {name:'Dire Boar', spr:'boar', scale:4.4, hp:26, lore:'The blight made it bigger. It did not make it calmer.', pattern:'Bristles (block 6) → Charges for 10 → Gores for 4. Repeats.', ai:t=>{const c=t%3; if(c===0)return{blk:6,lbl:'Bristle'}; if(c===1)return{atk:10,lbl:'Charge'}; return{atk:4,lbl:'Gore'};}},
+  stag:      {name:'Old Stag, Corrupted', spr:'stag', scale:4.6, hp:20, lore:'The herds followed it once. Worse things follow it now.', pattern:'Blighted Bellow gives ALL its allies +1 Strength; Antler Rake hits for 7. Kill it first.', ai:t=>t%2===0?{buffAll:1,lbl:'Blighted Bellow'}:{atk:7,lbl:'Antler Rake'}},
+  graveLantern:{name:'Grave Lantern', spr:'graveLantern', scale:4.2, hp:17, lore:'Somebody carried this once. Now it carries itself.', pattern:'Scorches for 5. Every third turn it Feeds on the Light: drains 2 of your Embers and heals 4.', ai:t=>t%3===2?{drainEmber:2,heal:4,lbl:'Feed on the Light'}:{atk:5,lbl:'Scorch'}},
+  shepherd:  {name:'The Shepherd of Crows', spr:'shepherd', scale:5, hp:34, elite:true, lore:'The flock goes where the crook points. The crook points at you.', pattern:'Elite pack fight. Shepherds the Flock (+2 Strength to ALL allies) every other turn; Crook Strike 7 between. Arrives with two Blight Crows.', ai:t=>t%2===0?{buffAll:2,lbl:'Shepherd the Flock'}:{atk:7,lbl:'Crook Strike'}},
+  smothering:{name:'The Smothering', spr:'smothering', scale:5.6, hp:60, elite:true, lore:'A slow avalanche of grey. It does not hate you. It just settles.', pattern:'Elite. Smother (5 damage + CHILL −2 capacity) → Press Down 8 → Swell (+2 Strength). A heavy pack drowns here.', ai:t=>{const c=t%3; if(c===0)return{atk:5,chill:2,lbl:'Smother'}; if(c===1)return{atk:8,lbl:'Press Down'}; return{buff:2,lbl:'Swell'};}},
+  tollmaster:{name:'The Toll-Master', spr:'tollmaster', scale:6, hp:96, boss:true, tagline:'everything crossing pays', lore:'The Toll-Keeper answers to something. This is it — the ledger with a fist.', pattern:'Boss. Levy (STEALS 8 materials into its hoard) → Crush 12 → Chain Sweep 5×2 → Vault (block 14). Slay it to reclaim the hoard at 1.5×.', ai:t=>{const c=t%4; if(c===0)return{steal:8,lbl:'Levy'}; if(c===1)return{atk:12,lbl:'Crush'}; if(c===2)return{atk:5,times:2,lbl:'Chain Sweep'}; return{blk:14,lbl:'Vault'};}},
 };
 Object.assign(ENEMIES, NEW_FOES);
+ENEMIES.wraith.tagline='it pressed on, and on, and never lit the beacon home';
 const ENCOUNTERS={
-  1:[['wolf'],['crow'],['wolf','crow'],['bandit'],['packRat'],['emberMoth','crow']],
-  2:[['bandit','crow'],['husk'],['wolf','wolf'],['bandit','bandit'],['mireLeech','packRat'],['emberMoth','husk']],
-  elite:[['tollkeeper'],['cagewright']],
+  1:[['wolf'],['crow'],['wolf','crow'],['bandit'],['packRat'],['emberMoth','crow'],['frostWisp'],['boar'],['wispMother','crow']],
+  2:[['bandit','crow'],['husk'],['wolf','wolf'],['bandit','bandit'],['mireLeech','packRat'],['emberMoth','husk'],['stag','wolf'],['graveLantern','frostWisp'],['boar','wispMother'],['stag','bandit']],
+  elite:[['tollkeeper'],['cagewright'],['shepherd','crow','crow'],['smothering']],
   boss:[['wraith']],
   rescueGuard:[['bandit']],
 };
@@ -798,8 +936,49 @@ const ENCOUNTERS={
 const MAP_ROWS=[['F'],['F','E'],['R','F'],['B'],['F','C'],['EL','F'],['F','E'],['B'],['BOSS']];
 const NODE_META={
   F:{icon:'⚔️',label:'Fight'}, E:{icon:'❓',label:'Event'}, R:{icon:'🕊️',label:'Rescue'},
-  C:{icon:'⛺',label:'Camp'}, EL:{icon:'💀',label:'Elite'}, B:{icon:'🔥',label:'Beacon'}, BOSS:{icon:'👁️',label:'The Wraith'},
+  C:{icon:'⛺',label:'Camp'}, EL:{icon:'💀',label:'Elite'}, B:{icon:'🔥',label:'Beacon'},
+  M:{icon:'🛒',label:'Peddler'}, Q:{icon:'❔',label:'Mystery'}, BOSS:{icon:'👁️',label:'The Boss'},
 };
+function rows(){ return (run&&run.mapRows)||MAP_ROWS; }
+// procedural road: beacons/boss fixed, everything between drawn from pools with guarantees
+function genMapRows(){
+  const widthPick=()=>{ const r2=Math.random(); return r2<0.2?1:r2<0.7?2:3; };
+  const mkRow=pool=>{
+    const w=widthPick(), row=[];
+    for(const tp of shuffle(pool)){ if(row.length>=w) break; if(!row.includes(tp)) row.push(tp); }
+    return row.length?row:['F'];
+  };
+  const t1=['F','F','F','E','Q'];
+  const t2=['F','F','E','Q','C','M'];
+  const rws=[['F'], mkRow(t1), mkRow(t1), ['B'], mkRow(t2), mkRow(t2), mkRow(t2), ['B'], ['BOSS']];
+  const placeIn=(rlist, type)=>{
+    const cands=[];
+    for(const ri of rlist) rws[ri].forEach((tp,ni)=>{ if(['F','E','Q'].includes(tp)&&!rws[ri].includes(type)) cands.push([ri,ni]); });
+    if(!cands.length) return false;
+    const [ri,ni]=pick(cands); rws[ri][ni]=type; return true;
+  };
+  if(!rws.some(r2=>r2.includes('R'))){ if(!placeIn([1,2,4,5],'R')) rws[2][0]='R'; }
+  if(!rws.some(r2=>r2.includes('C'))){ if(!placeIn([2,4,5,6],'C')) rws[4][0]='C'; }
+  if(!rws.some(r2=>r2.includes('M'))){ if(!placeIn([4,5,6],'M')) rws[5][rws[5].length-1]='M'; }
+  // elites live in the deep half, 1-2 per road
+  let el=0; const wantEl=1+(Math.random()<0.45?1:0);
+  for(const ri of shuffle([4,5,6])){
+    if(el>=wantEl) break;
+    const ni=rws[ri].indexOf('F');
+    if(ni>=0){ rws[ri][ni]='EL'; el++; }
+  }
+  if(el===0){
+    // never clobber a guaranteed special — replace an E/Q, else widen row 5
+    outer: for(const ri of [5,4,6]){
+      for(let ni=0;ni<rws[ri].length;ni++){
+        if(rws[ri][ni]==='E'||rws[ri][ni]==='Q'){ rws[ri][ni]='EL'; el=1; break outer; }
+      }
+    }
+    if(el===0&&rws[5].length<3) rws[5].push('EL');
+    else if(el===0) rws[5][rws[5].indexOf('F')>=0?rws[5].indexOf('F'):0]='EL';
+  }
+  return rws;
+}
 function lootTier(row){ return row<=3?1:2; }
 const TIER_MULT={1:1, 2:1.7};
 
@@ -834,7 +1013,8 @@ function saveRun(){
   const s={hp:run.hp, maxHp:run.maxHp, row:run.row, chosen:run.chosen, wagon:run.wagon,
     depthPressed:run.depthPressed, nodeResolved:run.nodeResolved!==false,
     deck:run.deck.map(c=>({key:c.key, up:c.up})),
-    relics:run.relics||[], potions:run.potions||[], mapPos:run.mapPos};
+    relics:run.relics||[], potions:run.potions||[], mapPos:run.mapPos,
+    mapRows:run.mapRows, bossKey:run.bossKey};
   try{ localStorage.setItem(RUN_KEY, JSON.stringify(s)); }catch(e){}
 }
 function clearRun(){ localStorage.removeItem(RUN_KEY); }
@@ -847,6 +1027,7 @@ function loadRun(){
       depthPressed:s.depthPressed||0, nodeResolved:s.nodeResolved!==false,
       deck:s.deck.map(c=>mk(c.key, c.up)),
       relics:s.relics||[], potions:s.potions||[], mapPos:s.mapPos,
+      mapRows:s.mapRows||MAP_ROWS, bossKey:s.bossKey||'wraith',
       combat:null, tutorial:false, wagonTok:null, travel:null};
   }catch(e){ return null; }
 }
@@ -856,6 +1037,8 @@ function reopenNodeModal(){
   else if(tp==='C') ui.modal={kind:'camp'};
   else if(tp==='E') ui.modal={kind:'event', ev:pick(EVENTS)};
   else if(tp==='R') ui.modal={kind:'rescue'};
+  else if(tp==='M') ui.modal={kind:'merchant', bought:{}};
+  else if(tp==='Q') ui.modal={kind:'event', ev:pick(EVENTS)};
 }
 
 let town=loadTown();
@@ -941,7 +1124,9 @@ function pick(a){ return a[Math.floor(Math.random()*a.length)]; }
 function newRun(){
   run={hp:MAX_HP, maxHp:MAX_HP, deck:STARTER_DECK.map(k=>mk(k)), row:-1, chosen:[],
        wagon:{materials:0, smith:false, villagers:0}, combat:null, depthPressed:0, tutorial:false,
-       relics:[], potions:pendingPotions.splice(0), nodeResolved:true};
+       relics:[], potions:pendingPotions.splice(0), nodeResolved:true,
+       bossKey:pick(['wraith','tollmaster'])};
+  run.mapRows=genMapRows();
   run.mapPos=genMapPos();
   run.wagonTok=null;
   town.stats.runs++; saveTown();
@@ -954,11 +1139,19 @@ function enterNode(type){
   run.row++; run.chosen[run.row]=type;
   run.nodeResolved=!(type==='R'||type==='E'||type==='C'||type==='B');
   if(type==='F'||type==='EL'||type==='BOSS'){
-    const pool=type==='F'?ENCOUNTERS[lootTier(run.row)]:(type==='EL'?ENCOUNTERS.elite:ENCOUNTERS.boss);
-    withIris(()=>{ startCombat(pick(pool), type); render(); });
+    const keys=type==='BOSS'?[run.bossKey||'wraith']:pick(type==='F'?ENCOUNTERS[lootTier(run.row)]:ENCOUNTERS.elite);
+    withIris(()=>{ startCombat(keys, type); render(); });
   } else if(type==='R'){ ui.modal={kind:'rescue'}; }
   else if(type==='E'){ ui.modal={kind:'event', ev:pick(EVENTS)}; }
   else if(type==='C'){ ui.modal={kind:'camp'}; }
+  else if(type==='M'){ run.nodeResolved=false; ui.modal={kind:'merchant', bought:{}}; }
+  else if(type==='Q'){
+    run.nodeResolved=false;
+    const roll=Math.random();
+    if(roll<0.45){ run.nodeResolved=true; const keys=pick(ENCOUNTERS[lootTier(run.row)]); withIris(()=>{ startCombat(keys,'F'); render(); }); }
+    else if(roll<0.8){ ui.modal={kind:'event', ev:pick(EVENTS)}; }
+    else { const found=10+Math.floor(Math.random()*9); run.wagon.materials+=found; ui.modal={kind:'windfall', found}; }
+  }
   else if(type==='B'){ run.hp=Math.min(run.maxHp, run.hp+(hasRelic('beaconGlass')?12:5)); SFX.beacon(); ui.modal={kind:'beacon'}; }
   render();
 }
@@ -1013,11 +1206,12 @@ function cardW(ci){
   return w;
 }
 function handWeight(){ return run.combat.hand.reduce((s,c)=>s+cardW(c),0); }
+function capNow(){ const c=run.combat; return Math.max(4, CAPACITY-((c&&c.chillNow)||0)); }
 function drawOne(){
   const c=run.combat;
   if(!c.draw.length){ if(!c.disc.length) return false; c.draw=shuffle(c.disc); c.disc=[]; }
   const top=c.draw[c.draw.length-1];
-  if(handWeight()+cardW(top)>CAPACITY){ c.packFull=true; return false; }
+  if(handWeight()+cardW(top)>capNow()){ c.packFull=true; return false; }
   c.hand.push(c.draw.pop());
   return true;
 }
@@ -1104,11 +1298,27 @@ function playCard(iid, targetIdx){
       if(died) t.diedAt=now()+delay+120;
       const bx=ep.x, by=topY+30;
       if(isBolt) SFX.bolt();
+      const explode=died?ENEMIES[t.key].explode:0;
       setTimeout(()=>{
         hitstop(70);
         SFX.hit();
         spawnBurst(bx, by, isBolt?EMBER_COLORS:HIT_COLORS, 10, 0.14);
         if(died){ SFX.death(); spawnBurst(bx, by+20, EMBER_COLORS, 22, 0.07, 1500, -0.00045); }
+        if(explode&&run&&run.combat===c){
+          setTimeout(()=>{
+            if(!run||run.combat!==c) return;
+            let ed=explode;
+            const abs=Math.min(c.block,ed); c.block-=abs; ed-=abs;
+            run.hp=Math.max(0,run.hp-ed);
+            fx.push({kind:'ring', x:bx, y:by, t0:now()});
+            const pp2=playerPos();
+            addFloat(pp2.x, pp2.y-150, String(ed), ed>0?'#e05545':'#7fa8d8');
+            if(ed>0){ shakeT0=now(); hitstop(80); SFX.hit(); }
+            ui.log=`${ENEMIES[t.key].name} bursts — ${ed} damage!`;
+            if(run.hp<=0){ c.over=true; setTimeout(dieOnRoad, 900); }
+            render();
+          }, 240);
+        }
       }, delay);
       msgs.push(`${dealt} to ${t.name}`);
     }
@@ -1138,6 +1348,9 @@ function winCombat(){
   let mat=Math.round((10+Math.floor(Math.random()*5))*TIER_MULT[tier]);
   if(c.nodeType==='EL') mat+=35*(hasRelic('tollChain')?2:1);
   if(c.nodeType==='BOSS') mat+=70;
+  // reclaim a slain hoarder's takings at 1.5x
+  const hoard=c.enemies.reduce((s,e)=>s+(e.hoard||0),0);
+  if(hoard) mat+=Math.floor(hoard*1.5);
   run.wagon.materials+=mat;
   if(c.nodeType==='BOSS'){ run.combat=null; extractHome(true); return; }
   if(c.nodeType==='rescueFight'){ run.combat=null; completeRescue(mat); return; }
@@ -1193,6 +1406,14 @@ function enemyAct(c,e){
   if(it.junk){ for(let j=0;j<it.junk;j++) c.disc.push(mk('brokenWheel')); addFloat(ep.x, topY, '+'+it.junk+' junk!', '#8a8f9a'); }
   if(it.heal){ e.hp=Math.min(e.maxHp, e.hp+it.heal); addFloat(ep.x, topY, '+'+it.heal, '#7dc87a'); }
   if(it.drainEmber&&c.embers>0){ c.embers=Math.max(0,c.embers-it.drainEmber); addFloat(ep.x, topY, '-'+it.drainEmber+' Ember', '#ff8f3c'); }
+  if(it.buffAll){ for(const a2 of c.enemies) if(a2.hp>0) a2.str+=it.buffAll; addFloat(ep.x, topY, 'ALL +'+it.buffAll+' Str', '#c9a35f'); }
+  if(it.chill){ c.chillPending=(c.chillPending||0)+it.chill; addFloat(playerPos().x, playerPos().y-170, 'CHILLED', '#9ad0e8'); spawnBurst(playerPos().x, playerPos().y-80, ['#9ad0e8','#c7e4f2','#5a8aa8'], 10, 0.1, 800, 0.0004); }
+  if(it.steal){
+    const taken=Math.min(run.wagon.materials, it.steal);
+    run.wagon.materials-=taken; e.hoard=(e.hoard||0)+taken;
+    addFloat(ep.x, topY, '-'+taken+' ⛏', '#e05545');
+    ui.log=`${e.name} — ${it.lbl}: ${taken} materials into its hoard (${e.hoard})`;
+  }
   if(it.atk){
     const times=it.times||1;
     let total=0, absorbedTotal=0;
@@ -1220,6 +1441,7 @@ function enemyAct(c,e){
 function finishEnemyTurn(c){
   for(const e of c.enemies){ if(e.hp>0){ e.turn++; e.intent=ENEMIES[e.key].ai(e.turn); } }
   c.turn++; c.energy=ENERGY_PER_TURN; c.block=0; c.struck=false;
+  c.chillNow=c.chillPending||0; c.chillPending=0; // the cold bites on YOUR turn
   drawToHand();
   SFX.draw();
   ui.dealt=true;
@@ -1541,12 +1763,12 @@ window.addEventListener('keydown', e=>{
 window.addEventListener('keyup', e=>{ keys[e.key.toLowerCase()]=false; });
 cv.addEventListener('click', e=>{
   if(ui.screen==='title'){ leaveTitle(); return; }
-  if(ui.screen==='map' && !ui.modal && !iris && run && run.mapPos && !run.travel && run.row+1<MAP_ROWS.length){
+  if(ui.screen==='map' && !ui.modal && !iris && run && run.mapPos && !run.travel && run.row+1<rows().length){
     const w=clientToWorld(e.clientX, e.clientY);
     const ri=run.row+1;
-    for(let ni=0;ni<MAP_ROWS[ri].length;ni++){
+    for(let ni=0;ni<rows()[ri].length;ni++){
       const p=run.mapPos[ri][ni];
-      if(Math.hypot(w.x-p.x, w.y-p.y)<40){ run.travel={ri, ni, type:MAP_ROWS[ri][ni], t0:now()}; return; }
+      if(Math.hypot(w.x-p.x, w.y-p.y)<40){ run.travel={ri, ni, type:rows()[ri][ni], t0:now()}; return; }
     }
   }
   if(ui.screen==='combat' && ui.targeting!==null && run&&run.combat){
@@ -2055,15 +2277,15 @@ function rowY(ri){ return 596-ri*58; }
 const TOWN_PT={x:640,y:666};
 function genMapPos(){
   const rj=mulberry(Math.floor(Math.random()*1e9));
-  return MAP_ROWS.map((row,ri)=>row.map((t,ni)=>{
+  return rows().map((row,ri)=>row.map((t,ni)=>{
     const n=row.length;
-    const bx=n===1?640:640+(ni===0?-100:100);
-    return {x:bx+(rj()-0.5)*30, y:rowY(ri)+(rj()-0.5)*16};
+    const bx=n===1?640:n===2?640+(ni?100:-100):640+(ni-1)*150;
+    return {x:bx+(rj()-0.5)*26, y:rowY(ri)+(rj()-0.5)*16};
   }));
 }
 function chosenPos(ri){
   if(ri<0) return TOWN_PT;
-  const idx=MAP_ROWS[ri].indexOf(run.chosen[ri]);
+  const idx=rows()[ri].indexOf(run.chosen[ri]);
   return run.mapPos[ri][Math.max(0,idx)];
 }
 function drawInkPine(g,x,y,s){
@@ -2118,14 +2340,15 @@ function drawMap(t){
     g.lineWidth=solid?3.5:2; g.setLineDash(solid?[9,6]:[3,7]);
     g.beginPath(); g.moveTo(a.x,a.y); g.lineTo(b.x,b.y); g.stroke(); g.setLineDash([]);
   };
+  const RR=rows();
   for(const p0 of run.mapPos[0]) seg(TOWN_PT,p0,false);
-  for(let ri=0;ri<MAP_ROWS.length-1;ri++) for(const a of run.mapPos[ri]) for(const b of run.mapPos[ri+1]) seg(a,b,false);
+  for(let ri=0;ri<RR.length-1;ri++) for(const a of run.mapPos[ri]) for(const b of run.mapPos[ri+1]) seg(a,b,false);
   for(let ri=0;ri<=run.row;ri++) seg(chosenPos(ri-1), chosenPos(ri), true);
-  if(run.row+1<MAP_ROWS.length) for(const b of run.mapPos[run.row+1]) seg(chosenPos(run.row), b, false);
+  if(run.row+1<RR.length) for(const b of run.mapPos[run.row+1]) seg(chosenPos(run.row), b, false);
   // nodes
-  for(let ri=0;ri<MAP_ROWS.length;ri++){
-    for(let ni=0;ni<MAP_ROWS[ri].length;ni++){
-      const type=MAP_ROWS[ri][ni], p=run.mapPos[ri][ni];
+  for(let ri=0;ri<RR.length;ri++){
+    for(let ni=0;ni<RR[ri].length;ni++){
+      const type=RR[ri][ni], p=run.mapPos[ri][ni];
       const state=ri<=run.row?(run.chosen[ri]===type?'visited':'skipped'):(ri===run.row+1?'choice':'future');
       const bob=state==='choice'?Math.sin(t/300+ni)*3:0;
       g.globalAlpha=state==='skipped'?0.35:state==='visited'?0.6:1;
@@ -2136,10 +2359,13 @@ function drawMap(t){
       g.beginPath(); g.arc(p.x,p.y+bob,r,0,7); g.fill(); g.stroke();
       if(state==='choice'){
         const pu=0.5+0.5*Math.sin(t/260);
-        g.strokeStyle=`rgba(210,120,30,${0.5+0.4*pu})`; g.lineWidth=3.5;
+        g.strokeStyle=type==='EL'?`rgba(200,50,40,${0.5+0.4*pu})`:`rgba(210,120,30,${0.5+0.4*pu})`;
+        g.lineWidth=3.5;
         g.beginPath(); g.arc(p.x,p.y+bob,r+6+pu*3,0,7); g.stroke();
       }
-      drawSpr(g,'n_'+type,p.x,p.y+bob+16,type==='BOSS'?4.6:3.4);
+      if(type==='EL'){ g.strokeStyle='rgba(140,40,30,.5)'; g.lineWidth=2; g.beginPath(); g.arc(p.x,p.y+bob,r-4,0,7); g.stroke(); }
+      const nicon=type==='BOSS'?(run.bossKey==='tollmaster'?'n_BOSS2':'n_BOSS'):'n_'+type;
+      drawSpr(g,nicon,p.x,p.y+bob+16,type==='BOSS'?4.6:3.4);
       // lit beacons still burn behind you
       if(type==='B'&&state==='visited'){
         const fl=1+0.25*Math.sin(t/120+ri);
@@ -2178,16 +2404,16 @@ function drawMap(t){
   g.fillStyle='rgba(255,190,90,.18)'; g.beginPath(); g.arc(wt.x,wt.y-12,26,0,7); g.fill();
   drawSpr(g,'wagon',wt.x,wt.y,3);
   // fog of war rolls back as you advance
-  for(let ri=Math.max(0,run.row+2);ri<MAP_ROWS.length;ri++){
-    const depth=(ri-(run.row+2))/Math.max(1,MAP_ROWS.length-(run.row+2));
+  for(let ri=Math.max(0,run.row+2);ri<RR.length;ri++){
+    const depth=(ri-(run.row+2))/Math.max(1,RR.length-(run.row+2));
     for(const b of MAP_FOG[ri]){
       const bx2=640+b.dx+Math.sin(t/2600+b.ph)*22;
       g.fillStyle=`rgba(178,164,130,${(0.5+depth*0.34).toFixed(2)})`;
       g.beginPath(); g.ellipse(bx2,rowY(ri),b.r,b.r*0.42,0,0,7); g.fill();
     }
   }
-  // the eye watches through the fog
-  if(run.row+2<=8){ g.globalAlpha=0.5+0.2*Math.sin(t/700); drawSpr(g,'n_BOSS',640,rowY(8)+18,4.6); g.globalAlpha=1; }
+  // the boss waits through the fog — the map tells you WHICH
+  if(run.row+2<=8){ g.globalAlpha=0.5+0.2*Math.sin(t/700); drawSpr(g,run.bossKey==='tollmaster'?'n_BOSS2':'n_BOSS',640,rowY(8)+18,4.6); g.globalAlpha=1; }
   // darkening north
   const ng=g.createLinearGradient(0,0,0,WORLD_H);
   ng.addColorStop(0,'rgba(24,18,44,.34)'); ng.addColorStop(0.45,'rgba(24,18,44,0)');
@@ -2201,7 +2427,8 @@ function enemyPos(i){
   const c=run&&run.combat; if(!c) return {x:900,y:498};
   const n=c.enemies.length;
   if(n===1) return {x:920, y:498};
-  return {x:790+i*220, y:498};
+  if(n===2) return {x:790+i*220, y:498};
+  return {x:730+i*185, y:498};
 }
 const treesCache={};
 function bgTrees(biome=0){
@@ -2385,6 +2612,9 @@ function drawCombat(t){
     if(it.junk) segs.push({ic:'i_brokenWheel', tx:'×'+it.junk});
     if(it.heal) segs.push({ic:'it_buff', tx:'+'+it.heal+'hp'});
     if(it.drainEmber) segs.push({ic:'i_emberToss', tx:'-'+it.drainEmber});
+    if(it.buffAll) segs.push({ic:'it_buff', tx:'ALL'});
+    if(it.chill) segs.push({ic:'i_snuff', tx:'❄'});
+    if(it.steal) segs.push({ic:'i_hoard', tx:'-'+it.steal+'⛏'});
     g.font='700 17px Alegreya,serif';
     let segW=0; for(const s3 of segs) segW+=24+g.measureText(s3.tx).width+10;
     let segX=ep.x-segW/2;
@@ -2416,6 +2646,23 @@ function drawCombat(t){
     g.fillStyle='#ffd98a'; g.beginPath(); g.arc(bx,by,5,0,7); g.fill();
     if(Math.random()<0.6) parts.push({x:bx,y:by,vx:(Math.random()-0.5)*0.03,vy:0.015,c:'#ff8f3c',t0:now(),life:320,size:2,grav:0});
   }
+  // death shockwave rings
+  for(const f of fx){
+    if(f.kind!=='ring') continue;
+    const p=(now()-f.t0)/450; if(p<0||p>1) continue;
+    g.globalAlpha=1-p;
+    g.strokeStyle='#ffb35c'; g.lineWidth=4*(1-p);
+    g.beginPath(); g.arc(f.x, f.y, 12+p*90, 0, 7); g.stroke();
+    g.globalAlpha=1;
+  }
+  // chill motes around the player
+  if(c.chillNow){
+    for(let i5=0;i5<6;i5++){
+      const a5=t/600+i5*1.05;
+      g.fillStyle='rgba(154,208,232,.7)';
+      g.fillRect(pp.x+Math.cos(a5)*46, pp.y-70+Math.sin(a5*1.3)*40, 2.5, 2.5);
+    }
+  }
   // particles
   drawParts(g);
   // floats
@@ -2438,22 +2685,39 @@ function drawCombat(t){
     vg.addColorStop(1,`rgba(150,15,10,${(0.18+0.14*pulse+(0.3-hpFrac)*0.6).toFixed(3)})`);
     g.fillStyle=vg; g.fillRect(0,0,WORLD_W,WORLD_H);
   }
-  // boss intro banner
+  // boss intro banner (any boss)
   if(window.__bossIntro){
     const bt=now()-window.__bossIntro;
-    if(bt<2700){
+    const bossE=c.enemies.find(e=>ENEMIES[e.key].boss);
+    if(bt<2700&&bossE){
+      const bd=ENEMIES[bossE.key];
       const a=Math.min(Math.min(1,bt/400), bt>2200?Math.max(0,1-(bt-2200)/500):1);
       g.fillStyle=`rgba(2,2,7,${(0.75*a).toFixed(3)})`; g.fillRect(0,0,WORLD_W,WORLD_H);
-      const ep0=enemyPos(0);
-      drawSpr(g,'wraith', ep0.x, ep0.y, 6, {alpha:a});
+      const ep0=enemyPos(c.enemies.indexOf(bossE));
+      drawSpr(g, bd.spr, ep0.x, ep0.y, bd.scale, {alpha:a});
       g.globalAlpha=a;
       g.font='900 52px Cinzel,serif'; g.textAlign='center';
-      g.fillStyle='#7a1d16'; g.fillText('THE BEACON WRAITH', WORLD_W/2+3, 213);
-      g.fillStyle='#e8d9be'; g.fillText('THE BEACON WRAITH', WORLD_W/2, 210);
+      g.fillStyle='#7a1d16'; g.fillText(bd.name.toUpperCase(), WORLD_W/2+3, 213);
+      g.fillStyle='#e8d9be'; g.fillText(bd.name.toUpperCase(), WORLD_W/2, 210);
       g.font='italic 19px Alegreya,serif'; g.fillStyle='#8fa5c8';
-      g.fillText('it pressed on, and on, and never lit the beacon home', WORLD_W/2, 248);
+      g.fillText(bd.tagline||'', WORLD_W/2, 248);
       g.globalAlpha=1;
     } else window.__bossIntro=null;
+  }
+  // toll-master arena dressing: hanging chains + coin glitter
+  if(c.enemies.some(e=>e.key==='tollmaster'&&e.hp>0)){
+    g.strokeStyle='rgba(138,143,154,.4)'; g.lineWidth=4;
+    for(const cx4 of [560,700,1150]){
+      g.beginPath(); g.moveTo(cx4,0);
+      for(let y4=0;y4<200;y4+=16) g.lineTo(cx4+Math.sin(t/900+y4*0.3+cx4)*5, y4);
+      g.stroke();
+    }
+    for(let i6=0;i6<8;i6++){
+      const gx=((i6*167)%500)+680, gy=505+((i6*89)%30);
+      g.globalAlpha=0.4+0.4*Math.sin(t/300+i6*2);
+      g.fillStyle='#ffd98a'; g.fillRect(gx,gy,3,3);
+      g.globalAlpha=1;
+    }
   }
   cullFx();
   g.restore();
@@ -2645,7 +2909,7 @@ function combatDom(){
       `data-play="${ci.iid}"`,
       `--r:${rot}deg; --ty:${ty}px; --i:${i};`);
   }).join('');
-  const depth=run.row>=0?`row ${run.row+1}/${MAP_ROWS.length}`:'';
+  const depth=run.row>=0?`row ${run.row+1}/${rows().length}`:'';
   return `${runHud(c.nodeType==='tutorial'?'THE PROVING GROUND':'THE WILDS')}
   <div class="combat-ui">
     <div class="logline">${esc2(ui.log)}${ui.targeting!==null?' — choose a target':''}</div>
@@ -2654,8 +2918,8 @@ function combatDom(){
       <div class="embers">${Array.from({length:Math.min(c.embers,12)},()=>'<div class="ember"></div>').join('')}
         <span class="muted" style="font-size:12px">${c.embers} Ember${c.embers===1?'':'s'}</span></div>
       <div style="display:flex; gap:8px; align-items:center;">
-        <div class="weightbar ${c.packFull?'full':''}"><div class="wfill" style="width:${Math.min(100,hw/CAPACITY*100)}%"></div></div>
-        <span class="muted" style="font-size:12px">pack ${hw}/${CAPACITY}${c.packFull?' — FULL':''}</span>
+        <div class="weightbar ${c.packFull?'full':''} ${c.chillNow?'chilled':''}"><div class="wfill" style="width:${Math.min(100,hw/capNow()*100)}%"></div></div>
+        <span class="muted" style="font-size:12px; ${c.chillNow?'color:#9ad0e8;':''}">pack ${hw}/${capNow()}${c.chillNow?' ❄ CHILLED':''}${c.packFull?' — FULL':''}</span>
       </div>
       ${(run.potions&&run.potions.length)?`<div style="display:flex; gap:6px;">${run.potions.map((k,i)=>`<button class="btn" data-potion="${i}" title="${esc2(POTIONS[k].name)}: ${esc2(POTIONS[k].desc)}" style="padding:4px 10px; font-size:16px;" ${c.busy||c.over?'disabled':''}>${POTIONS[k].icon}</button>`).join('')}</div>`:''}
     </div>
@@ -2827,10 +3091,35 @@ function modalHTML(){
       <button class="btn" data-act="townreturn">Enter the Town</button>`);
   }
   if(m.kind==='removeCard'){
-    return ovl(`<h2>👻 One Burden, Off Your Hands</h2>
-      <div class="story">The ghost waits, palm open. Choose a card — it will carry it into whatever comes after.</div>
+    return ovl(`<h2>${m.from==='merchant'?'🛒 A Lighter Pack':'👻 One Burden, Off Your Hands'}</h2>
+      <div class="story">${m.from==='merchant'?'"Anything you don\'t want, I\'ll take off your hands. Literally." Choose a card to sell away.':'The ghost waits, palm open. Choose a card — it will carry it into whatever comes after.'}</div>
       <div class="cardrow">${run.deck.map(ci=>cardHTML(ci,'mini pickable',`data-remove="${ci.iid}"`)).join('')}</div>
-      <button class="btn cold" data-act="closemodal">Keep everything</button>`,'cold-panel wide');
+      <button class="btn cold" data-act="${m.from==='merchant'?'merchant-back':'closemodal'}">Keep everything</button>`,'cold-panel wide');
+  }
+  if(m.kind==='merchant'){
+    const w=run.wagon.materials, b=m.bought||{};
+    const item=(key,cost,icon,name,desc,disabled)=>`
+      <button class="btn ${b[key]?'cold':''}" data-merchant="${key}" ${b[key]||w<cost||disabled?'disabled':''} style="max-width:280px; text-align:left;">
+        <span style="font-size:18px">${icon}</span> <b>${name}</b> — ${cost} ⛏<br>
+        <span style="font-size:12px; color:var(--parch-dim); font-family:Alegreya,serif; font-weight:400">${b[key]?'sold':desc}</span></button>`;
+    return ovl(`<div style="display:flex; gap:18px; align-items:flex-start;">
+      <img class="portrait" style="width:96px;height:96px;border:1px solid var(--amber-dim);border-radius:9px;image-rendering:pixelated;flex:none;background:#120d06" src="${sprURL('merchant',8)}">
+      <div style="text-align:center; flex:1;">
+      <h2>🛒 The Peddler</h2>
+      <div class="story">A crooked wagon, a crookeder grin. "Far from home, friend. Everything's for sale — paid from the wagon, of course." You carry <b class="amber">${w} ⛏</b>.</div>
+      <div class="choicerow">
+        ${item('remove',15,'👋','Lighten the pack','Remove any card from your deck')}
+        ${item('potion',10,'⚗️','A road draught','A random potion'+(run.potions.length>=2?' (hands full!)':''),run.potions.length>=2)}
+        ${item('heal',10,'🩹','Patch up','Heal 12 HP')}
+        ${item('relic',40,'🎁','The good shelf','A random relic',!unownedRelics().length)}
+      </div>
+      <button class="btn cold" style="margin-top:12px" data-act="merchant-leave">Walk on</button>
+      </div></div>`);
+  }
+  if(m.kind==='windfall'){
+    return ovl(`<h2>❔ A Kind Turn</h2>
+      <div class="story">Not every mystery has teeth. An old cache under a marked stone — dry, packed, forgotten. <b class="amber">+${m.found} materials</b> into the wagon.</div>
+      <button class="btn" data-act="mystery-take">Take it and move on</button>`);
   }
   if(m.kind==='relicReward'){
     return ovl(`<h2>💀 The Strong Keep Trophies</h2>
@@ -2920,6 +3209,10 @@ const MECHS=[
   {icon:'🕊️', name:'Escorts & Burdens', text:'Rescuing a villager adds an Escort card to your deck — weight 2, unplayable — that clogs your pack for the rest of the run. Some events add junk burdens too. Villagers only settle in town if you extract alive.'},
   {icon:'🛒', name:'The Wagon', text:'Everything you earn on the road rides in the wagon: materials, and any villagers walking beside it. The wagon is only YOURS once you extract.'},
   {icon:'⛺', name:'Camps', text:'A safe fire on the road. Rest (heal 15 HP) or Hone (permanently upgrade one card for this run).'},
+  {icon:'❄', name:'Chill', text:'The cold gets into the straps: your pack capacity drops by 2 on your NEXT turn (it never falls below 4). Frostback Wisps and The Smothering carry it. Heavy decks, beware.'},
+  {icon:'🛒', name:'The Peddler', text:'A traveling merchant on the deep roads. Pays are made FROM THE WAGON: remove a card (15), a random potion (10), heal 12 (10), or a relic (40). Spend your haul now, or bank it at the beacon — that\'s the whole question.'},
+  {icon:'❔', name:'Mystery', text:'An unmarked turn in the road. Usually a fight or a strange meeting; sometimes a forgotten cache.'},
+  {icon:'👁', name:'Two Bosses', text:'Each expedition, one of two horrors holds the far beacon — the map shows which through the fog. The Beacon Wraith smothers the light; the Toll-Master LEVIES your wagon each cycle, hoarding your materials — slay it to reclaim them at 1.5×.'},
   {icon:'⚒️', name:'The Forge (town)', text:'Built with 30 materials once Maren is rescued and home. Each expedition starts with one card of your choice upgraded.'},
   {icon:'📚', name:'The Library (town)', text:'Built with 20 materials. Adds 5 rare, stranger cards to the wilds\' reward pool.'},
 ];
@@ -3084,7 +3377,22 @@ function bind(){
   dom.querySelectorAll('[data-remove]').forEach(el=>el.addEventListener('click',()=>{
     const i=run.deck.findIndex(x=>x.iid===Number(el.dataset.remove));
     if(i>=0) run.deck.splice(i,1);
-    ui.modal=null; render();
+    if(ui.modal&&ui.modal.from==='merchant') ui.modal={kind:'merchant', bought:ui._mb||{}};
+    else ui.modal=null;
+    render();
+  }));
+  dom.querySelectorAll('[data-merchant]').forEach(el=>el.addEventListener('click',()=>{
+    const key=el.dataset.merchant, m=ui.modal;
+    const costs={remove:15,potion:10,heal:10,relic:40};
+    if(!m||m.bought[key]||run.wagon.materials<costs[key]) return;
+    run.wagon.materials-=costs[key];
+    m.bought[key]=true;
+    SFX.ember();
+    if(key==='remove'){ ui._mb=m.bought; ui.modal={kind:'removeCard', from:'merchant'}; }
+    else if(key==='potion'&&run.potions.length<2) run.potions.push(pick(Object.keys(POTIONS)));
+    else if(key==='heal') run.hp=Math.min(run.maxHp, run.hp+12);
+    else if(key==='relic'){ const un=unownedRelics(); if(un.length) grantRelic(pick(un)); }
+    render();
   }));
   dom.querySelectorAll('[data-pickrelic]').forEach(el=>el.addEventListener('click',()=>{
     grantRelic(el.dataset.pickrelic);
@@ -3152,6 +3460,9 @@ function act(a){
     case 'camp-forge': ui.modal={kind:'campUpgrade'}; render(); break;
     case 'rescue-fight': ui.modal=null; render(); withIris(startRescueFight); break;
     case 'rescue-leave': run.nodeResolved=true; ui.modal=null; render(); break;
+    case 'merchant-leave': run.nodeResolved=true; ui.modal=null; render(); break;
+    case 'merchant-back': ui.modal={kind:'merchant', bought:ui._mb||{}}; render(); break;
+    case 'mystery-take': run.nodeResolved=true; ui.modal=null; render(); break;
     case 'beacon-home': ui.modal=null; extractHome(false); break;
     case 'beacon-press': run.depthPressed++; run.nodeResolved=true; ui.modal=null; render(); break;
     case 'skipcard': ui.modal=null; render(); break;
