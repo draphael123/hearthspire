@@ -212,6 +212,49 @@
     position:absolute; bottom:12px; left:0; right:0; text-align:center; font-size:13px; color:#7a6a4c; text-shadow:0 1px 3px #000;
     font-style:italic;
   }
+
+  /* ---------- v1.5 visual pass ---------- */
+  /* card type frames */
+  .card.atkc{border-color:#7a5024;}
+  .card.sklc{border-color:#3d5677;}
+  .card.sklc .cost{background:radial-gradient(circle at 35% 30%, #bcd6f2, #33608f 70%); color:#08121f; border-color:#26466b;}
+  .card.burdenc{border-color:#5a564c; border-style:dashed;}
+  .card .cart img{width:60px; height:60px; image-rendering:pixelated; display:block; margin:0 auto;}
+  .card.mini .cart img{width:44px; height:44px;}
+  /* ignition glow for ember-scaling cards */
+  .card.ign::after{
+    content:''; position:absolute; inset:-3px; border-radius:13px; pointer-events:none;
+    box-shadow:0 0 calc(6px + 20px*var(--ig,0)) rgba(255,120,30,calc(.2 + .55*var(--ig,0)));
+    animation:flick 1.3s infinite alternate;
+  }
+  /* keyword tooltips */
+  .card .tip{
+    display:none; position:absolute; left:104%; bottom:0; width:210px; z-index:9;
+    background:linear-gradient(180deg,#221a0c,#120d05); border:1px solid var(--amber-dim); border-radius:9px;
+    padding:10px 12px; text-align:left; box-shadow:0 8px 30px rgba(0,0,0,.8); cursor:default;
+  }
+  .hand .card:hover .tip{display:block;}
+  .hand .card:nth-last-child(-n+2) .tip{left:auto; right:104%;}
+  .card .tip .kw{font-family:'Cinzel',serif; font-size:11px; color:var(--amber-hi); letter-spacing:.05em;}
+  .card .tip .kd{font-size:11.5px; color:var(--parch-dim); line-height:1.35; margin:1px 0 7px;}
+  .card .tip .kd:last-child{margin-bottom:0;}
+  /* plank-and-nail panel frame */
+  .panel{
+    border:none;
+    box-shadow:0 0 0 2px #1a1005, 0 0 0 9px #3f2e16, 0 0 0 11px #241505, 0 0 70px rgba(0,0,0,.9), inset 0 0 40px rgba(232,163,74,.05);
+  }
+  .panel::after{
+    content:''; position:absolute; inset:-7px; pointer-events:none; border-radius:16px;
+    background:
+      radial-gradient(circle 3px at 8px 8px, #14100a 40%, #6b5836 55%, transparent 62%),
+      radial-gradient(circle 3px at calc(100% - 8px) 8px, #14100a 40%, #6b5836 55%, transparent 62%),
+      radial-gradient(circle 3px at 8px calc(100% - 8px), #14100a 40%, #6b5836 55%, transparent 62%),
+      radial-gradient(circle 3px at calc(100% - 8px) calc(100% - 8px), #14100a 40%, #6b5836 55%, transparent 62%);
+  }
+  .panel{position:relative; overflow:visible;}
+  .panel>*{position:relative; z-index:1;}
+  .vignimg{width:100%; max-width:430px; border:1px solid #4a3a22; border-radius:8px; image-rendering:pixelated; margin:4px 0 10px; display:block; margin-left:auto; margin-right:auto;}
+  .mapscreen{background:transparent;}
 </style>
 </head>
 <body>
@@ -234,6 +277,7 @@ const PAL={
   k:'#241a12',r:'#8a3a2e',A:'#d9c2a0',n:'#2e3644',N:'#485468',s:'#b9c4d6',R:'#c04438',
   w:'#6b6f78',W:'#9aa0ab',o:'#d08a2e',g:'#5a7a4a',G:'#7a9a62',
   m:'#3a4252',M:'#5a6478',y:'#8a8f9a',E:'#ffca5f',v:'#1c1430',V:'#332654',t:'#e8e4d8',
+  F:'#ff8f3c',Y:'#ffd98a',B:'#7fa8d8',z:'#6e6e76',Z:'#b5b5bc',X:'#6b4d20',x:'#3a2a16',P:'#4a4038',
 };
 const SPRITES={
 player_d1:[
@@ -421,6 +465,40 @@ wraith:[
 ".....v.V.v......",
 "......v.v.......",
 ".......v........"],
+/* ---- card icons (12x10) ---- */
+i_sweep:["....xx......","...xxxx.....","..xY..Yx....","..xYFFYx....","..xYFFYx....","..xY..Yx....","...xxxx.....","....xx......","..Y......Y..",".....Y......"],
+i_cloak:["....hh......","...hhhh.....","..hhcchh....","..hcccch....",".hcCCCCch...",".hcCCCCch...",".ccCCCCcc...",".ccCCCCcc...","..cccccc....","..cc..cc...."],
+i_wick:[".....F......","....FYF.....",".....F......","....tt......","....tt......","....tt......","....tt......","...xttx.....","...xxxx.....","............"],
+i_flarecall:["..........F.",".........FY.","..Y.....FY..","...Y...FY...","....F.FYF...","...FFYYYF...","...FYYYYF...","....FYYF....",".....FF.....","............"],
+i_emberToss:["...F....F...",".Y....Y.....","....F.....F.","..Y....F....","............","..fff.......",".fffff......",".fffff......","..fff.......","............"],
+i_cinder:[".........s..","........ss..","..F....ss...","..FY..ss....","...F.ss.....","....ss......","...ssF......","..xx.Y......","..xx........","............"],
+i_warmHands:[".....F......","....FYF.....","....FYF.....",".....F......","..f......f..",".ff......ff.",".fff....fff.","..fff..fff..","...ff..ff...","............"],
+i_twinWicks:["...F....F...","..FYF..FYF..","...F....F...","...tt...tt..","...tt...tt..","...tt...tt..","..xttx.xttx.","..xxxx.xxxx.","............","............"],
+i_lanternShield:["...BBBBBB...","..BssssssB..","..Bs.YY.sB..","..Bs.YY.sB..","..BssssssB..","...BssssB...","...BssssB...","....BssB....",".....BB.....","............"],
+i_kindledBlade:["......sF....","......sF....","......sF....","......sF....","......s.....",".....xxx....","......x.....",".....xx.....","............","............"],
+i_snuff:[".....y......","....y.......",".....y......","....tt......","....tt......","....tt......","....tt......","...xttx.....","...xxxx.....","............"],
+i_waxSeal:["....RRRR....","...RRRRRR...","..RRrrrrRR..","..RRr..rRR..","..RRr..rRR..","..RRrrrrRR..","...RRRRRR...","....RRRR....","............","............"],
+i_pyreSlab:[".....F......","....FYF.....","...zzzzzz...","..zZZZZZZz..","..zZZZZZZz..","..zZZZZZZz..","..zZZZZZZz..","..zzzzzzzz..","............","............"],
+i_brazier:["...F..F.....","..FYFFYF....","...FYYF.....","..xxxxxx....","...xxxx.....","....xx......","...x..x.....","..xx..xx....","............","............"],
+i_hearthfire:[".....F......","....FYF.....","...FFYFF....","...FYYYF....","..FYYYYYF...","..xXxXxXx...",".XxXxXxXxX..","............","............","............"],
+i_march:["....FYF.....","...FYYYF....","....FYF.....","....xx......","....xx......","....xx......","....xx......","....xx......","............","............"],
+i_beaconSurge:["....FYF.....","...FYYYF....",".....F......","...xxxxx....","...x...x....","...x...x....","..xx...xx...","..x.....x...","............","............"],
+i_wildfire:["..F..F..F...",".FYFFYFFYF..",".FYYYYYYYF..","..FYYYYYF...","...FYYYF....","....FYF.....",".....F......","............","............","............"],
+i_hoard:[".....F......","....Y.......","..YYYYYY....",".YYoYYoYY...",".YYYYYYYY...","..oYYoYYo...","............","............","............","............"],
+i_mothSwarm:["..CC....CC..",".CCCC..CCCC.",".CCCCkkCCCC.","..CCkkkkCC..",".CCCCkkCCCC.","..CC.kk.CC..",".....kk.....","............","............","............"],
+i_glassflame:["....BBBB....","...B....B...","..B..F...B..","..B.FYF..B..","..B..F...B..","...B....B...","....BBBB....","............","............","............"],
+i_stoke:[".s..........","..s.........","...s........","....s.F.....",".....FYF....","...XxXxX....","..xXxXxXx...","............","............","............"],
+i_escort:["....ff......","....ff......","...rrrr.....","..frrrrf....","...rrrr.....","...r..r.....","...b..b.....","............","............","............"],
+i_brokenWheel:["...xx.xx....","..x..x..x...",".x...x...x..",".xxxx.xxxx..",".x...x......","..x..x..x...","...xx.xx....","............","............","............"],
+/* ---- map node icons ---- */
+n_F:["..s......s..","...s....s...","....s..s....",".....ss.....",".....ss.....","....s..s....","...s....s...","..x......x..","............","............"],
+n_E:["...YYYY.....","..Y....Y....",".......Y....","......Y.....",".....Y......",".....Y......","............",".....Y......","............","............"],
+n_R:["............","..t.........",".ttt....t...",".tttt..tt...","..ttttttt...","...ttttt....","....ttt.....","......t.....","............","............"],
+n_C:[".....x......","....xxx.....","...xxAxx....","..xxAAAxx...",".xxAAAAAxx..",".x.......x..","............","............","............","............"],
+n_EL:["...ZZZZ.....","..ZZZZZZ....","..Ze.eZZ....","..ZZZZZZ....","...ZZZZ.....","...Z.Z......","............","............","............","............"],
+n_B:[".....F......","....FYF.....","...FYYYF....","...FYYYF....","....FYF.....","....xx......","....xx......","...xxxx.....","............","............"],
+n_BOSS:["...vvvvv....","..vVVVVVv...",".vVV.E.VVv..",".vVVEEEVVv..",".vVV.E.VVv..","..vVVVVVv...","...vvvvv....","............","............","............"],
+wagon:["............","..xxxxxxxx..","..xCCCCCCx..","..xxxxxxxx..","...z....z...","..zzz..zzz..","...z....z...","............","............","............"],
 };
 // prebake sprites (+ white flash versions)
 const SPR={};
@@ -445,7 +523,8 @@ function drawSpr(g, key, x, y, scale, opts={}){
   if (opts.flip) g.scale(-1,1);
   if (opts.alpha!==undefined) g.globalAlpha=opts.alpha;
   const img=opts.white? s.white : s.img;
-  g.drawImage(img, -s.w*scale/2, -s.h*scale, s.w*scale, s.h*scale); // anchor: bottom-center
+  const dw=s.w*scale*(opts.sqx||1), dh=s.h*scale*(opts.sqy||1);
+  g.drawImage(img, -dw/2, -dh, dw, dh); // anchor: bottom-center (squash-aware)
   g.restore();
 }
 /* ================= cards ================= */
@@ -579,10 +658,75 @@ let run=null;
 let ui={screen:'town', modal:null, targeting:null, log:'', dealt:false, tutorial:null, codexTab:'mech'};
 
 /* ================= fx ================= */
-let fx=[];        // {kind:'float'|'lungeP'|'lungeE'|'flashE'|'flashP', ...}
+let fx=[];        // {kind:'float'|'lungeP'|'lungeE'|'flashE'|'flashP'|'windup'|'proj', ...}
 let shakeT0=-1e9;
-function addFloat(x,y,txt,color){ fx.push({kind:'float',x,y,txt,color,t0:now()}); }
-function cullFx(){ const t=now(); fx=fx.filter(f=>t-f.t0<1000); }
+function addFloat(x,y,txt,color,delay=0){ fx.push({kind:'float',x,y,txt,color,t0:now()+delay}); }
+function cullFx(){ const t=now(); fx=fx.filter(f=>t-f.t0<1600); }
+
+/* particles (world coords, drawn on whichever scene is active) */
+let parts=[];
+function spawnBurst(x,y,colors,n,spd,life=650,grav=0.0009){
+  for(let i=0;i<n;i++){
+    const a=Math.random()*Math.PI*2, v=spd*(0.4+Math.random()*0.9);
+    parts.push({x,y,vx:Math.cos(a)*v,vy:Math.sin(a)*v-spd*0.3,c:colors[Math.floor(Math.random()*colors.length)],
+      t0:now(),life:life*(0.6+Math.random()*0.8),size:1.5+Math.random()*3,grav});
+  }
+}
+function drawParts(g){
+  const t=now();
+  parts=parts.filter(p=>t-p.t0<p.life);
+  for(const p of parts){
+    const age=t-p.t0, k=age/p.life;
+    const px=p.x+p.vx*age, py=p.y+p.vy*age+p.grav*age*age*0.5;
+    g.globalAlpha=1-k;
+    g.fillStyle=p.c;
+    g.fillRect(px-p.size/2, py-p.size/2, p.size*(1-k*0.5), p.size*(1-k*0.5));
+  }
+  g.globalAlpha=1;
+}
+const EMBER_COLORS=['#ffb35c','#ff8f3c','#ffd98a','#d1461f'];
+const HIT_COLORS=['#ffce7a','#fff2d8','#e8a34a'];
+const BLOCK_COLORS=['#9cc0ec','#c7dcf5','#5a7ba8'];
+
+/* hit-stop: pause all animation clocks briefly on impact */
+let hitPause=0;
+function hitstop(ms){ hitPause=Math.min(hitPause+ms,160); }
+function shiftClocks(byMs){
+  for(const f of fx) f.t0+=byMs;
+  for(const p of parts) p.t0+=byMs;
+  shakeT0+=byMs;
+  if(run&&run.combat) for(const e of run.combat.enemies) if(e.diedAt) e.diedAt+=byMs;
+}
+
+/* lantern-iris screen transition */
+let iris=null; // {phase:'close'|'open', t0, cb}
+const IRIS_CLOSE=320, IRIS_OPEN=450;
+function withIris(cb){
+  if(iris){ cb(); return; }
+  iris={phase:'close', t0:now(), cb};
+}
+function drawIris(g){
+  if(!iris) return;
+  const w=window.innerWidth, h=window.innerHeight;
+  const maxR=Math.hypot(w,h)/2+40;
+  const t=now()-iris.t0;
+  let r;
+  if(iris.phase==='close'){
+    r=maxR*(1-Math.min(1,t/IRIS_CLOSE));
+    if(t>=IRIS_CLOSE){ const cb=iris.cb; iris={phase:'open', t0:now(), cb:null}; if(cb) cb(); r=0; }
+  } else {
+    const k=Math.min(1,t/IRIS_OPEN);
+    r=maxR*(k*k);
+    if(t>=IRIS_OPEN){ iris=null; return; }
+  }
+  g.save(); g.setTransform(window.devicePixelRatio||1,0,0,window.devicePixelRatio||1,0,0);
+  g.beginPath();
+  g.rect(0,0,w,h);
+  g.arc(w/2,h/2,Math.max(0.01,r),0,Math.PI*2,true);
+  g.fillStyle='#050302'; g.fill();
+  if(r>1&&r<maxR*0.9){ g.strokeStyle='rgba(255,180,90,.5)'; g.lineWidth=3; g.beginPath(); g.arc(w/2,h/2,r,0,Math.PI*2); g.stroke(); }
+  g.restore();
+}
 
 /* ================= run lifecycle ================= */
 function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
@@ -591,6 +735,8 @@ function pick(a){ return a[Math.floor(Math.random()*a.length)]; }
 function newRun(){
   run={hp:MAX_HP, maxHp:MAX_HP, deck:STARTER_DECK.map(k=>mk(k)), row:-1, chosen:[],
        wagon:{materials:0, smith:false, villagers:0}, combat:null, depthPressed:0, tutorial:false};
+  run.mapPos=genMapPos();
+  run.wagonTok=null;
   town.stats.runs++; saveTown();
   ui.screen='map';
   if (town.buildings.forge && town.villagers.smith) ui.modal={kind:'forgePick'};
@@ -601,7 +747,7 @@ function enterNode(type){
   run.row++; run.chosen[run.row]=type;
   if(type==='F'||type==='EL'||type==='BOSS'){
     const pool=type==='F'?ENCOUNTERS[lootTier(run.row)]:(type==='EL'?ENCOUNTERS.elite:ENCOUNTERS.boss);
-    startCombat(pick(pool), type);
+    withIris(()=>{ startCombat(pick(pool), type); render(); });
   } else if(type==='R'){ ui.modal={kind:'rescue'}; }
   else if(type==='E'){ ui.modal={kind:'event', ev:pick(EVENTS)}; }
   else if(type==='C'){ ui.modal={kind:'camp'}; }
@@ -637,6 +783,12 @@ function startCombat(enemyKeys, nodeType){
   });
   run.combat={nodeType, enemies, draw:shuffle(run.deck), disc:[], hand:[],
     energy:ENERGY_PER_TURN, embers:0, block:0, turn:1, over:false, busy:false, packFull:false};
+  if(enemies.some(e=>ENEMIES[e.key].boss)&&nodeType!=='tutorial'){
+    // boss intro: hold input while the eye opens
+    const bc=run.combat;
+    bc.busy=true; window.__bossIntro=now();
+    setTimeout(()=>{ if(run&&run.combat===bc){ bc.busy=false; render(); } }, 2700);
+  }
   ui.screen='combat'; ui.targeting=null; ui.dealt=true;
   ui.log = nodeType==='tutorial' ? '' : 'The wilds stir…';
   drawToHand();
@@ -696,7 +848,11 @@ function playCard(iid, targetIdx){
   const msgs=[];
   const baseDmg=cval(ci,'dmg');
   if(baseDmg!==undefined){
-    fx.push({kind:'lungeP', t0:now()});
+    // ember-craft cards launch a bolt from the lantern; plain steel lunges in
+    const isBolt=!!(d.consume||cval(ci,'ember')||cval(ci,'plusPerEmber'));
+    const delay=isBolt?260:120;
+    const pp=playerPos();
+    if(!isBolt) fx.push({kind:'lungeP', t0:now()});
     let dmg=baseDmg;
     if(d.consume&&cval(ci,'perEmberDmg')) dmg+=spent*cval(ci,'perEmberDmg');
     if(cval(ci,'plusPerEmber')) dmg+=c.embers*cval(ci,'plusPerEmber');
@@ -711,10 +867,19 @@ function playCard(iid, targetIdx){
         t.hp=Math.max(0,t.hp-hit); dealt+=hit;
       }
       const ei=c.enemies.indexOf(t);
-      fx.push({kind:'flashE', idx:ei, t0:now()+120});
       const ep=enemyPos(ei);
-      addFloat(ep.x, ep.y-SPR[ENEMIES[t.key].spr].h*ENEMIES[t.key].scale-14, String(dealt), '#ffce7a');
-      if(t.hp<=0 && !t.diedAt) t.diedAt=now()+180;
+      const topY=ep.y-SPR[ENEMIES[t.key].spr].h*ENEMIES[t.key].scale;
+      if(isBolt) fx.push({kind:'proj', x0:pp.x+52, y0:pp.y-114, x1:ep.x, y1:topY+SPR[ENEMIES[t.key].spr].h*ENEMIES[t.key].scale/2, t0:now(), dur:delay});
+      fx.push({kind:'flashE', idx:ei, t0:now()+delay});
+      addFloat(ep.x, topY-14, String(dealt), '#ffce7a', delay);
+      const died=t.hp<=0&&!t.diedAt;
+      if(died) t.diedAt=now()+delay+120;
+      const bx=ep.x, by=topY+30;
+      setTimeout(()=>{
+        hitstop(70);
+        spawnBurst(bx, by, isBolt?EMBER_COLORS:HIT_COLORS, 10, 0.14);
+        if(died) spawnBurst(bx, by+20, EMBER_COLORS, 22, 0.07, 1500, -0.00045);
+      }, delay);
       msgs.push(`${dealt} to ${t.name}`);
     }
   }
@@ -748,10 +913,12 @@ function winCombat(){
   if(c.nodeType==='rescueFight'){ run.combat=null; completeRescue(mat); return; }
   const pool=REWARD_POOL.concat(town.buildings.library?LIBRARY_POOL:[]);
   const picks=shuffle(pool).slice(0,3);
-  run.combat=null;
-  ui.modal={kind:'reward', mat, picks};
-  ui.screen='map';
-  render();
+  withIris(()=>{
+    run.combat=null;
+    ui.modal={kind:'reward', mat, picks};
+    ui.screen='map';
+    render();
+  });
 }
 
 function endTurn(){
@@ -769,11 +936,16 @@ function endTurn(){
     if(i>=actors.length){ finishEnemyTurn(c); return; }
     const e=actors[i++];
     if(e.hp>0){
-      enemyAct(c,e);
-      render();
-      if(run.hp<=0){ c.over=true; ui.log='The lantern goes dark…'; render(); setTimeout(dieOnRoad, 900); return; }
-    }
-    setTimeout(step, 560);
+      // telegraph: crouch for a beat before striking
+      fx.push({kind:'windup', idx:c.enemies.indexOf(e), t0:now()});
+      setTimeout(()=>{
+        if(!run||!run.combat||run.combat!==c) return;
+        enemyAct(c,e);
+        render();
+        if(run.hp<=0){ c.over=true; ui.log='The lantern goes dark…'; render(); setTimeout(dieOnRoad, 900); return; }
+        setTimeout(step, 340);
+      }, 300);
+    } else setTimeout(step, 60);
   };
   setTimeout(step, 380);
 }
@@ -787,18 +959,22 @@ function enemyAct(c,e){
   if(it.buff){ e.str+=it.buff; addFloat(ep.x, topY, '+'+it.buff+' Str', '#c9a35f'); }
   if(it.atk){
     const times=it.times||1;
-    let total=0;
+    let total=0, absorbedTotal=0;
     for(let h=0;h<times;h++){
       let dmg=it.atk+e.str;
       if(e.weak>0) dmg=Math.floor(dmg*0.75);
-      const absorbed=Math.min(c.block,dmg); c.block-=absorbed; dmg-=absorbed;
+      const absorbed=Math.min(c.block,dmg); c.block-=absorbed; dmg-=absorbed; absorbedTotal+=absorbed;
       run.hp=Math.max(0,run.hp-dmg); total+=dmg;
     }
     const pp=playerPos();
     fx.push({kind:'flashP', t0:now()+160});
     addFloat(pp.x, pp.y-150, String(total), total>0?'#e05545':'#7fa8d8');
+    setTimeout(()=>{
+      if(total>0){ hitstop(70); spawnBurst(pp.x, pp.y-80, HIT_COLORS, 8, 0.13); }
+      if(absorbedTotal>0) spawnBurst(pp.x-20, pp.y-70, BLOCK_COLORS, 12, 0.16, 500); // block shatter
+    }, 160);
     if(total>0) shakeT0=now()+160;
-    ui.log=`${e.name} — ${it.lbl}: ${total} damage`;
+    ui.log=`${e.name} — ${it.lbl}: ${total} damage${absorbedTotal>0?` (${absorbedTotal} blocked)`:''}`;
   } else {
     ui.log=`${e.name} — ${it.lbl}`;
   }
@@ -949,6 +1125,14 @@ window.addEventListener('keydown', e=>{
 });
 window.addEventListener('keyup', e=>{ keys[e.key.toLowerCase()]=false; });
 cv.addEventListener('click', e=>{
+  if(ui.screen==='map' && !ui.modal && !iris && run && run.mapPos && run.row+1<MAP_ROWS.length){
+    const w=clientToWorld(e.clientX, e.clientY);
+    const ri=run.row+1;
+    for(let ni=0;ni<MAP_ROWS[ri].length;ni++){
+      const p=run.mapPos[ri][ni];
+      if(Math.hypot(w.x-p.x, w.y-p.y)<40){ enterNode(MAP_ROWS[ri][ni]); return; }
+    }
+  }
   if(ui.screen==='combat' && ui.targeting!==null && run&&run.combat){
     const w=clientToWorld(e.clientX, e.clientY);
     const c=run.combat;
@@ -1021,18 +1205,35 @@ function updateTown(dt){
     player.animT+=dt;
     if(player.animT>170){ player.animT=0; player.frame=1-player.frame; }
   }
-  // Maren wander
+  // footstep dust
+  if(player.moving){
+    if(!updateTown._dust||now()-updateTown._dust>150){
+      updateTown._dust=now();
+      parts.push({x:player.x+(Math.random()-0.5)*10, y:player.y-2, vx:(Math.random()-0.5)*0.02, vy:-0.008,
+        c:'rgba(160,140,100,.7)', t0:now(), life:420, size:3, grav:0});
+    }
+  }
+  // Maren: wander, or work the anvil once the forge stands
   if(town.villagers.smith){
     const t=now();
+    const anvil={x:LOTS.forge.x+36, y:LOTS.forge.y+126};
     if(t>maren.nextMove){
-      maren.nextMove=t+2200+Math.random()*2600;
-      maren.tx=900+Math.random()*130; maren.ty=440+Math.random()*46;
+      maren.nextMove=t+3200+Math.random()*3200;
+      maren.working=town.buildings.forge&&Math.random()<0.55;
+      if(maren.working){ maren.tx=anvil.x+16; maren.ty=anvil.y; }
+      else { maren.tx=900+Math.random()*130; maren.ty=440+Math.random()*46; }
     }
     const mdx=maren.tx-maren.x, mdy=maren.ty-maren.y, md=Math.hypot(mdx,mdy);
     if(md>3){
       maren.x+=mdx/md*0.045*dt; maren.y+=mdy/md*0.045*dt;
       maren.flip=mdx<0;
       maren.animT+=dt; if(maren.animT>200){ maren.animT=0; maren.frame=1-maren.frame; }
+    } else if(maren.working){
+      maren.flip=true; // face the anvil
+      if(!maren._spark||t-maren._spark>620){
+        maren._spark=t;
+        spawnBurst(anvil.x, anvil.y-16, ['#ffd98a','#fff2d8','#ff8f3c'], 7, 0.11, 460, 0.0016);
+      }
     }
   }
 }
@@ -1102,6 +1303,46 @@ function drawTown(t){
     g.globalAlpha=a*0.25; g.beginPath(); g.arc(fx2,fy2,6,0,7); g.fill();
     g.globalAlpha=1;
   }
+  // legend decorations: the town dresses itself as your extractions mount
+  const decorK=Math.min(DECOR.length, town.stats.extractions*2);
+  for(let i=0;i<decorK;i++){
+    const dc=DECOR[i];
+    if(dc.t==='banner'){
+      const L=LOTS.hearth, bx=L.x+L.w/2, by=L.y-8;
+      g.fillStyle='#4a3520'; g.fillRect(bx-1, by-30, 3, 30);
+      for(let col=0;col<5;col++){
+        const wy=Math.sin(t/260+col*0.9)*2.2;
+        g.fillStyle=col%2?'#c98f3d':'#8a3a2e';
+        g.fillRect(bx+2+col*4, by-27+wy, 4, 14);
+      }
+    } else if(dc.t==='lantern'){
+      g.fillStyle='#4a3520'; g.fillRect(dc.x-2, dc.y-34, 4, 34); g.fillRect(dc.x-2, dc.y-34, 12, 3);
+      g.fillStyle='#33220e'; g.fillRect(dc.x+6, dc.y-31, 8, 10);
+      g.fillStyle='#ffd98a'; g.fillRect(dc.x+8, dc.y-29, 4, 6);
+      g.fillStyle='rgba(255,200,110,.12)'; g.beginPath(); g.arc(dc.x+10, dc.y-26, 24+2*Math.sin(t/300+dc.x),0,7); g.fill();
+    } else {
+      for(let f2=0;f2<5;f2++){
+        const fxp=dc.x+((f2*17)%22)-10, fyp=dc.y+((f2*23)%14)-7;
+        g.fillStyle=['#c96a7a','#d9b04a','#8aa8d8'][f2%3]; g.fillRect(fxp-2,fyp-2,4,4);
+        g.fillStyle='#4a6a3a'; g.fillRect(fxp-1,fyp+2,2,4);
+      }
+    }
+  }
+  // anvil
+  if(town.buildings.forge){
+    const ax=LOTS.forge.x+36, ay=LOTS.forge.y+126;
+    g.fillStyle='#2a2a30'; g.fillRect(ax-14,ay-14,28,8); g.fillRect(ax-6,ay-8,12,8);
+    g.fillStyle='#3a3a42'; g.fillRect(ax-14,ay-16,28,3);
+  }
+  // drifting cloud shadows
+  for(let i2=0;i2<3;i2++){
+    const cx2=((t*0.014+i2*560)%(WORLD_W+420))-210;
+    const cy2=140+i2*180;
+    g.fillStyle='rgba(8,10,24,.05)';
+    g.beginPath(); g.ellipse(cx2,cy2,150,52,0,0,7); g.ellipse(cx2+90,cy2+18,100,38,0,0,7); g.fill();
+  }
+  // particles (dust, anvil sparks)
+  drawParts(g);
   // Maren
   if(town.villagers.smith){
     drawShadow(g, maren.x, maren.y, 14);
@@ -1113,7 +1354,31 @@ function drawTown(t){
            player.dir==='d'?('player_d'+(player.moving?player.frame+1:1)):
            ('player_s'+(player.moving?player.frame+1:1));
   drawSpr(g,pk,player.x,player.y,3,{flip:player.dir==='l'});
-  // interact prompt
+  // ---- night lighting: darkness with warm holes ----
+  const lg=lightCtx;
+  lg.setTransform(1,0,0,1,0,0);
+  lg.globalCompositeOperation='source-over';
+  lg.clearRect(0,0,WORLD_W,WORLD_H);
+  lg.fillStyle='rgba(9,8,32,.5)'; lg.fillRect(0,0,WORLD_W,WORLD_H);
+  lg.globalCompositeOperation='destination-out';
+  const hole=(x,y,r,a=1)=>{
+    const rg2=lg.createRadialGradient(x,y,2,x,y,r);
+    rg2.addColorStop(0,`rgba(0,0,0,${a})`); rg2.addColorStop(1,'rgba(0,0,0,0)');
+    lg.fillStyle=rg2; lg.beginPath(); lg.arc(x,y,r,0,7); lg.fill();
+  };
+  hole(player.x, player.y-30, 135);                       // the Lamplighter carries light
+  hole(LAMP.x, LAMP.y-43, 120);
+  hole(GATE.x-58, 618, 70); hole(GATE.x+54, 618, 70);
+  hole(LOTS.hearth.x+37, LOTS.hearth.y+68, 62); hole(LOTS.hearth.x+LOTS.hearth.w-37, LOTS.hearth.y+68, 62);
+  if(town.buildings.forge) hole(LOTS.forge.x+31, LOTS.forge.y+63, 95);
+  if(town.buildings.library){ hole(LOTS.library.x+30, LOTS.library.y+59, 58); hole(LOTS.library.x+LOTS.library.w-30, LOTS.library.y+59, 58); }
+  if(town.villagers.smith) hole(maren.x, maren.y-18, 44, .8);
+  for(let i3=0;i3<decorK;i3++){ const dc=DECOR[i3]; if(dc.t==='lantern') hole(dc.x+10, dc.y-26, 52, .9); }
+  for(const f3 of flies){ const ph=t/900+f3.p; hole(f3.x+Math.sin(ph)*16, f3.y+Math.cos(ph*0.8)*10, 11, .5); }
+  g.drawImage(lightCv,0,0);
+  // warm dusk grade on top
+  g.fillStyle='rgba(255,150,60,.05)'; g.fillRect(0,0,WORLD_W,WORLD_H);
+  // interact prompt (above the darkness so it always reads)
   const h=ui.modal?null:nearestHotspot();
   if(h){
     g.font='700 15px Alegreya,serif'; g.textAlign='center';
@@ -1123,11 +1388,17 @@ function drawTown(t){
     roundRect(g, player.x-wpx/2, player.y-84, wpx, 26, 7); g.fill(); g.stroke();
     g.fillStyle='#ffce7a'; g.fillText(label, player.x, player.y-66);
   }
-  // dusk tint
-  g.fillStyle='rgba(255,150,60,.05)'; g.fillRect(0,0,WORLD_W,WORLD_H);
-  g.fillStyle='rgba(10,8,30,.14)'; g.fillRect(0,0,WORLD_W,WORLD_H);
   g.restore();
 }
+const DECOR=[
+  {t:'banner'},
+  {t:'lantern',x:560,y:472},{t:'flower',x:704,y:482},{t:'lantern',x:724,y:338},
+  {t:'flower',x:478,y:356},{t:'lantern',x:420,y:432},{t:'flower',x:842,y:462},
+  {t:'lantern',x:902,y:562},{t:'flower',x:378,y:562},{t:'lantern',x:250,y:452},
+  {t:'flower',x:1022,y:378},{t:'lantern',x:640,y:298},
+];
+const lightCv=document.createElement('canvas'); lightCv.width=WORLD_W; lightCv.height=WORLD_H;
+const lightCtx=lightCv.getContext('2d');
 function roundRect(g,x,y,w,h,r){ g.beginPath(); g.moveTo(x+r,y); g.arcTo(x+w,y,x+w,y+h,r); g.arcTo(x+w,y+h,x,y+h,r); g.arcTo(x,y+h,x,y,r); g.arcTo(x,y,x+w,y,r); g.closePath(); }
 function drawShadow(g,x,y,r){ g.fillStyle='rgba(0,0,0,.3)'; g.beginPath(); g.ellipse(x,y-2,r,r*0.38,0,0,7); g.fill(); }
 function drawTree(g,x,y){
@@ -1202,6 +1473,132 @@ function drawFutureSign(g,L){
   g.fillText(L.name.toUpperCase()+'?', L.x+L.w/2, L.y+L.h-25);
 }
 
+/* ================= parchment expedition map ================= */
+const rngM=mulberry(21);
+const PARCH_BLOTCH=[]; for(let i=0;i<44;i++) PARCH_BLOTCH.push({x:rngM()*WORLD_W, y:rngM()*WORLD_H, r:14+rngM()*46, a:0.04+rngM()*0.06});
+const MAP_PINES=[]; for(let i=0;i<30;i++){ const side=rngM()<0.5; MAP_PINES.push({x:side?60+rngM()*380:840+rngM()*380, y:90+rngM()*540, s:0.7+rngM()*0.9}); }
+const MAP_FOG=[]; for(let ri=0;ri<MAP_ROWS.length;ri++){ const row=[]; for(let i=0;i<9;i++) row.push({dx:(rngM()-0.5)*720, r:60+rngM()*90, ph:rngM()*7}); MAP_FOG.push(row); }
+const RIVER=[[980,700],[930,600],[960,500],[900,390],[940,280],[880,170],[910,60]];
+function rowY(ri){ return 596-ri*58; }
+const TOWN_PT={x:640,y:666};
+function genMapPos(){
+  const rj=mulberry(Math.floor(Math.random()*1e9));
+  return MAP_ROWS.map((row,ri)=>row.map((t,ni)=>{
+    const n=row.length;
+    const bx=n===1?640:640+(ni===0?-100:100);
+    return {x:bx+(rj()-0.5)*30, y:rowY(ri)+(rj()-0.5)*16};
+  }));
+}
+function chosenPos(ri){
+  if(ri<0) return TOWN_PT;
+  const idx=MAP_ROWS[ri].indexOf(run.chosen[ri]);
+  return run.mapPos[ri][Math.max(0,idx)];
+}
+function drawInkPine(g,x,y,s){
+  g.fillStyle='rgba(58,44,28,.55)';
+  g.beginPath(); g.moveTo(x-9*s,y); g.lineTo(x,y-22*s); g.lineTo(x+9*s,y); g.closePath(); g.fill();
+  g.fillRect(x-1.5*s,y,3*s,5*s);
+}
+function drawMap(t){
+  if(!run||!run.mapPos) return;
+  const g=ctx;
+  g.save(); g.translate(viewOx,viewOy); g.scale(viewS,viewS);
+  // parchment
+  g.fillStyle='#c2aa7e'; g.fillRect(0,0,WORLD_W,WORLD_H);
+  for(const b of PARCH_BLOTCH){ g.fillStyle=`rgba(90,70,40,${b.a})`; g.beginPath(); g.arc(b.x,b.y,b.r,0,7); g.fill(); }
+  // edge burn
+  const eg=g.createRadialGradient(WORLD_W/2,WORLD_H/2,WORLD_H*0.34,WORLD_W/2,WORLD_H/2,WORLD_W*0.62);
+  eg.addColorStop(0,'rgba(60,40,18,0)'); eg.addColorStop(0.82,'rgba(60,40,18,.18)'); eg.addColorStop(1,'rgba(30,18,6,.55)');
+  g.fillStyle=eg; g.fillRect(0,0,WORLD_W,WORLD_H);
+  // river (ink wash)
+  g.strokeStyle='rgba(70,90,110,.4)'; g.lineWidth=9; g.lineJoin='round';
+  g.beginPath(); g.moveTo(RIVER[0][0],RIVER[0][1]);
+  for(const p of RIVER) g.lineTo(p[0],p[1]); g.stroke();
+  g.strokeStyle='rgba(70,90,110,.25)'; g.lineWidth=3;
+  g.beginPath(); g.moveTo(RIVER[0][0]-8,RIVER[0][1]); for(const p of RIVER) g.lineTo(p[0]-8,p[1]); g.stroke();
+  // mountains along the top
+  g.strokeStyle='rgba(58,44,28,.6)'; g.lineWidth=3;
+  for(let x=80;x<WORLD_W-60;x+=110){
+    g.beginPath(); g.moveTo(x,64); g.lineTo(x+34,26); g.lineTo(x+68,64); g.stroke();
+    g.beginPath(); g.moveTo(x+34,26); g.lineTo(x+44,40); g.stroke();
+  }
+  // pines
+  for(const p of MAP_PINES) drawInkPine(g,p.x,p.y,p.s);
+  // compass rose
+  g.strokeStyle='rgba(58,44,28,.5)'; g.lineWidth=2;
+  g.beginPath(); g.arc(112,600,26,0,7); g.stroke();
+  g.beginPath(); g.moveTo(112,570); g.lineTo(112,630); g.moveTo(82,600); g.lineTo(142,600); g.stroke();
+  g.font='700 14px Cinzel,serif'; g.fillStyle='rgba(58,44,28,.7)'; g.textAlign='center'; g.fillText('N',112,562);
+  // town mark
+  g.fillStyle='#4a3826'; g.fillRect(TOWN_PT.x-14,TOWN_PT.y-14,28,16);
+  g.beginPath(); g.moveTo(TOWN_PT.x-18,TOWN_PT.y-12); g.lineTo(TOWN_PT.x,TOWN_PT.y-26); g.lineTo(TOWN_PT.x+18,TOWN_PT.y-12); g.closePath(); g.fill();
+  const tfl=1+0.2*Math.sin(t/140);
+  g.fillStyle='#ff8f3c'; g.beginPath(); g.arc(TOWN_PT.x,TOWN_PT.y-32,4*tfl,0,7); g.fill();
+  g.font='700 13px Cinzel,serif'; g.fillStyle='rgba(58,44,28,.85)'; g.fillText('HEARTHSPIRE',TOWN_PT.x,TOWN_PT.y+18);
+  // route lines
+  const seg=(a,b,solid)=>{
+    g.strokeStyle=solid?'rgba(58,40,20,.85)':'rgba(58,44,28,.3)';
+    g.lineWidth=solid?3.5:2; g.setLineDash(solid?[9,6]:[3,7]);
+    g.beginPath(); g.moveTo(a.x,a.y); g.lineTo(b.x,b.y); g.stroke(); g.setLineDash([]);
+  };
+  for(const p0 of run.mapPos[0]) seg(TOWN_PT,p0,false);
+  for(let ri=0;ri<MAP_ROWS.length-1;ri++) for(const a of run.mapPos[ri]) for(const b of run.mapPos[ri+1]) seg(a,b,false);
+  for(let ri=0;ri<=run.row;ri++) seg(chosenPos(ri-1), chosenPos(ri), true);
+  if(run.row+1<MAP_ROWS.length) for(const b of run.mapPos[run.row+1]) seg(chosenPos(run.row), b, false);
+  // nodes
+  for(let ri=0;ri<MAP_ROWS.length;ri++){
+    for(let ni=0;ni<MAP_ROWS[ri].length;ni++){
+      const type=MAP_ROWS[ri][ni], p=run.mapPos[ri][ni];
+      const state=ri<=run.row?(run.chosen[ri]===type?'visited':'skipped'):(ri===run.row+1?'choice':'future');
+      const bob=state==='choice'?Math.sin(t/300+ni)*3:0;
+      g.globalAlpha=state==='skipped'?0.35:state==='visited'?0.6:1;
+      // disc
+      g.fillStyle=type==='BOSS'?'#3d2c2c':'#b59c6e';
+      g.strokeStyle='rgba(58,40,20,.8)'; g.lineWidth=2.5;
+      const r=type==='BOSS'?34:26;
+      g.beginPath(); g.arc(p.x,p.y+bob,r,0,7); g.fill(); g.stroke();
+      if(state==='choice'){
+        const pu=0.5+0.5*Math.sin(t/260);
+        g.strokeStyle=`rgba(210,120,30,${0.5+0.4*pu})`; g.lineWidth=3.5;
+        g.beginPath(); g.arc(p.x,p.y+bob,r+6+pu*3,0,7); g.stroke();
+      }
+      drawSpr(g,'n_'+type,p.x,p.y+bob+16,type==='BOSS'?4.6:3.4);
+      // lit beacons still burn behind you
+      if(type==='B'&&state==='visited'){
+        const fl=1+0.25*Math.sin(t/120+ri);
+        g.fillStyle='rgba(255,140,50,.25)'; g.beginPath(); g.arc(p.x,p.y-8,20*fl,0,7); g.fill();
+        g.fillStyle='#ff8f3c'; g.beginPath(); g.arc(p.x,p.y-10,5*fl,0,7); g.fill();
+      }
+      g.globalAlpha=1;
+      g.font='700 11px Cinzel,serif'; g.fillStyle='rgba(58,40,20,.75)';
+      g.fillText(NODE_META[type].label.toUpperCase(), p.x, p.y+bob+r+15);
+    }
+  }
+  // wagon token
+  const cur=chosenPos(run.row);
+  if(!run.wagonTok) run.wagonTok={x:TOWN_PT.x,y:TOWN_PT.y};
+  const wt=run.wagonTok;
+  wt.x+=(cur.x+34-wt.x)*0.07; wt.y+=(cur.y-6-wt.y)*0.07;
+  g.fillStyle='rgba(255,190,90,.18)'; g.beginPath(); g.arc(wt.x,wt.y-12,26,0,7); g.fill();
+  drawSpr(g,'wagon',wt.x,wt.y,3);
+  // fog of war rolls back as you advance
+  for(let ri=Math.max(0,run.row+2);ri<MAP_ROWS.length;ri++){
+    const depth=(ri-(run.row+2))/Math.max(1,MAP_ROWS.length-(run.row+2));
+    for(const b of MAP_FOG[ri]){
+      const bx2=640+b.dx+Math.sin(t/2600+b.ph)*22;
+      g.fillStyle=`rgba(178,164,130,${(0.5+depth*0.34).toFixed(2)})`;
+      g.beginPath(); g.ellipse(bx2,rowY(ri),b.r,b.r*0.42,0,0,7); g.fill();
+    }
+  }
+  // the eye watches through the fog
+  if(run.row+2<=8){ g.globalAlpha=0.5+0.2*Math.sin(t/700); drawSpr(g,'n_BOSS',640,rowY(8)+18,4.6); g.globalAlpha=1; }
+  // darkening north
+  const ng=g.createLinearGradient(0,0,0,WORLD_H);
+  ng.addColorStop(0,'rgba(24,18,44,.34)'); ng.addColorStop(0.45,'rgba(24,18,44,0)');
+  g.fillStyle=ng; g.fillRect(0,0,WORLD_W,WORLD_H);
+  g.restore();
+}
+
 /* ================= combat painting ================= */
 function playerPos(){ return {x:292, y:498}; }
 function enemyPos(i){
@@ -1249,7 +1646,8 @@ function drawCombat(t){
   // lantern glow
   const pp=playerPos();
   const gl=1+0.06*Math.sin(t/260);
-  const rg=g.createRadialGradient(pp.x+40,pp.y-70,10,pp.x+40,pp.y-70,240*gl);
+  const lightK=0.55+0.45*(run.hp/run.maxHp); // the lantern dims as you bleed
+  const rg=g.createRadialGradient(pp.x+40,pp.y-70,10,pp.x+40,pp.y-70,240*gl*lightK);
   rg.addColorStop(0,'rgba(255,190,100,.18)'); rg.addColorStop(1,'rgba(255,190,100,0)');
   g.fillStyle=rg; g.fillRect(pp.x-260,pp.y-330,600,420);
   // ===== player =====
@@ -1299,13 +1697,15 @@ function drawCombat(t){
     let eflash=false;
     for(const f of fx){ if(f.kind==='flashE'&&f.idx===i){ const p=now()-f.t0; if(p>=0&&p<150) eflash=true; } }
     const ebob=Math.sin(t/380+i*1.7)*3;
+    let sqx=1, sqy=1;
+    for(const f of fx){ if(f.kind==='windup'&&f.idx===i){ const p=(now()-f.t0)/300; if(p>=0&&p<1){ const k=Math.sin(p*Math.PI); sqy=1-0.14*k; sqx=1+0.1*k; } } }
     if(ui.targeting!==null){
       g.strokeStyle='#e8a34a'; g.lineWidth=3; g.setLineDash([7,5]);
       g.beginPath(); g.ellipse(ep.x, ep.y-2, sp.w*d.scale/2+16, 15, 0,0,7); g.stroke(); g.setLineDash([]);
     }
     drawShadow(g, ep.x, ep.y, sp.w*d.scale/2*0.7);
-    drawSpr(g, d.spr, ep.x+edx, ep.y+ebob, d.scale);
-    if(eflash) drawSpr(g, d.spr, ep.x+edx, ep.y+ebob, d.scale, {white:true, alpha:.8});
+    drawSpr(g, d.spr, ep.x+edx, ep.y+ebob, d.scale, {sqx, sqy});
+    if(eflash) drawSpr(g, d.spr, ep.x+edx, ep.y+ebob, d.scale, {white:true, alpha:.8, sqx, sqy});
     // intent
     const it=e.intent, iy=ep.y-hgt-46;
     g.font='italic 12.5px Alegreya,serif'; g.fillStyle='#6d81a8'; g.textAlign='center';
@@ -1328,6 +1728,17 @@ function drawCombat(t){
     g.font='12px Alegreya,serif';
     chips.forEach((ch,ci2)=>{ g.fillStyle=ch[1]; g.fillText(ch[0], ep.x-40+ci2*44, ep.y+62); });
   }
+  // lantern bolts in flight
+  for(const f of fx){
+    if(f.kind!=='proj') continue;
+    const p=(now()-f.t0)/f.dur; if(p<0||p>1) continue;
+    const bx=f.x0+(f.x1-f.x0)*p, by=f.y0+(f.y1-f.y0)*p-Math.sin(p*Math.PI)*62;
+    g.fillStyle='rgba(255,140,50,.35)'; g.beginPath(); g.arc(bx,by,11,0,7); g.fill();
+    g.fillStyle='#ffd98a'; g.beginPath(); g.arc(bx,by,5,0,7); g.fill();
+    if(Math.random()<0.6) parts.push({x:bx,y:by,vx:(Math.random()-0.5)*0.03,vy:0.015,c:'#ff8f3c',t0:now(),life:320,size:2,grav:0});
+  }
+  // particles
+  drawParts(g);
   // floats
   for(const f of fx){
     if(f.kind!=='float') continue;
@@ -1338,6 +1749,32 @@ function drawCombat(t){
     g.strokeText(f.txt, f.x, f.y-p*46);
     g.fillStyle=f.color; g.fillText(f.txt, f.x, f.y-p*46);
     g.globalAlpha=1;
+  }
+  // low-HP: the light itself falters
+  const hpFrac=run.hp/run.maxHp;
+  if(hpFrac<0.3){
+    const pulse=0.5+0.5*Math.sin(t/300);
+    const vg=g.createRadialGradient(WORLD_W/2,WORLD_H/2,WORLD_H*0.28,WORLD_W/2,WORLD_H/2,WORLD_W*0.6);
+    vg.addColorStop(0,'rgba(120,10,10,0)');
+    vg.addColorStop(1,`rgba(150,15,10,${(0.18+0.14*pulse+(0.3-hpFrac)*0.6).toFixed(3)})`);
+    g.fillStyle=vg; g.fillRect(0,0,WORLD_W,WORLD_H);
+  }
+  // boss intro banner
+  if(window.__bossIntro){
+    const bt=now()-window.__bossIntro;
+    if(bt<2700){
+      const a=Math.min(Math.min(1,bt/400), bt>2200?Math.max(0,1-(bt-2200)/500):1);
+      g.fillStyle=`rgba(2,2,7,${(0.75*a).toFixed(3)})`; g.fillRect(0,0,WORLD_W,WORLD_H);
+      const ep0=enemyPos(0);
+      drawSpr(g,'wraith', ep0.x, ep0.y, 6, {alpha:a});
+      g.globalAlpha=a;
+      g.font='900 52px Cinzel,serif'; g.textAlign='center';
+      g.fillStyle='#7a1d16'; g.fillText('THE BEACON WRAITH', WORLD_W/2+3, 213);
+      g.fillStyle='#e8d9be'; g.fillText('THE BEACON WRAITH', WORLD_W/2, 210);
+      g.font='italic 19px Alegreya,serif'; g.fillStyle='#8fa5c8';
+      g.fillText('it pressed on, and on, and never lit the beacon home', WORLD_W/2, 248);
+      g.globalAlpha=1;
+    } else window.__bossIntro=null;
   }
   cullFx();
   g.restore();
@@ -1352,16 +1789,18 @@ function drawBar(g,x,y,w,h,p,c1,c2){
 /* ================= main loop + watchdog ================= */
 let lastT=now(), lastFrame=0;
 function frame(){
-  const t=now(); const dt=Math.min(50, t-lastT); lastT=t; lastFrame=t;
+  const t=now(); let dt=Math.min(50, t-lastT); lastT=t; lastFrame=t;
+  // hit-stop: hold every animation clock still for the pause
+  if(hitPause>0){ const c=Math.min(dt,hitPause); hitPause-=c; shiftClocks(c); dt=0; }
   fitCanvas();
   const g=ctx;
   g.clearRect(0,0,cv.width,cv.height);
   g.fillStyle='#080604'; g.fillRect(0,0,window.innerWidth,window.innerHeight);
   if(ui.screen==='town'){ updateTown(dt); drawTown(t); }
   else if(ui.screen==='combat'){ drawCombat(t); }
-  else { // map — dom handles it, keep canvas dark
-    g.fillStyle='#05070d'; g.fillRect(0,0,window.innerWidth,window.innerHeight);
-  }
+  else if(ui.screen==='map'&&run){ drawMap(t); }
+  else { g.fillStyle='#05070d'; g.fillRect(0,0,window.innerWidth,window.innerHeight); }
+  drawIris(g);
 }
 function tick(){ frame(); requestAnimationFrame(tick); }
 requestAnimationFrame(tick);
@@ -1380,17 +1819,43 @@ function sprURL(key, scale=4){
   g.drawImage(s.img,0,0,c.width,c.height);
   return sprURLCache[ck]=c.toDataURL();
 }
+const KW_DEFS={
+  kindle:['Kindle','Adds Embers. They persist between turns for the rest of this fight.'],
+  consume:['Consume','Spends ALL your Embers at once — the effect scales with each Ember spent.'],
+  held:['Embers held','Scales with the Embers you hold, without spending them.'],
+  weak:['Weak','The target deals 25% less damage. Ticks down each of its turns.'],
+  burden:['Burden','Cannot be played. Its weight clogs your pack until the run ends.'],
+};
+function cardTip(ci){
+  const d=CARDS[ci.key];
+  const kws=[];
+  kws.push(['Weight '+d.w, 'Counts against your pack capacity of '+CAPACITY+' when drawing each turn.']);
+  if(cval(ci,'ember')||d.doubleEmbers) kws.push(KW_DEFS.kindle);
+  if(d.consume) kws.push(KW_DEFS.consume);
+  if(cval(ci,'plusPerEmber')||cval(ci,'embersBonusBlock')) kws.push(KW_DEFS.held);
+  if(cval(ci,'weak')) kws.push(KW_DEFS.weak);
+  if(d.unplayable) kws.push(KW_DEFS.burden);
+  return `<div class="tip">${kws.map(k=>`<div class="kw">${k[0]}</div><div class="kd">${k[1]}</div>`).join('')}</div>`;
+}
 function cardHTML(ci, cls='', attrs='', style=''){
   const d=CARDS[ci.key];
   const cost=d.unplayable?'—':cval(ci,'cost');
   const live=cls.indexOf('inhand')>=0;
-  return `<div class="card ${cls} ${d.type==='skl'?'skl':''} ${d.type==='burden'?'burden':''} ${d.unplayable?'unplayable-card':''}" ${attrs} style="${style}">
+  const typec=d.type==='atk'?'atkc':d.type==='skl'?'sklc':'burdenc';
+  // ember-scaling cards smolder in hand as Embers rise
+  let ign='';
+  if(live&&run&&run.combat&&run.combat.embers>0&&(d.consume||cval(ci,'plusPerEmber')||cval(ci,'embersBonusBlock'))){
+    ign='ign'; style+=`--ig:${(Math.min(run.combat.embers,6)/6).toFixed(2)};`;
+  }
+  const icon=SPR['i_'+ci.key]?`<img src="${sprURL('i_'+ci.key,6)}" alt="">`:d.art;
+  return `<div class="card ${cls} ${typec} ${ign} ${d.type==='skl'?'skl':''} ${d.type==='burden'?'burden':''} ${d.unplayable?'unplayable-card':''}" ${attrs} style="${style}">
     <div class="cost">${cost}</div>
     <div class="wt">${d.w}⚖</div>
     <div class="cname ${ci.up?'upg':''}">${esc2(d.name)}${ci.up?'+':''}</div>
-    <div class="cart">${d.art}</div>
+    <div class="cart">${icon}</div>
     <div class="ctext">${cardText(ci, live)}</div>
     <div class="ctype">${d.type==='atk'?'ATTACK':d.type==='skl'?'SKILL':'BURDEN'}</div>
+    ${live?cardTip(ci):''}
   </div>`;
 }
 
@@ -1401,9 +1866,21 @@ function render(){
   else if(ui.screen==='combat') html=combatDom();
   if(ui.modal) html+=modalHTML();
   if(ui.tutorial) html+=`<div id="tutmount"></div>`;
+  // FLIP: let surviving hand cards glide to their new fan slots
+  const oldRects={};
+  if(ui.screen==='combat'&&!ui.dealt){
+    dom.querySelectorAll('.hand .card[data-play]').forEach(el=>{ oldRects[el.dataset.play]=el.getBoundingClientRect(); });
+  }
   dom.innerHTML=html;
   bind();
-  if(ui.screen==='map'&&!ui.modal) drawMapLinks();
+  if(ui.screen==='combat'){
+    dom.querySelectorAll('.hand .card[data-play]').forEach(el=>{
+      const old=oldRects[el.dataset.play]; if(!old) return;
+      const nr=el.getBoundingClientRect();
+      const dx=old.left-nr.left;
+      if(Math.abs(dx)>3) el.animate([{transform:`translateX(${dx}px)`},{transform:'translateX(0)'}],{duration:190, easing:'ease-out', composite:'add'});
+    });
+  }
   if(ui.tutorial) positionTutorial();
   ui.dealt=false;
 }
@@ -1420,38 +1897,10 @@ function townDom(){
   <div class="hintbar">WASD / arrows to walk · E to interact</div>`;
 }
 
-/* ----- map dom ----- */
+/* ----- map dom (the map itself is painted on canvas) ----- */
 function mapDom(){
-  const rowsHtml=MAP_ROWS.map((row,ri)=>{
-    const state=ri<=run.row?'done':(ri===run.row+1?'choice':'future');
-    const nodes=row.map(t=>{
-      const m=NODE_META[t];
-      const cls=state==='choice'?'current-choice':state==='done'?'done':'future';
-      return `<div class="node ${cls} ${t==='B'?'beacon':''} ${t==='BOSS'?'bossnode':''}" data-row="${ri}" ${state==='choice'?`data-node="${t}"`:''}>
-        <div>${m.icon}</div><div class="nlabel">${m.label}</div></div>`;
-    }).join('');
-    return `<div class="map-row">${nodes}</div>`;
-  }).join('');
-  return `<div class="mapscreen">
-    ${runHud('THE ROAD')}
-    <div class="maptitle" style="margin-top:44px">The road runs deeper than the light. Choose your path.</div>
-    <div class="map-wrap"><div class="map-inner"><svg id="maplinks"></svg>${rowsHtml}</div></div>
-  </div>`;
-}
-function drawMapLinks(){
-  const svg=document.getElementById('maplinks'); if(!svg) return;
-  const inner=svg.parentElement, ir=inner.getBoundingClientRect();
-  svg.setAttribute('width',ir.width); svg.setAttribute('height',ir.height);
-  const rows=[...inner.querySelectorAll('.map-row')];
-  let lines='';
-  for(let i=0;i<rows.length-1;i++){
-    const a=[...rows[i].querySelectorAll('.node')], b=[...rows[i+1].querySelectorAll('.node')];
-    for(const na of a) for(const nb of b){
-      const ra=na.getBoundingClientRect(), rb=nb.getBoundingClientRect();
-      lines+=`<line x1="${ra.left+ra.width/2-ir.left}" y1="${ra.top+ra.height/2-ir.top}" x2="${rb.left+rb.width/2-ir.left}" y2="${rb.top+rb.height/2-ir.top}" stroke="#1d2c48" stroke-width="2.5" stroke-dasharray="3 7"/>`;
-    }
-  }
-  svg.innerHTML=lines;
+  return `${runHud('THE ROAD')}
+    <div class="hintbar" style="color:#4a3826; text-shadow:none;">The road runs deeper than the light — click a waypoint to travel.</div>`;
 }
 function runHud(title){
   const w=run.wagon;
@@ -1632,6 +2081,7 @@ function modalHTML(){
   if(m.kind==='summary'){
     if(m.dead){
       return ovl(`<h2 style="color:var(--danger)">Fallen on the Road</h2>
+        <img class="vignimg" src="${makeVignette('death')}">
         <div class="story">The lantern gutters out somewhere in the dark. Days later, a search party recovers what little the scavengers missed.</div>
         <div class="wagonbox">salvaged: <b class="amber">+${m.mat}</b> ⛏ <span class="muted">(of ${m.mat+m.lostMat} carried)</span><br>
         ${m.lostSmith?'<span style="color:var(--danger)">Maren was lost with you. Her cage waits again on the road.</span><br>':''}
@@ -1639,6 +2089,7 @@ function modalHTML(){
         <button class="btn" data-act="townreturn">Wake at the Hearth</button>`,'cold-panel');
     }
     return ovl(`<h2>${m.victorious?'👁️ The Wraith Falls':'Home Again'}</h2>
+      <img class="vignimg" src="${makeVignette(m.victorious?'victory':'home')}">
       <div class="story">${m.victorious
         ?'The Beacon Wraith comes apart like smoke in a doorway. You light the far beacon with shaking hands — and the whole valley answers, flame after flame, all the way home.'
         :'The gate creaks open and warm light spills out. The wagon is heavy, and every pound of it is the town\'s future.'}</div>
@@ -1662,6 +2113,44 @@ function modalHTML(){
   return '';
 }
 function ovl(inner, cls=''){ return `<div class="overlay"><div class="panel ${cls}">${inner}</div></div>`; }
+
+/* ----- painted summary vignettes ----- */
+const vignCache={};
+function makeVignette(kind){
+  if(vignCache[kind]) return vignCache[kind];
+  const c=document.createElement('canvas'); c.width=430; c.height=150;
+  const g=c.getContext('2d'); g.imageSmoothingEnabled=false;
+  if(kind==='home'||kind==='victory'){
+    const sky=g.createLinearGradient(0,0,0,110);
+    sky.addColorStop(0,'#1a1430'); sky.addColorStop(0.6,'#4a2a30'); sky.addColorStop(1,'#8a4a2a');
+    g.fillStyle=sky; g.fillRect(0,0,430,110);
+    g.fillStyle='#0d0a06'; g.fillRect(0,104,430,46);
+    for(let x=0;x<430;x+=34){ const h2=26+((x*7)%22); g.fillStyle='#0a0805'; g.beginPath(); g.moveTo(x-12,106); g.lineTo(x,106-h2); g.lineTo(x+12,106); g.closePath(); g.fill(); }
+    g.fillStyle='#241505'; g.fillRect(196,66,8,44); g.fillRect(276,66,8,44);
+    g.fillStyle='#ffb35c'; g.beginPath(); g.arc(200,62,4,0,7); g.arc(280,62,4,0,7); g.fill();
+    g.fillStyle='rgba(255,170,80,.16)'; g.beginPath(); g.arc(200,62,26,0,7); g.arc(280,62,26,0,7); g.fill();
+    drawSpr(g,'wagon',240,116,4);
+    g.fillStyle='rgba(255,200,110,.1)'; g.beginPath(); g.arc(240,100,52,0,7); g.fill();
+    if(kind==='victory'){
+      for(let i=0;i<7;i++){ const vx=40+i*56, vy=36-Math.sin(i*0.8)*12;
+        g.fillStyle='#ff8f3c'; g.beginPath(); g.arc(vx,vy,3.4,0,7); g.fill();
+        g.fillStyle='rgba(255,140,60,.25)'; g.beginPath(); g.arc(vx,vy,10,0,7); g.fill(); }
+    }
+  } else { // death
+    g.fillStyle='#05060c'; g.fillRect(0,0,430,150);
+    g.fillStyle='#c7d4ec'; g.beginPath(); g.arc(366,30,15,0,7); g.fill();
+    g.fillStyle='#05060c'; g.beginPath(); g.arc(373,26,13,0,7); g.fill();
+    g.fillStyle='#0a0e0a'; g.fillRect(0,112,430,38);
+    g.strokeStyle='#12180f';
+    for(let x=8;x<430;x+=9){ g.beginPath(); g.moveTo(x,116); g.lineTo(x+((x%3)-1)*4, 98); g.stroke(); }
+    g.save(); g.translate(210,112); g.rotate(1.25);
+    g.fillStyle='#33220e'; g.fillRect(-7,-10,14,18);
+    g.fillStyle='rgba(255,180,90,.5)'; g.fillRect(-4,-7,8,10);
+    g.restore();
+    g.fillStyle='rgba(255,170,80,.1)'; g.beginPath(); g.arc(210,110,34,0,7); g.fill();
+  }
+  return vignCache[kind]=c.toDataURL();
+}
 
 /* ----- codex ----- */
 const MECHS=[
@@ -1842,10 +2331,10 @@ function flyCard(el){
 }
 function act(a){
   switch(a){
-    case 'gate-go': ui.modal=null; newRun(); break;
-    case 'tut-start': startTutorial(); break;
+    case 'gate-go': ui.modal=null; render(); withIris(newRun); break;
+    case 'tut-start': ui.modal=null; render(); withIris(startTutorial); break;
     case 'tut-next': ui.tutorial.step++; render(); break;
-    case 'tut-finish': endTutorial(); break;
+    case 'tut-finish': withIris(endTutorial); break;
     case 'codex': ui.modal={kind:'codex'}; render(); break;
     case 'reset':
       if(confirm('Burn it all down and start a fresh save?')){
@@ -1862,12 +2351,12 @@ function act(a){
     case 'closemodal-camp': campRest(); break;
     case 'camp-rest': campRest(); break;
     case 'camp-forge': ui.modal={kind:'campUpgrade'}; render(); break;
-    case 'rescue-fight': startRescueFight(); break;
+    case 'rescue-fight': ui.modal=null; render(); withIris(startRescueFight); break;
     case 'rescue-leave': ui.modal=null; render(); break;
     case 'beacon-home': ui.modal=null; extractHome(false); break;
     case 'beacon-press': run.depthPressed++; ui.modal=null; render(); break;
     case 'skipcard': ui.modal=null; render(); break;
-    case 'townreturn': backToTown(); break;
+    case 'townreturn': withIris(backToTown); break;
   }
 }
 
