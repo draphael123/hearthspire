@@ -255,6 +255,18 @@
   .panel>*{position:relative; z-index:1;}
   .vignimg{width:100%; max-width:430px; border:1px solid #4a3a22; border-radius:8px; image-rendering:pixelated; margin:4px 0 10px; display:block; margin-left:auto; margin-right:auto;}
   .mapscreen{background:transparent;}
+  .lantorb{position:relative; width:56px; height:74px; filter:drop-shadow(0 0 12px rgba(232,163,74,.45));}
+  .lantorb img{width:100%; height:100%; image-rendering:pixelated;}
+  .lantorb span{
+    position:absolute; right:-7px; bottom:2px; width:24px; height:24px; border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, #ffd98a, #b06f1e 70%); color:#241300;
+    font-family:'Cinzel',serif; font-weight:900; font-size:14px; display:flex; align-items:center; justify-content:center;
+    border:1px solid #6b4d20;
+  }
+  .upfil{
+    position:absolute; top:22px; right:4px; color:#ffd98a; font-size:12px; z-index:2;
+    text-shadow:0 0 7px rgba(255,210,120,.9); animation:flick 1.7s infinite alternate;
+  }
 </style>
 </head>
 <body>
@@ -465,6 +477,157 @@ wraith:[
 ".....v.V.v......",
 "......v.v.......",
 ".......v........"],
+/* ---- new foes ---- */
+packRat:[
+"............",
+"..kk........",
+".kkkk...hh..",
+".kekk..hHHh.",
+"..kkkkkhHHh.",
+"..kkkkkkhh..",
+".kkkkkkkk...",
+"..kk..kk....",
+"..o....o....",
+"............"],
+mireLeech:[
+"................",
+"....gg..........",
+"...gGGg.........",
+"..gGGGGgg.......",
+"..geGGGGGgg.....",
+"..gGGGGGGGGgg...",
+"...gGGGGGGGGGg..",
+"....ggGGGGGgg...",
+"......ggggg.....",
+"................"],
+emberMoth:[
+"..FF....FF..",
+".FYYF..FYYF.",
+".FYYFkkFYYF.",
+"..FYkkkkYF..",
+".FYYFkkFYYF.",
+"..FF.kk.FF..",
+".....kk.....",
+"....o..o....",
+"............",
+"............"],
+cagewright:[
+".....mmmm.......",
+"....mmmmmm......",
+"....mEE.Em......",
+"....mmmmmm......",
+"...MMMMMMMM.....",
+"..yMMMMMMMMy....",
+"..yMMMMMMMMy....",
+".yyMMMMMMMMyy...",
+".y.MMMMMMMM.y...",
+".y.yyyyyyyy.y...",
+".y.y......y.y...",
+".y.yyyyyyyy.y...",
+"....MM..MM......",
+"....mm..mm......",
+"...mmm..mmm....."],
+/* ---- second idle frames ---- */
+wolf2:[
+"................",
+".ww.........w...",
+".wWww.......ww..",
+"wwWWWWwwwwwwww..",
+"wRWWWWWWWWWWWww.",
+"wwwWWWWWWWWWWWw.",
+"..wWWWWWWWWWWw..",
+"..wWWwww.wWWw...",
+"..wWw.....wWw...",
+"..ww.......ww...",
+"..bb.......bb..."],
+crow2:[
+".....kk.....",
+"....kkkk....",
+"...kkekk....",
+"..ookkkk....",
+"..kkkkkkk...",
+".kkkkkkkkk..",
+"kkkkkkkkkkk.",
+".kkkkkkkk...",
+"....kk.kk...",
+"....o...o..."],
+bandit2:[
+"....nnnn....",
+"...nnnnnn...",
+"...rrrrrr...",
+"...ffffff...",
+"...fe.fe....",
+"...ffffff...",
+"....nnnn....",
+"...nNNNNn...",
+"..fnNNNNn...",
+".s..nNNnf...",
+"...nNNNNn...",
+"...nn..nn...",
+"...bb..bb..."],
+husk2:[
+"....gggg......",
+"...gggggg.....",
+"...geggeg.....",
+"...gggggg.....",
+"....gggg......",
+"...GGGGGG.....",
+"..gGGGGGGg....",
+".ggGGGGGGg....",
+".g.GGGGGGgg...",
+"...GGGGGG.g...",
+"...GG..GG.....",
+"...gg...gg....",
+"..gg.....gg.."],
+tollkeeper2:[
+".....mmmm.......",
+"....mmmmmm......",
+"....mEEEEm......",
+"....mmmmmm......",
+"...MMMMMMMM.....",
+"..mMMMMMMMMm....",
+"..mMMMMMMMMmy...",
+".ymMMMMMMMMmy...",
+".y.MMMMMMMM.y...",
+".y.MMMMMMMM.y...",
+"yy..MMMMMM..y...",
+".y..MMMMMM..yy..",
+"....MM..MM......",
+"....mm..mm......",
+"...mmm..mmm....."],
+wraith2:[
+".....vvvvv......",
+"....vvvvvvv.....",
+"...vvvVVVvvv....",
+"...vvVVVVVvv....",
+"..vvVV.E.VVvv...",
+"..vvVVEEEVVvv...",
+"..vvVV.E.VVvv...",
+"..vvVVVVVVVvv...",
+"...vVVVVVVVv....",
+"....vVVVVVvv....",
+"....vvVVVVv.....",
+".....vVVVvv.....",
+"....vv.V.v......",
+".....v..v.......",
+"......v.........",
+"........v......."],
+villager:[
+"....nn......",
+"...nnnn.....",
+"..nnffnn....",
+"..nfefen....",
+"...nffn.....",
+"....NNNN....",
+"...nNNNNn...",
+"..fnNNNNnf..",
+"...nNNNNn...",
+"...NN..NN...",
+"...bb..bb..."],
+/* ---- pixel intent icons ---- */
+it_atk:[".......ss.","......ss..",".....ss...","....ss....","...ss.....","..xss.....",".xx.......","x.x......."],
+it_blk:[".BBBBBBBB.",".BssssssB.",".BssssssB.",".BssssssB.","..BssssB..","...BssB...","....BB....",".........."],
+it_buff:["....EE....","...EEEE...","..EEEEEE..",".EE.EE.EE.","....EE....","....EE....","....EE....",".........."],
 /* ---- card icons (12x10) ---- */
 i_sweep:["....xx......","...xxxx.....","..xY..Yx....","..xYFFYx....","..xYFFYx....","..xY..Yx....","...xxxx.....","....xx......","..Y......Y..",".....Y......"],
 i_cloak:["....hh......","...hhhh.....","..hhcchh....","..hcccch....",".hcCCCCch...",".hcCCCCch...",".ccCCCCcc...",".ccCCCCcc...","..cccccc....","..cc..cc...."],
@@ -616,10 +779,17 @@ const ENEMIES={
   tollkeeper:{name:'The Toll-Keeper', spr:'tollkeeper', scale:5.4, hp:48, elite:true, lore:'It chained the old bridge before anyone alive was born. It still expects payment.', pattern:'Elite. Demand Toll (+2 Strength) → Chain Lash 9 → Collect (6 damage, 5 block). Repeats, hitting harder each round.', ai:t=>t%3===0?{buff:2,lbl:'Demand Toll'}:(t%3===1?{atk:9,lbl:'Chain Lash'}:{atk:6,blk:5,lbl:'Collect'})},
   wraith:    {name:'The Beacon Wraith', spr:'wraith', scale:6, hp:90, boss:true, lore:'It was a lamplighter once, they say — one who pressed on, and on, and never lit the beacon home.', pattern:'Boss. Four-beat cycle: Gathering Dark (+3 Str) → Extinguish 14 → Cold Talons 4×3 → Shroud (block 12, hit 6).', ai:t=>{const c=t%4; if(c===0)return{buff:3,lbl:'Gathering Dark'}; if(c===1)return{atk:14,lbl:'Extinguish'}; if(c===2)return{atk:4,times:3,lbl:'Cold Talons'}; return{blk:12,atk:6,lbl:'Shroud'};}},
 };
+const NEW_FOES={
+  packRat:   {name:'Pack Rat', spr:'packRat', scale:4, hp:16, lore:'It does not want your blood. It wants your wagon, one mouthful at a time.', pattern:'Gnaws for 5. Every third turn, Stash Grab stuffs a Broken Wheel into your discard pile for this fight.', ai:t=>t%3===2?{junk:1,lbl:'Stash Grab'}:{atk:5,lbl:'Gnaw'}},
+  mireLeech: {name:'Mire Leech', spr:'mireLeech', scale:4.4, hp:18, lore:'The bog keeps what it catches, and it is always hungry.', pattern:'Drains 5 and heals itself 3. Coils for 6 block every third turn.', ai:t=>t%3===2?{blk:6,lbl:'Coil'}:{atk:5,heal:3,lbl:'Drain'}},
+  emberMoth: {name:'Ember Moth', spr:'emberMoth', scale:4, hp:12, lore:'Drawn to the lantern — and to everything the lantern keeps alive.', pattern:'Sips the Light: 3 damage and steals 1 of your Embers. Flutters for +1 Strength every third turn.', ai:t=>t%3===0?{buff:1,lbl:'Flutter'}:{atk:3,drainEmber:1,lbl:'Sip the Light'}},
+  cagewright:{name:'The Cage-Wright', spr:'cagewright', scale:5.4, hp:54, elite:true, lore:'Every cage on the road came from the same cold hands.', pattern:'Elite. Forge Cage (2 Broken Wheels into your discard) → Iron Fist 12 → Clamp (5 damage, 10 block) → Strike 8. Repeats.', ai:t=>{const c=t%4; if(c===0)return{junk:2,lbl:'Forge Cage'}; if(c===1)return{atk:12,lbl:'Iron Fist'}; if(c===2)return{blk:10,atk:5,lbl:'Clamp'}; return{atk:8,lbl:'Strike'};}},
+};
+Object.assign(ENEMIES, NEW_FOES);
 const ENCOUNTERS={
-  1:[['wolf'],['crow'],['wolf','crow'],['bandit']],
-  2:[['bandit','crow'],['husk'],['wolf','wolf'],['bandit','bandit']],
-  elite:[['tollkeeper']],
+  1:[['wolf'],['crow'],['wolf','crow'],['bandit'],['packRat'],['emberMoth','crow']],
+  2:[['bandit','crow'],['husk'],['wolf','wolf'],['bandit','bandit'],['mireLeech','packRat'],['emberMoth','husk']],
+  elite:[['tollkeeper'],['cagewright']],
   boss:[['wraith']],
   rescueGuard:[['bandit']],
 };
@@ -636,8 +806,9 @@ const TIER_MULT={1:1, 2:1.7};
 /* ================= persistent town ================= */
 function defaultTown(){
   return {v:SAVE_VERSION, materials:0,
-    buildings:{forge:false, library:false},
+    buildings:{forge:false, library:false, apothecary:false},
     villagers:{smith:false},
+    rescued:0,
     stats:{runs:0, extractions:0, deaths:0, bossKills:0},
     tutorialDone:false};
 }
@@ -648,14 +819,49 @@ function loadTown(){
     const t=JSON.parse(raw);
     if(t.v!==SAVE_VERSION) return defaultTown();
     if(t.tutorialDone===undefined) t.tutorialDone=false;
+    if(t.rescued===undefined) t.rescued=0;
+    if(t.buildings.apothecary===undefined) t.buildings.apothecary=false;
     return t;
   }catch(e){ return defaultTown(); }
 }
 function saveTown(){ localStorage.setItem(SAVE_KEY, JSON.stringify(town)); }
 
+/* mid-run save: expeditions survive a refresh */
+const RUN_KEY='hearthspire_run';
+function saveRun(){
+  if(!run||run.tutorial||run.combat) return;
+  if(ui.modal&&ui.modal.kind==='forgePick') return; // save after the pick, not before
+  const s={hp:run.hp, maxHp:run.maxHp, row:run.row, chosen:run.chosen, wagon:run.wagon,
+    depthPressed:run.depthPressed, nodeResolved:run.nodeResolved!==false,
+    deck:run.deck.map(c=>({key:c.key, up:c.up})),
+    relics:run.relics||[], potions:run.potions||[], mapPos:run.mapPos};
+  try{ localStorage.setItem(RUN_KEY, JSON.stringify(s)); }catch(e){}
+}
+function clearRun(){ localStorage.removeItem(RUN_KEY); }
+function loadRun(){
+  try{
+    const raw=localStorage.getItem(RUN_KEY); if(!raw) return null;
+    const s=JSON.parse(raw);
+    if(!s.mapPos||!Array.isArray(s.deck)) return null;
+    return {hp:s.hp, maxHp:s.maxHp, row:s.row, chosen:s.chosen||[], wagon:s.wagon,
+      depthPressed:s.depthPressed||0, nodeResolved:s.nodeResolved!==false,
+      deck:s.deck.map(c=>mk(c.key, c.up)),
+      relics:s.relics||[], potions:s.potions||[], mapPos:s.mapPos,
+      combat:null, tutorial:false, wagonTok:null, travel:null};
+  }catch(e){ return null; }
+}
+function reopenNodeModal(){
+  const tp=run.chosen[run.row];
+  if(tp==='B') ui.modal={kind:'beacon'};
+  else if(tp==='C') ui.modal={kind:'camp'};
+  else if(tp==='E') ui.modal={kind:'event', ev:pick(EVENTS)};
+  else if(tp==='R') ui.modal={kind:'rescue'};
+}
+
 let town=loadTown();
 let run=null;
-let ui={screen:'town', modal:null, targeting:null, log:'', dealt:false, tutorial:null, codexTab:'mech'};
+let pendingPotions=[];
+let ui={screen:'title', modal:null, targeting:null, log:'', dealt:false, tutorial:null, codexTab:'mech'};
 
 /* ================= fx ================= */
 let fx=[];        // {kind:'float'|'lungeP'|'lungeE'|'flashE'|'flashP'|'windup'|'proj', ...}
@@ -734,7 +940,8 @@ function pick(a){ return a[Math.floor(Math.random()*a.length)]; }
 
 function newRun(){
   run={hp:MAX_HP, maxHp:MAX_HP, deck:STARTER_DECK.map(k=>mk(k)), row:-1, chosen:[],
-       wagon:{materials:0, smith:false, villagers:0}, combat:null, depthPressed:0, tutorial:false};
+       wagon:{materials:0, smith:false, villagers:0}, combat:null, depthPressed:0, tutorial:false,
+       relics:[], potions:pendingPotions.splice(0), nodeResolved:true};
   run.mapPos=genMapPos();
   run.wagonTok=null;
   town.stats.runs++; saveTown();
@@ -745,29 +952,34 @@ function newRun(){
 }
 function enterNode(type){
   run.row++; run.chosen[run.row]=type;
+  run.nodeResolved=!(type==='R'||type==='E'||type==='C'||type==='B');
   if(type==='F'||type==='EL'||type==='BOSS'){
     const pool=type==='F'?ENCOUNTERS[lootTier(run.row)]:(type==='EL'?ENCOUNTERS.elite:ENCOUNTERS.boss);
     withIris(()=>{ startCombat(pick(pool), type); render(); });
   } else if(type==='R'){ ui.modal={kind:'rescue'}; }
   else if(type==='E'){ ui.modal={kind:'event', ev:pick(EVENTS)}; }
   else if(type==='C'){ ui.modal={kind:'camp'}; }
-  else if(type==='B'){ run.hp=Math.min(run.maxHp, run.hp+5); ui.modal={kind:'beacon'}; }
+  else if(type==='B'){ run.hp=Math.min(run.maxHp, run.hp+(hasRelic('beaconGlass')?12:5)); SFX.beacon(); ui.modal={kind:'beacon'}; }
   render();
 }
 function extractHome(victorious){
+  if(hasRelic('spareWheel')) run.wagon.materials=Math.floor(run.wagon.materials*1.15);
   town.materials+=run.wagon.materials;
   if(run.wagon.smith) town.villagers.smith=true;
-  town.materials+=run.wagon.villagers*20;
+  town.materials+=run.wagon.villagers*(hasRelic('tinDove')?30:20);
+  town.rescued=(town.rescued||0)+run.wagon.villagers;
   town.stats.extractions++;
   if(victorious) town.stats.bossKills++;
-  saveTown();
+  saveTown(); clearRun();
+  SFX.victory();
   ui.screen='map';
-  ui.modal={kind:'summary', dead:false, victorious, mat:run.wagon.materials+run.wagon.villagers*20, smith:run.wagon.smith};
+  ui.modal={kind:'summary', dead:false, victorious, mat:run.wagon.materials+run.wagon.villagers*(hasRelic('tinDove')?30:20), smith:run.wagon.smith};
   render();
 }
 function dieOnRoad(){
-  const salvage=Math.floor(run.wagon.materials*DEATH_SALVAGE);
-  town.materials+=salvage; town.stats.deaths++; saveTown();
+  const salvage=Math.floor(run.wagon.materials*(hasRelic('wardedAxle')?0.5:DEATH_SALVAGE));
+  town.materials+=salvage; town.stats.deaths++; saveTown(); clearRun();
+  SFX.defeat();
   const lost={mat:run.wagon.materials-salvage, smith:run.wagon.smith, vill:run.wagon.villagers};
   run.combat=null; ui.screen='map';
   ui.modal={kind:'summary', dead:true, mat:salvage, lostMat:lost.mat, lostSmith:lost.smith, lostVill:lost.vill};
@@ -782,23 +994,30 @@ function startCombat(enemyKeys, nodeType){
     return {key:k, name:d.name, hp:d.hp, maxHp:d.hp, block:0, str:0, weak:0, turn:0, intent:d.ai(0), diedAt:0};
   });
   run.combat={nodeType, enemies, draw:shuffle(run.deck), disc:[], hand:[],
-    energy:ENERGY_PER_TURN, embers:0, block:0, turn:1, over:false, busy:false, packFull:false};
+    energy:ENERGY_PER_TURN, embers:(nodeType!=='tutorial'&&hasRelic('emberJar'))?1:0,
+    block:0, turn:1, over:false, busy:false, packFull:false, struck:false, oilskinUsed:false};
   if(enemies.some(e=>ENEMIES[e.key].boss)&&nodeType!=='tutorial'){
     // boss intro: hold input while the eye opens
     const bc=run.combat;
     bc.busy=true; window.__bossIntro=now();
+    SFX.boss();
     setTimeout(()=>{ if(run&&run.combat===bc){ bc.busy=false; render(); } }, 2700);
   }
   ui.screen='combat'; ui.targeting=null; ui.dealt=true;
   ui.log = nodeType==='tutorial' ? '' : 'The wilds stir…';
   drawToHand();
 }
-function handWeight(){ return run.combat.hand.reduce((s,c)=>s+CARDS[c.key].w,0); }
+function cardW(ci){
+  let w=CARDS[ci.key].w;
+  if(CARDS[ci.key].type==='burden'&&hasRelic('lightStraps')) w=Math.max(1,w-1);
+  return w;
+}
+function handWeight(){ return run.combat.hand.reduce((s,c)=>s+cardW(c),0); }
 function drawOne(){
   const c=run.combat;
   if(!c.draw.length){ if(!c.disc.length) return false; c.draw=shuffle(c.disc); c.disc=[]; }
   const top=c.draw[c.draw.length-1];
-  if(handWeight()+CARDS[top.key].w>CAPACITY){ c.packFull=true; return false; }
+  if(handWeight()+cardW(top)>CAPACITY){ c.packFull=true; return false; }
   c.hand.push(c.draw.pop());
   return true;
 }
@@ -831,17 +1050,24 @@ function playCard(iid, targetIdx){
   }
   ui.targeting=null;
   c.energy-=cost;
+  SFX.card();
 
   let spent=0;
   if(d.consume){ spent=c.embers; c.embers=0; }
   if(d.doubleEmbers) c.embers*=2;
-  if(cval(ci,'ember')) c.embers+=cval(ci,'ember');
+  if(cval(ci,'ember')){
+    const fromZero=c.embers===0;
+    c.embers+=cval(ci,'ember');
+    if(fromZero&&hasRelic('bellows')) c.embers++;
+    SFX.ember();
+  }
 
   let blk=cval(ci,'block')||0;
   if(blk){
     if(d.consume&&cval(ci,'perEmberBlock')) blk+=spent*cval(ci,'perEmberBlock');
     if(cval(ci,'embersBonusBlock')&&c.embers>=3) blk+=cval(ci,'embersBonusBlock');
     c.block+=blk;
+    SFX.block();
     const pp=playerPos(); addFloat(pp.x, pp.y-140, '+'+blk+' 🛡', '#7fa8d8');
   }
 
@@ -856,6 +1082,8 @@ function playCard(iid, targetIdx){
     let dmg=baseDmg;
     if(d.consume&&cval(ci,'perEmberDmg')) dmg+=spent*cval(ci,'perEmberDmg');
     if(cval(ci,'plusPerEmber')) dmg+=c.embers*cval(ci,'plusPerEmber');
+    if(hasRelic('whetstone')&&!c.struck) dmg+=2;
+    c.struck=true;
     const times=cval(ci,'times')||1;
     const targets=d.aoe?alive:[target];
     for(const t of targets){
@@ -875,10 +1103,12 @@ function playCard(iid, targetIdx){
       const died=t.hp<=0&&!t.diedAt;
       if(died) t.diedAt=now()+delay+120;
       const bx=ep.x, by=topY+30;
+      if(isBolt) SFX.bolt();
       setTimeout(()=>{
         hitstop(70);
+        SFX.hit();
         spawnBurst(bx, by, isBolt?EMBER_COLORS:HIT_COLORS, 10, 0.14);
-        if(died) spawnBurst(bx, by+20, EMBER_COLORS, 22, 0.07, 1500, -0.00045);
+        if(died){ SFX.death(); spawnBurst(bx, by+20, EMBER_COLORS, 22, 0.07, 1500, -0.00045); }
       }, delay);
       msgs.push(`${dealt} to ${t.name}`);
     }
@@ -906,16 +1136,18 @@ function winCombat(){
   if(c.nodeType==='tutorial'){ finishTutorialFight(); return; }
   const tier=lootTier(run.row);
   let mat=Math.round((10+Math.floor(Math.random()*5))*TIER_MULT[tier]);
-  if(c.nodeType==='EL') mat+=30;
-  if(c.nodeType==='BOSS') mat+=60;
+  if(c.nodeType==='EL') mat+=35*(hasRelic('tollChain')?2:1);
+  if(c.nodeType==='BOSS') mat+=70;
   run.wagon.materials+=mat;
   if(c.nodeType==='BOSS'){ run.combat=null; extractHome(true); return; }
   if(c.nodeType==='rescueFight'){ run.combat=null; completeRescue(mat); return; }
   const pool=REWARD_POOL.concat(town.buildings.library?LIBRARY_POOL:[]);
   const picks=shuffle(pool).slice(0,3);
+  const rpicks=c.nodeType==='EL'?shuffle(unownedRelics()).slice(0,2):null;
   withIris(()=>{
     run.combat=null;
-    ui.modal={kind:'reward', mat, picks};
+    if(rpicks&&rpicks.length) ui.modal={kind:'relicReward', mat, rpicks, picks};
+    else ui.modal={kind:'reward', mat, picks};
     ui.screen='map';
     render();
   });
@@ -926,6 +1158,7 @@ function endTurn(){
   if(!c||c.over||c.busy) return;
   if(ui.tutorial){ const st=TUT_STEPS[ui.tutorial.step]; if(!st||st.require!=='end'){ nudgeTut(); return; } advanceTut('end'); }
   c.busy=true;
+  SFX.endturn();
   c.disc.push(...c.hand); c.hand=[];
   ui.log='…';
   render();
@@ -957,12 +1190,16 @@ function enemyAct(c,e){
   const ep=enemyPos(ei), topY=ep.y-SPR[ENEMIES[e.key].spr].h*ENEMIES[e.key].scale-14;
   if(it.blk){ e.block+=it.blk; addFloat(ep.x, topY, '+'+it.blk+' 🛡', '#7fa8d8'); }
   if(it.buff){ e.str+=it.buff; addFloat(ep.x, topY, '+'+it.buff+' Str', '#c9a35f'); }
+  if(it.junk){ for(let j=0;j<it.junk;j++) c.disc.push(mk('brokenWheel')); addFloat(ep.x, topY, '+'+it.junk+' junk!', '#8a8f9a'); }
+  if(it.heal){ e.hp=Math.min(e.maxHp, e.hp+it.heal); addFloat(ep.x, topY, '+'+it.heal, '#7dc87a'); }
+  if(it.drainEmber&&c.embers>0){ c.embers=Math.max(0,c.embers-it.drainEmber); addFloat(ep.x, topY, '-'+it.drainEmber+' Ember', '#ff8f3c'); }
   if(it.atk){
     const times=it.times||1;
     let total=0, absorbedTotal=0;
     for(let h=0;h<times;h++){
       let dmg=it.atk+e.str;
       if(e.weak>0) dmg=Math.floor(dmg*0.75);
+      if(hasRelic('oilskin')&&!c.oilskinUsed){ dmg=Math.max(0,dmg-4); c.oilskinUsed=true; }
       const absorbed=Math.min(c.block,dmg); c.block-=absorbed; dmg-=absorbed; absorbedTotal+=absorbed;
       run.hp=Math.max(0,run.hp-dmg); total+=dmg;
     }
@@ -970,8 +1207,8 @@ function enemyAct(c,e){
     fx.push({kind:'flashP', t0:now()+160});
     addFloat(pp.x, pp.y-150, String(total), total>0?'#e05545':'#7fa8d8');
     setTimeout(()=>{
-      if(total>0){ hitstop(70); spawnBurst(pp.x, pp.y-80, HIT_COLORS, 8, 0.13); }
-      if(absorbedTotal>0) spawnBurst(pp.x-20, pp.y-70, BLOCK_COLORS, 12, 0.16, 500); // block shatter
+      if(total>0){ hitstop(70); SFX.hit(); spawnBurst(pp.x, pp.y-80, HIT_COLORS, 8, 0.13); }
+      if(absorbedTotal>0){ SFX.block(); spawnBurst(pp.x-20, pp.y-70, BLOCK_COLORS, 12, 0.16, 500); } // block shatter
     }, 160);
     if(total>0) shakeT0=now()+160;
     ui.log=`${e.name} — ${it.lbl}: ${total} damage${absorbedTotal>0?` (${absorbedTotal} blocked)`:''}`;
@@ -982,8 +1219,9 @@ function enemyAct(c,e){
 }
 function finishEnemyTurn(c){
   for(const e of c.enemies){ if(e.hp>0){ e.turn++; e.intent=ENEMIES[e.key].ai(e.turn); } }
-  c.turn++; c.energy=ENERGY_PER_TURN; c.block=0;
+  c.turn++; c.energy=ENERGY_PER_TURN; c.block=0; c.struck=false;
   drawToHand();
+  SFX.draw();
   ui.dealt=true;
   c.busy=false;
   ui.log='Your turn.';
@@ -997,6 +1235,7 @@ function startRescueFight(){
   render();
 }
 function completeRescue(mat){
+  run.nodeResolved=true;
   const smithHome=town.villagers.smith;
   if(!smithHome && !run.wagon.smith){
     run.wagon.smith=true; run.deck.push(mk('escort'));
@@ -1021,8 +1260,176 @@ const EVENTS=[
      {label:'Haul it all (+14 materials, add a Broken Wheel to your deck)', fx:()=>{ run.wagon.materials+=14; run.deck.push(mk('brokenWheel')); }},
      {label:'Take only what\'s light (+6 materials)', fx:()=>{ run.wagon.materials+=6; }},
    ]},
+  {title:'The Toll Bridge',
+   story:'Rough men lounge on the old bridge, palms out. Their knives stay sheathed — for now. "Everything crossing pays," one says, bored.',
+   choices:[
+     {label:'Pay the toll (-10 materials, cross rested: heal 8)', fx:()=>{ run.wagon.materials=Math.max(0,run.wagon.materials-10); run.hp=Math.min(run.maxHp,run.hp+8); }},
+     {label:'Shoulder through (lose 8 HP, take THEIR coin: +12 materials)', fx:()=>{ run.hp=Math.max(1,run.hp-8); run.wagon.materials+=12; }},
+   ]},
+  {title:'The Hermit\'s Fire',
+   story:'An old hermit feeds a small, stubborn fire that burns a color you don\'t have a name for. He nods at your pack. "I can make one of those sing," he says.',
+   choices:[
+     {label:'Trade lantern oil (lose 6 HP, he upgrades a random card)', fx:()=>{
+        run.hp=Math.max(1,run.hp-6);
+        const ups=run.deck.filter(ci=>!ci.up&&!CARDS[ci.key].unplayable);
+        if(ups.length) pick(ups).up=true;
+     }},
+     {label:'Share supplies instead (-8 materials, heal 14)', fx:()=>{ run.wagon.materials=Math.max(0,run.wagon.materials-8); run.hp=Math.min(run.maxHp,run.hp+14); }},
+   ]},
+  {title:'The Merchant\'s Ghost',
+   story:'A pale figure counts pale coins at a stall that isn\'t there. "Everything weighs something," it murmurs. "I\'ll take one burden off your hands. Any one."',
+   choices:[
+     {label:'Let it take a card (remove any card from your deck)', fx:()=>{ ui.modal={kind:'removeCard'}; }},
+     {label:'Sell it a memory instead (+10 materials)', fx:()=>{ run.wagon.materials+=10; }},
+   ]},
+  {title:'A Fallen Lamplighter',
+   story:'Bones in a rotted cloak, a cold lantern, a pack the crows never opened. Whoever they were, they pressed on one beacon too far.',
+   choices:[
+     {label:'Take up their gear (gain a random relic, add a Broken Wheel)', fx:()=>{
+        const un=unownedRelics();
+        if(un.length){ const rk=pick(un); grantRelic(rk); ui.modal={kind:'dialogue', who:'Their Pack', spr:'villager', text:`Inside, wrapped in oilcloth: <b>${RELICS[rk].icon} ${RELICS[rk].name}</b>.<br><i>${RELICS[rk].desc}</i>`}; }
+        run.deck.push(mk('brokenWheel'));
+     }},
+     {label:'Build them a cairn (heal 6)', fx:()=>{ run.hp=Math.min(run.maxHp,run.hp+6); }},
+   ]},
 ];
-function campRest(){ run.hp=Math.min(run.maxHp, run.hp+15); ui.modal=null; render(); }
+function campRest(){ run.hp=Math.min(run.maxHp, run.hp+15); run.nodeResolved=true; ui.modal=null; render(); }
+
+/* ================= sound (all procedural WebAudio) ================= */
+let audio=null, sndMuted=localStorage.getItem('hearthspire_mute')==='1';
+function AC(){
+  if(!audio){ try{ audio=new (window.AudioContext||window.webkitAudioContext)(); }catch(e){} }
+  if(audio&&audio.state==='suspended') audio.resume();
+  return audio;
+}
+function tone({f=440, f1, type='sine', dur=0.15, vol=0.15, delay=0}){
+  const ac=AC(); if(!ac||sndMuted) return;
+  const t0=ac.currentTime+delay;
+  const o=ac.createOscillator(), g=ac.createGain();
+  o.type=type; o.frequency.setValueAtTime(f,t0);
+  if(f1) o.frequency.exponentialRampToValueAtTime(Math.max(20,f1), t0+dur);
+  g.gain.setValueAtTime(0.0001,t0);
+  g.gain.exponentialRampToValueAtTime(vol,t0+0.012);
+  g.gain.exponentialRampToValueAtTime(0.0001,t0+dur);
+  o.connect(g); g.connect(ac.destination);
+  o.start(t0); o.stop(t0+dur+0.05);
+}
+function noiseHit({dur=0.12, vol=0.15, hp=0, lp=8000, delay=0}){
+  const ac=AC(); if(!ac||sndMuted) return;
+  const t0=ac.currentTime+delay;
+  const len=Math.max(1,Math.ceil(ac.sampleRate*dur));
+  const buf=ac.createBuffer(1,len,ac.sampleRate);
+  const d=buf.getChannelData(0);
+  for(let i=0;i<len;i++) d[i]=(Math.random()*2-1)*(1-i/len);
+  const src=ac.createBufferSource(); src.buffer=buf;
+  const g=ac.createGain(); g.gain.value=vol;
+  const fl=ac.createBiquadFilter(); fl.type='lowpass'; fl.frequency.value=lp;
+  const fh=ac.createBiquadFilter(); fh.type='highpass'; fh.frequency.value=hp;
+  src.connect(fl); fl.connect(fh); fh.connect(g); g.connect(ac.destination);
+  src.start(t0);
+}
+const SFX={
+  card(){ noiseHit({dur:.07, vol:.13, hp:900, lp:4500}); },
+  bolt(){ tone({f:300,f1:900,dur:.22,vol:.1}); noiseHit({dur:.18,vol:.05,hp:1200}); },
+  hit(){ noiseHit({dur:.1,vol:.2,lp:1600}); tone({f:120,f1:55,type:'triangle',dur:.14,vol:.22}); },
+  block(){ tone({f:820,f1:640,type:'triangle',dur:.09,vol:.12}); tone({f:1240,dur:.05,vol:.06}); },
+  ember(){ tone({f:620,f1:940,dur:.12,vol:.08}); },
+  draw(){ noiseHit({dur:.05,vol:.07,hp:1500,lp:6000}); },
+  endturn(){ tone({f:180,f1:120,type:'square',dur:.08,vol:.05}); },
+  death(){ tone({f:340,f1:60,type:'sawtooth',dur:.5,vol:.09}); noiseHit({dur:.4,vol:.07,lp:900}); },
+  potion(){ tone({f:520,f1:1040,dur:.18,vol:.09}); tone({f:780,f1:1560,dur:.18,vol:.05,delay:.06}); },
+  clang(){ tone({f:1180,f1:880,type:'square',dur:.1,vol:.04}); noiseHit({dur:.06,vol:.04,hp:2000}); },
+  beacon(){ noiseHit({dur:.9,vol:.11,lp:700}); tone({f:90,f1:180,dur:.9,vol:.13}); },
+  boss(){ tone({f:55,type:'sawtooth',dur:1.6,vol:.11}); tone({f:82.4,type:'sawtooth',dur:1.6,vol:.07,delay:.12}); },
+  victory(){ [392,494,587,784].forEach((f,i)=>tone({f,dur:.22,vol:.09,delay:i*0.11})); },
+  defeat(){ [330,262,196,131].forEach((f,i)=>tone({f,dur:.3,vol:.09,delay:i*0.14,type:'triangle'})); },
+  build(){ SFX.clang(); tone({f:220,dur:.15,vol:.09,delay:.12,type:'triangle'}); },
+};
+/* looping ambience: warm town air vs cold wilds wind */
+let ambNodes=null, ambKind=null;
+function setAmbience(kind){
+  if(sndMuted) kind=null;
+  if(kind===ambKind&&ambNodes) return;
+  if(!audio){ ambKind=kind; return; } // waits for the first user gesture
+  if(ambNodes){
+    try{
+      const old=ambNodes;
+      old.g.gain.linearRampToValueAtTime(0.0001, audio.currentTime+0.7);
+      setTimeout(()=>{ try{ old.src.stop(); old.lfo.stop(); }catch(e){} }, 900);
+    }catch(e){}
+    ambNodes=null;
+  }
+  ambKind=kind;
+  if(!kind) return;
+  const ac=audio;
+  const len=ac.sampleRate*2;
+  const buf=ac.createBuffer(1,len,ac.sampleRate);
+  const d=buf.getChannelData(0);
+  let last=0;
+  for(let i=0;i<len;i++){ const w=Math.random()*2-1; last=(last+0.02*w)/1.02; d[i]=last*3; }
+  const src=ac.createBufferSource(); src.buffer=buf; src.loop=true;
+  const fl=ac.createBiquadFilter(); fl.type='lowpass';
+  fl.frequency.value=kind==='town'?520:290;
+  const g=ac.createGain(); g.gain.value=0.0001;
+  src.connect(fl); fl.connect(g); g.connect(ac.destination);
+  src.start();
+  g.gain.linearRampToValueAtTime(kind==='town'?0.045:0.065, ac.currentTime+1.4);
+  const lfo=ac.createOscillator(), lg=ac.createGain();
+  lfo.frequency.value=kind==='town'?0.9:0.15; lg.gain.value=kind==='town'?80:150;
+  lfo.connect(lg); lg.connect(fl.frequency); lfo.start();
+  ambNodes={src,g,lfo};
+}
+function refreshAmbience(){
+  setAmbience(ui.screen==='town'?'town':(ui.screen==='map'||ui.screen==='combat')?'wilds':null);
+}
+window.addEventListener('pointerdown', ()=>{ AC(); const k=ambKind; ambKind='__force'; setAmbience(null); ambKind=null; refreshAmbience(); }, {once:true});
+function toggleMute(){
+  sndMuted=!sndMuted;
+  localStorage.setItem('hearthspire_mute', sndMuted?'1':'0');
+  if(sndMuted) setAmbience(null); else refreshAmbience();
+  render();
+}
+
+/* ================= relics ================= */
+const RELICS={
+  emberJar:    {icon:'🏺', name:'Ember Jar', desc:'Begin each fight with 1 Ember already glowing.'},
+  wardedAxle:  {icon:'🛞', name:'Warded Axle', desc:'If you fall, the search party recovers 50% of your materials instead of 25%.'},
+  lightStraps: {icon:'🎗️', name:'Featherlight Straps', desc:'Burden cards (Escorts, junk) weigh 1 less.'},
+  oilskin:     {icon:'🧥', name:'Oilskin Cloak', desc:'The first hit you take each fight deals 4 less damage.'},
+  bellows:     {icon:'💨', name:"Smith's Bellows", desc:'Whenever you Kindle from 0 Embers, gain 1 extra.'},
+  tollChain:   {icon:'⛓️', name:"Toll-Keeper's Chain", desc:'Elites drop double materials.'},
+  beaconGlass: {icon:'🔍', name:'Beacon Glass', desc:'Beacons heal 12 HP instead of 5.'},
+  spareWheel:  {icon:'🛠️', name:'Spare Wheel', desc:'Extract with 15% more materials in the wagon.'},
+  whetstone:   {icon:'🪨', name:'Traveling Whetstone', desc:'Your first Attack each turn deals +2 damage.'},
+  tinDove:     {icon:'🕊️', name:'Tin Dove', desc:'Rescued villagers who make it home are worth 30 materials instead of 20.'},
+};
+function hasRelic(k){ return !!(run&&run.relics&&run.relics.includes(k)); }
+function unownedRelics(){ return Object.keys(RELICS).filter(k=>!hasRelic(k)); }
+function grantRelic(k){ if(run&&!hasRelic(k)) run.relics.push(k); }
+
+/* ================= potions ================= */
+const POTIONS={
+  cordial: {icon:'🧪', name:'Hearth Cordial', desc:'Heal 15 HP.', use:()=>{ run.hp=Math.min(run.maxHp, run.hp+15); }},
+  emberVial:{icon:'⚗️', name:'Bottled Embers', desc:'Kindle 3 Embers.', use:()=>{ if(run.combat) run.combat.embers+=3; }},
+  ironDraught:{icon:'🍶', name:'Iron Draught', desc:'Gain 12 Block.', use:()=>{ if(run.combat) run.combat.block+=12; }},
+  mothTea: {icon:'🍵', name:'Moth-Wing Tea', desc:'Draw 3 cards.', use:()=>{ if(run.combat) drawCards(3); }},
+};
+const BREW_COST=8;
+function usePotion(i){
+  const c=run&&run.combat;
+  if(!c||c.busy||c.over) return;
+  const k=run.potions[i]; if(!k) return;
+  const P=POTIONS[k];
+  if((k==='emberVial'||k==='ironDraught'||k==='mothTea')&&!c) return;
+  run.potions.splice(i,1);
+  P.use();
+  SFX.potion();
+  const pp=playerPos();
+  addFloat(pp.x, pp.y-160, P.name, '#9cd89a');
+  spawnBurst(pp.x, pp.y-90, ['#9cd89a','#d0f0c8','#ffd98a'], 10, 0.1);
+  ui.log=`${P.name} — ${P.desc}`;
+  render();
+}
 /* ================= viewport ================= */
 const cv=document.getElementById('cv');
 const ctx=cv.getContext('2d');
@@ -1061,7 +1468,7 @@ const LOTS={
   library:  {x:230,y:290, w:170,h:126, cost:20, name:'The Library', icon:'📚'},
   chapel:   {x:120,y:96,  w:140,h:100, future:true, name:'Chapel'},
   tavern:   {x:300,y:530, w:150,h:100, future:true, name:'Tavern'},
-  apothecary:{x:840,y:530,w:150,h:100, future:true, name:'Apothecary'},
+  apothecary:{x:840,y:530,w:150,h:100, cost:25, name:'The Apothecary', icon:'⚗️'},
 };
 const LAMP={x:760,y:352};
 const SIGNPOST={x:512,y:492};
@@ -1070,6 +1477,9 @@ const GATE={x:640,y:668};
 
 const player={x:640,y:560,dir:'d',frame:0,animT:0,moving:false};
 const maren={x:940,y:452,tx:940,ty:452,dir:'s',flip:false,frame:0,animT:0,nextMove:0,dlgIdx:0};
+const WELL={x:520,y:340};
+let folk=[]; // rescued villagers who made it home
+let leaves=[];
 let smokes=[], flies=[];
 for(let i=0;i<18;i++) flies.push({x:100+Math.random()*1080, y:150+Math.random()*440, p:Math.random()*7});
 
@@ -1082,6 +1492,7 @@ function townSolids(){
     else s.push({x:L.x+L.w/2-14, y:L.y+L.h-30, w:28, h:22});
   }
   s.push({x:LAMP.x-8, y:LAMP.y-10, w:16, h:14});
+  s.push({x:WELL.x-20, y:WELL.y-16, w:40, h:20});
   s.push({x:SIGNPOST.x-12, y:SIGNPOST.y-8, w:24, h:12});
   s.push({x:BOARD.x-30, y:BOARD.y-8, w:60, h:12});
   if(town.villagers.smith) s.push({x:maren.x-12, y:maren.y-14, w:24, h:14});
@@ -1093,15 +1504,17 @@ function hotspots(){
   h.push({x:SIGNPOST.x, y:SIGNPOST.y, label:'Signpost — Tutorial & Codex', act:'signpost'});
   h.push({x:BOARD.x, y:BOARD.y, label:'Notice Board', act:'board'});
   h.push({x:LOTS.hearth.x+LOTS.hearth.w/2, y:LOTS.hearth.y+LOTS.hearth.h, label:'The Hearth', act:'hearth'});
-  for(const k of ['forge','library']){
+  for(const k of ['forge','library','apothecary']){
     const L=LOTS[k];
     h.push({x:L.x+L.w/2, y:L.y+L.h, label:town.buildings[k]?L.name:(L.name+' — build site'), act:'lot:'+k});
   }
-  for(const k of ['chapel','tavern','apothecary']){
+  for(const k of ['chapel','tavern']){
     const L=LOTS[k];
     h.push({x:L.x+L.w/2, y:L.y+L.h, label:L.name+' (someday)', act:'future:'+k});
   }
   if(town.villagers.smith) h.push({x:maren.x, y:maren.y, label:'Talk to Maren', act:'maren'});
+  h.push({x:WELL.x, y:WELL.y+6, label:'The Old Well', act:'well'});
+  for(let i=0;i<folk.length;i++) h.push({x:folk[i].x, y:folk[i].y, label:'A rescued villager', act:'folk:'+i});
   return h;
 }
 function nearestHotspot(){
@@ -1117,6 +1530,8 @@ function nearestHotspot(){
 const keys={};
 window.addEventListener('keydown', e=>{
   keys[e.key.toLowerCase()]=true;
+  if(e.key==='m'||e.key==='M'){ toggleMute(); return; }
+  if(ui.screen==='title'){ leaveTitle(); return; }
   if(e.key==='Escape'&&ui.modal&&['viewdeck','codex','signpost','board','hearthflavor','future','builtflavor','gate','build'].includes(ui.modal.kind)){ ui.modal=null; render(); }
   if((e.key==='e'||e.key==='E'||e.key===' '||e.key==='Enter') && ui.screen==='town' && !ui.modal){
     const h=nearestHotspot();
@@ -1125,12 +1540,13 @@ window.addEventListener('keydown', e=>{
 });
 window.addEventListener('keyup', e=>{ keys[e.key.toLowerCase()]=false; });
 cv.addEventListener('click', e=>{
-  if(ui.screen==='map' && !ui.modal && !iris && run && run.mapPos && run.row+1<MAP_ROWS.length){
+  if(ui.screen==='title'){ leaveTitle(); return; }
+  if(ui.screen==='map' && !ui.modal && !iris && run && run.mapPos && !run.travel && run.row+1<MAP_ROWS.length){
     const w=clientToWorld(e.clientX, e.clientY);
     const ri=run.row+1;
     for(let ni=0;ni<MAP_ROWS[ri].length;ni++){
       const p=run.mapPos[ri][ni];
-      if(Math.hypot(w.x-p.x, w.y-p.y)<40){ enterNode(MAP_ROWS[ri][ni]); return; }
+      if(Math.hypot(w.x-p.x, w.y-p.y)<40){ run.travel={ri, ni, type:MAP_ROWS[ri][ni], t0:now()}; return; }
     }
   }
   if(ui.screen==='combat' && ui.targeting!==null && run&&run.combat){
@@ -1152,6 +1568,16 @@ function townInteract(act){
   else if(act==='board') ui.modal={kind:'board'};
   else if(act==='hearth') ui.modal={kind:'hearthflavor'};
   else if(act==='maren'){ ui.modal={kind:'dialogue', who:'Maren the Smith', spr:'maren', text:marenLine()}; }
+  else if(act==='well') ui.modal={kind:'well'};
+  else if(act.startsWith('folk:')){
+    const lines=[
+      '"I still hear the cage creak at night. But then I hear the hearth, and it\'s alright."',
+      '"They say you walked the road past the second beacon. Is it true the trees go bare?"',
+      '"I\'m no smith and no soldier. But I can carry water, and I will."',
+      '"Home. I keep saying the word out loud. Home, home, home."',
+    ];
+    ui.modal={kind:'dialogue', who:'Rescued Villager', spr:'villager', text:lines[Number(act.slice(5))%lines.length]};
+  }
   else if(act.startsWith('future:')) ui.modal={kind:'future', name:LOTS[act.slice(7)].name};
   else if(act.startsWith('lot:')){
     const k=act.slice(4);
@@ -1213,6 +1639,16 @@ function updateTown(dt){
         c:'rgba(160,140,100,.7)', t0:now(), life:420, size:3, grav:0});
     }
   }
+  // rescued villagers wander the plaza
+  const folkTarget=Math.min(4, town.rescued||0);
+  while(folk.length<folkTarget) folk.push({x:560+Math.random()*180, y:470+Math.random()*80, tx:0, ty:0, nextMove:0, flip:false});
+  if(folk.length>folkTarget) folk.length=folkTarget;
+  for(const fk of folk){
+    const t2=now();
+    if(t2>fk.nextMove){ fk.nextMove=t2+2600+Math.random()*3400; fk.tx=470+Math.random()*340; fk.ty=460+Math.random()*110; }
+    const fdx=fk.tx-fk.x, fdy=fk.ty-fk.y, fd=Math.hypot(fdx,fdy);
+    if(fd>3){ fk.x+=fdx/fd*0.035*dt; fk.y+=fdy/fd*0.035*dt; fk.flip=fdx<0; }
+  }
   // Maren: wander, or work the anvil once the forge stands
   if(town.villagers.smith){
     const t=now();
@@ -1233,6 +1669,7 @@ function updateTown(dt){
       if(!maren._spark||t-maren._spark>620){
         maren._spark=t;
         spawnBurst(anvil.x, anvil.y-16, ['#ffd98a','#fff2d8','#ff8f3c'], 7, 0.11, 460, 0.0016);
+        SFX.clang();
       }
     }
   }
@@ -1272,8 +1709,8 @@ function drawTown(t){
   drawTorch(g, GATE.x-58, 648, t); drawTorch(g, GATE.x+54, 648, t);
   // buildings & lots
   drawHearthHouse(g, LOTS.hearth, t);
-  drawLot(g,'forge',t); drawLot(g,'library',t);
-  for(const k of ['chapel','tavern','apothecary']) drawFutureSign(g, LOTS[k]);
+  drawLot(g,'forge',t); drawLot(g,'library',t); drawLot(g,'apothecary',t);
+  for(const k of ['chapel','tavern']) drawFutureSign(g, LOTS[k]);
   // lamppost
   drawLamp(g, LAMP.x, LAMP.y, t);
   // signpost + board
@@ -1341,8 +1778,35 @@ function drawTown(t){
     g.fillStyle='rgba(8,10,24,.05)';
     g.beginPath(); g.ellipse(cx2,cy2,150,52,0,0,7); g.ellipse(cx2+90,cy2+18,100,38,0,0,7); g.fill();
   }
+  // the old well
+  g.fillStyle='#5a5a62'; g.beginPath(); g.ellipse(WELL.x,WELL.y,22,12,0,0,7); g.fill();
+  g.fillStyle='#1a2430'; g.beginPath(); g.ellipse(WELL.x,WELL.y-2,15,7,0,0,7); g.fill();
+  const shm=Math.sin(t/420)*4;
+  g.strokeStyle='rgba(140,180,220,.5)'; g.lineWidth=1.5;
+  g.beginPath(); g.moveTo(WELL.x-8+shm,WELL.y-3); g.lineTo(WELL.x+6+shm,WELL.y-1); g.stroke();
+  g.fillStyle='#6e6e76'; g.beginPath(); g.ellipse(WELL.x,WELL.y,22,12,0,0,Math.PI); g.fill();
+  g.fillStyle='#4a3520'; g.fillRect(WELL.x-20,WELL.y-38,4,34); g.fillRect(WELL.x+16,WELL.y-38,4,34);
+  g.fillStyle='#7a3830'; g.beginPath(); g.moveTo(WELL.x-28,WELL.y-34); g.lineTo(WELL.x,WELL.y-50); g.lineTo(WELL.x+28,WELL.y-34); g.closePath(); g.fill();
+  g.strokeStyle='#8a744e'; g.lineWidth=2; g.beginPath(); g.moveTo(WELL.x,WELL.y-34); g.lineTo(WELL.x,WELL.y-16); g.stroke();
+  g.fillStyle='#5a4426'; g.fillRect(WELL.x-4,WELL.y-16,8,7);
+  // falling leaves
+  leaves=leaves.filter(l=>l.y<WORLD_H+20);
+  if(leaves.length<14&&Math.random()<0.06) leaves.push({x:Math.random()*WORLD_W, y:-12, p:Math.random()*7, c:['#c96a3a','#a8552e','#d9944a','#8a5a24'][Math.floor(Math.random()*4)], t0:now()});
+  for(const l of leaves){
+    const age=now()-l.t0;
+    l.y+=0.024*dt;
+    const lx=l.x+Math.sin(age/700+l.p)*30;
+    g.save(); g.translate(lx,l.y); g.rotate(age/500+l.p);
+    g.fillStyle=l.c; g.fillRect(-2.5,-1.5,5,3);
+    g.restore();
+  }
   // particles (dust, anvil sparks)
   drawParts(g);
+  // rescued villagers
+  for(const fk of folk){
+    drawShadow(g, fk.x, fk.y, 12);
+    drawSpr(g,'villager',fk.x,fk.y,3,{flip:fk.flip});
+  }
   // Maren
   if(town.villagers.smith){
     drawShadow(g, maren.x, maren.y, 14);
@@ -1372,6 +1836,7 @@ function drawTown(t){
   hole(LOTS.hearth.x+37, LOTS.hearth.y+68, 62); hole(LOTS.hearth.x+LOTS.hearth.w-37, LOTS.hearth.y+68, 62);
   if(town.buildings.forge) hole(LOTS.forge.x+31, LOTS.forge.y+63, 95);
   if(town.buildings.library){ hole(LOTS.library.x+30, LOTS.library.y+59, 58); hole(LOTS.library.x+LOTS.library.w-30, LOTS.library.y+59, 58); }
+  if(town.buildings.apothecary) hole(LOTS.apothecary.x+29, LOTS.apothecary.y+58, 62, .85);
   if(town.villagers.smith) hole(maren.x, maren.y-18, 44, .8);
   for(let i3=0;i3<decorK;i3++){ const dc=DECOR[i3]; if(dc.t==='lantern') hole(dc.x+10, dc.y-26, 52, .9); }
   for(const f3 of flies){ const ph=t/900+f3.p; hole(f3.x+Math.sin(ph)*16, f3.y+Math.cos(ph*0.8)*10, 11, .5); }
@@ -1456,6 +1921,16 @@ function drawLot(g,k,t){
     const gl=0.5+0.3*Math.sin(t/180);
     g.fillStyle=`rgba(255,120,40,${gl})`; g.fillRect(L.x+18, L.y+52, 26, 22);
     g.fillStyle='rgba(255,110,40,.12)'; g.beginPath(); g.arc(L.x+31, L.y+63, 40,0,7); g.fill();
+  } else if(k==='apothecary'){
+    drawBuildingBase(g,L.x,L.y+22,L.w,L.h-22,'#5a5340','#6c644e');
+    g.fillStyle='#3a5530'; g.beginPath(); g.moveTo(L.x-8,L.y+28); g.lineTo(L.x+L.w/2,L.y-4); g.lineTo(L.x+L.w+8,L.y+28); g.closePath(); g.fill();
+    g.fillStyle='#3a2a16'; g.fillRect(L.x+L.w/2-14, L.y+L.h-40, 28, 40);
+    const bub=Math.sin(t/240)*2;
+    g.fillStyle='#7dc87a'; g.fillRect(L.x+20, L.y+50+bub, 18, 16-bub);
+    g.fillStyle='#ffd98a'; g.fillRect(L.x+L.w-38, L.y+50, 18, 16);
+    g.fillStyle='#d9c2a0'; g.fillRect(L.x+L.w/2-16, L.y+34, 32, 10);
+    g.fillStyle='#241808'; g.font='7px Cinzel,serif'; g.textAlign='center'; g.fillText('TONICS', L.x+L.w/2, L.y+42);
+    g.fillStyle='rgba(120,220,140,.08)'; g.beginPath(); g.arc(L.x+29, L.y+58, 34,0,7); g.fill();
   } else {
     drawBuildingBase(g,L.x,L.y+22,L.w,L.h-22,'#6b5334','#7d6240');
     g.fillStyle='#2e4a66'; g.beginPath(); g.moveTo(L.x-8,L.y+28); g.lineTo(L.x+L.w/2,L.y-4); g.lineTo(L.x+L.w+8,L.y+28); g.closePath(); g.fill();
@@ -1471,6 +1946,103 @@ function drawFutureSign(g,L){
   g.fillStyle='#6a5430'; g.fillRect(L.x+L.w/2-28, L.y+L.h-36, 56, 16);
   g.fillStyle='#241808'; g.font='8px Cinzel,serif'; g.textAlign='center';
   g.fillText(L.name.toUpperCase()+'?', L.x+L.w/2, L.y+L.h-25);
+}
+
+/* ================= title screen ================= */
+function leaveTitle(){
+  if(ui.screen!=='title'||iris) return;
+  withIris(()=>{
+    if(run){ ui.screen='map'; if(!run.nodeResolved) reopenNodeModal(); }
+    else ui.screen='town';
+    render();
+  });
+}
+function drawTitle(t){
+  const g=ctx;
+  g.save(); g.translate(viewOx,viewOy); g.scale(viewS,viewS);
+  const grad=g.createLinearGradient(0,0,0,WORLD_H);
+  grad.addColorStop(0,'#0b1322'); grad.addColorStop(0.6,'#0a0f1c'); grad.addColorStop(1,'#05070d');
+  g.fillStyle=grad; g.fillRect(0,0,WORLD_W,WORLD_H);
+  // stars
+  for(let i=0;i<40;i++){ const sx=(i*137)%WORLD_W, sy=(i*89)%300;
+    g.globalAlpha=0.3+0.3*Math.sin(t/900+i); g.fillStyle='#c7d4ec'; g.fillRect(sx,sy,2,2); }
+  g.globalAlpha=1;
+  g.fillStyle='#c7d4ec'; g.beginPath(); g.arc(1050,130,30,0,7); g.fill();
+  g.fillStyle='#0b1322'; g.beginPath(); g.arc(1062,122,26,0,7); g.fill();
+  const tb=bgTrees(0);
+  g.fillStyle='#0a0f1c';
+  for(const tr of tb[0]){ g.beginPath(); g.moveTo(tr.x-24,470); g.lineTo(tr.x,470-tr.h); g.lineTo(tr.x+24,470); g.closePath(); g.fill(); }
+  g.fillStyle='#070b14';
+  for(const tr of tb[1]){ g.beginPath(); g.moveTo(tr.x-19,505); g.lineTo(tr.x,505-tr.h); g.lineTo(tr.x+19,505); g.closePath(); g.fill(); }
+  g.fillStyle='#0c1009'; g.fillRect(0,505,WORLD_W,WORLD_H-505);
+  // drifting fog
+  for(let i=0;i<4;i++){
+    const fx2=((t*0.012+i*430)%(WORLD_W+500))-250;
+    g.fillStyle='rgba(90,110,140,.05)';
+    g.beginPath(); g.ellipse(fx2,480-i*24,230,34,0,0,7); g.fill();
+  }
+  // the lone lantern
+  const fl=1+0.14*Math.sin(t/150)+0.06*Math.sin(t/47);
+  g.fillStyle='#4a3520'; g.fillRect(637,470,6,50);
+  g.fillStyle='#33220e'; g.fillRect(628,448,24,28);
+  g.fillStyle='#ffd98a'; g.fillRect(633,453,14,17);
+  g.fillStyle='rgba(255,190,100,.16)'; g.beginPath(); g.arc(640,462,120*fl,0,7); g.fill();
+  g.fillStyle='rgba(255,190,100,.25)'; g.beginPath(); g.arc(640,462,46*fl,0,7); g.fill();
+  // title
+  g.textAlign='center';
+  g.font='900 84px Cinzel,serif';
+  g.fillStyle='rgba(20,10,4,.9)'; g.fillText('HEARTHSPIRE', WORLD_W/2+4, 268);
+  g.fillStyle='#ffce7a'; g.fillText('HEARTHSPIRE', WORLD_W/2, 264);
+  g.font='italic 22px Alegreya,serif'; g.fillStyle='#a8946f';
+  g.fillText('carry the light home', WORLD_W/2, 306);
+  const pu=0.55+0.45*Math.sin(t/500);
+  g.globalAlpha=pu;
+  g.font='700 17px Cinzel,serif'; g.fillStyle='#e8d9be';
+  g.fillText('— click to begin —', WORLD_W/2, 580);
+  g.globalAlpha=1;
+  g.restore();
+}
+
+/* ================= beacon scene ================= */
+function drawBeaconScene(t){
+  const g=ctx;
+  g.save(); g.translate(viewOx,viewOy); g.scale(viewS,viewS);
+  const grad=g.createLinearGradient(0,0,0,WORLD_H);
+  grad.addColorStop(0,'#0a0e1c'); grad.addColorStop(1,'#06070c');
+  g.fillStyle=grad; g.fillRect(0,0,WORLD_W,WORLD_H);
+  for(let i=0;i<26;i++){ const sx=(i*211)%WORLD_W, sy=(i*127)%240;
+    g.globalAlpha=0.25+0.3*Math.sin(t/800+i); g.fillStyle='#c7d4ec'; g.fillRect(sx,sy,2,2); }
+  g.globalAlpha=1;
+  // ridge
+  g.fillStyle='#0b0f18';
+  g.beginPath(); g.moveTo(0,520);
+  for(let x=0;x<=WORLD_W;x+=80) g.lineTo(x, 470+Math.sin(x*0.013)*36);
+  g.lineTo(WORLD_W,WORLD_H); g.lineTo(0,WORLD_H); g.closePath(); g.fill();
+  // road north
+  g.strokeStyle='rgba(120,100,70,.3)'; g.lineWidth=7; g.setLineDash([14,12]);
+  g.beginPath(); g.moveTo(640,WORLD_H); g.quadraticCurveTo(600,540,640,430); g.stroke(); g.setLineDash([]);
+  // beacon tower (left of panel)
+  const bx=210, by=520;
+  g.strokeStyle='#3a2a16'; g.lineWidth=10;
+  g.beginPath(); g.moveTo(bx-46,by); g.lineTo(bx-16,by-150); g.moveTo(bx+46,by); g.lineTo(bx+16,by-150); g.stroke();
+  g.lineWidth=5;
+  g.beginPath(); g.moveTo(bx-36,by-52); g.lineTo(bx+36,by-52); g.moveTo(bx-26,by-104); g.lineTo(bx+26,by-104); g.stroke();
+  g.fillStyle='#241505'; g.fillRect(bx-26,by-168,52,20);
+  const fl=1+0.2*Math.sin(t/110)+0.1*Math.sin(t/43);
+  g.fillStyle='rgba(255,140,50,.14)'; g.beginPath(); g.arc(bx,by-180,150*fl,0,7); g.fill();
+  g.fillStyle='#ff8f3c'; g.beginPath();
+  g.moveTo(bx-24,by-166); g.quadraticCurveTo(bx-18,by-206*fl/1.05,bx,by-216*fl);
+  g.quadraticCurveTo(bx+18,by-206*fl/1.05,bx+24,by-166); g.closePath(); g.fill();
+  g.fillStyle='#ffd98a'; g.beginPath();
+  g.moveTo(bx-12,by-166); g.quadraticCurveTo(bx,by-196*fl,bx+12,by-166); g.closePath(); g.fill();
+  if(Math.random()<0.4) parts.push({x:bx+(Math.random()-0.5)*30, y:by-190, vx:(Math.random()-0.5)*0.02, vy:-0.05-Math.random()*0.03, c:'#ffb35c', t0:now(), life:1200, size:2.5, grav:-0.00002});
+  // wagon at the base
+  drawSpr(g,'wagon',bx+110,by+6,4);
+  if(run&&run.wagon.smith) drawSpr(g,'maren',bx+150,by+4,2.4);
+  // far-off town glow, south
+  g.fillStyle='rgba(255,180,90,.09)'; g.beginPath(); g.arc(640,WORLD_H-8,90,0,7); g.fill();
+  drawParts(g);
+  g.restore();
 }
 
 /* ================= parchment expedition map ================= */
@@ -1524,6 +2096,11 @@ function drawMap(t){
   }
   // pines
   for(const p of MAP_PINES) drawInkPine(g,p.x,p.y,p.s);
+  // a previous traveler's margin notes
+  g.font='italic 15px Alegreya,serif'; g.fillStyle='rgba(70,48,26,.6)'; g.textAlign='center';
+  g.save(); g.translate(268,236); g.rotate(-0.09); g.fillText('wolves past the ford', 0,0); g.restore();
+  g.save(); g.translate(1046,330); g.rotate(0.07); g.fillText('the toll is not coin', 0,0); g.restore();
+  g.save(); g.translate(300,92); g.rotate(-0.05); g.fillText('no one lights the far beacon', 0,0); g.restore();
   // compass rose
   g.strokeStyle='rgba(58,44,28,.5)'; g.lineWidth=2;
   g.beginPath(); g.arc(112,600,26,0,7); g.stroke();
@@ -1569,16 +2146,35 @@ function drawMap(t){
         g.fillStyle='rgba(255,140,50,.25)'; g.beginPath(); g.arc(p.x,p.y-8,20*fl,0,7); g.fill();
         g.fillStyle='#ff8f3c'; g.beginPath(); g.arc(p.x,p.y-10,5*fl,0,7); g.fill();
       }
+      // ink stamp over cleared trials
+      if(state==='visited'&&type!=='B'){
+        g.strokeStyle='rgba(90,30,20,.55)'; g.lineWidth=4; g.lineCap='round';
+        g.beginPath(); g.moveTo(p.x-16,p.y-14); g.lineTo(p.x+15,p.y+13);
+        g.moveTo(p.x+16,p.y-13); g.lineTo(p.x-14,p.y+14); g.stroke(); g.lineCap='butt';
+      }
       g.globalAlpha=1;
       g.font='700 11px Cinzel,serif'; g.fillStyle='rgba(58,40,20,.75)';
       g.fillText(NODE_META[type].label.toUpperCase(), p.x, p.y+bob+r+15);
     }
   }
-  // wagon token
-  const cur=chosenPos(run.row);
+  // wagon token — travels the inked road
   if(!run.wagonTok) run.wagonTok={x:TOWN_PT.x,y:TOWN_PT.y};
   const wt=run.wagonTok;
-  wt.x+=(cur.x+34-wt.x)*0.07; wt.y+=(cur.y-6-wt.y)*0.07;
+  if(run.travel){
+    const tp=run.mapPos[run.travel.ri][run.travel.ni];
+    const dx3=tp.x-wt.x, dy3=tp.y-wt.y, dd=Math.hypot(dx3,dy3);
+    if(dd>8&&now()-run.travel.t0<1700){
+      wt.x+=dx3/dd*3.2; wt.y+=dy3/dd*3.2;
+      if(Math.random()<0.5) parts.push({x:wt.x-6, y:wt.y+2, vx:-0.01, vy:-0.006, c:'rgba(120,100,68,.8)', t0:now(), life:500, size:2.6, grav:0});
+    } else {
+      const tv=run.travel; run.travel=null;
+      enterNode(tv.type);
+    }
+  } else {
+    const cur=chosenPos(run.row);
+    wt.x+=(cur.x+34-wt.x)*0.07; wt.y+=(cur.y-6-wt.y)*0.07;
+  }
+  drawParts(g);
   g.fillStyle='rgba(255,190,90,.18)'; g.beginPath(); g.arc(wt.x,wt.y-12,26,0,7); g.fill();
   drawSpr(g,'wagon',wt.x,wt.y,3);
   // fog of war rolls back as you advance
@@ -1607,14 +2203,44 @@ function enemyPos(i){
   if(n===1) return {x:920, y:498};
   return {x:790+i*220, y:498};
 }
-let treesBg=null;
-function bgTrees(){
-  if(treesBg) return treesBg;
-  const r2=mulberry(13); treesBg=[[],[]];
-  for(let x=-20;x<WORLD_W+40;x+=46) treesBg[0].push({x:x+r2()*20, h:150+r2()*90});
-  for(let x=-20;x<WORLD_W+40;x+=34) treesBg[1].push({x:x+r2()*16, h:200+r2()*110});
-  return treesBg;
+const treesCache={};
+function bgTrees(biome=0){
+  if(treesCache[biome]) return treesCache[biome];
+  const r2=mulberry(13+biome*7); const L=[[],[]];
+  if(biome===2){
+    for(let x=-20;x<WORLD_W+60;x+=150) L[0].push({x:x+r2()*70, h:170+r2()*90, lean:(r2()-0.5)*0.5, br:1+Math.floor(r2()*3)});
+    for(let x=-20;x<WORLD_W+60;x+=110) L[1].push({x:x+r2()*50, h:110+r2()*70, lean:(r2()-0.5)*0.6, br:1+Math.floor(r2()*2)});
+  } else {
+    const sp=biome===1?0.68:1;
+    for(let x=-20;x<WORLD_W+40;x+=Math.round(46*sp)) L[0].push({x:x+r2()*20, h:(biome===1?195:150)+r2()*90});
+    for(let x=-20;x<WORLD_W+40;x+=Math.round(34*sp)) L[1].push({x:x+r2()*16, h:(biome===1?245:200)+r2()*110});
+  }
+  return treesCache[biome]=L;
 }
+function combatBiome(){
+  const c=run&&run.combat;
+  if(!c) return 0;
+  if(c.nodeType==='BOSS') return 2;
+  if(c.nodeType==='tutorial') return 0;
+  return run.row<=3?0:1;
+}
+const BIOMES=[
+  {sky:['#0d1626','#0a1120','#05070d'], moon:{x:1080,y:110,r:34,c:'#c7d4ec'}, l0:'#0a0f1c', l1:'#070b14', ground:'#141a12', road:'#3c3020'},
+  {sky:['#090e1a','#070b14','#03050a'], moon:{x:1130,y:170,r:20,c:'#8fa0c0'}, l0:'#070b14', l1:'#04070e', ground:'#0f140e', road:'#332818'},
+  {sky:['#1c0d10','#120709','#070406'], moon:{x:1080,y:120,r:26,c:'#a04438'}, l0:'#120a0c', l1:'#0a0507', ground:'#16100e', road:'#3a2622'},
+];
+function drawDeadTree(g,x,baseY,h,lean,br,color){
+  g.strokeStyle=color; g.lineWidth=9;
+  const topX=x+lean*h;
+  g.beginPath(); g.moveTo(x,baseY); g.lineTo(topX,baseY-h); g.stroke();
+  g.lineWidth=4;
+  for(let b=0;b<br;b++){
+    const by=baseY-h*(0.45+b*0.2), bx=x+lean*(h*(0.45+b*0.2));
+    const dir=b%2?1:-1;
+    g.beginPath(); g.moveTo(bx,by); g.lineTo(bx+dir*(30+b*8), by-22); g.stroke();
+  }
+}
+let amb=[]; // ambient motes: fireflies / fog / ash
 function drawCombat(t){
   const g=ctx;
   g.save();
@@ -1622,27 +2248,67 @@ function drawCombat(t){
   const sh=now()-shakeT0;
   if(sh>0&&sh<260){ const m=(1-sh/260)*6; sx=(Math.random()*2-1)*m; sy=(Math.random()*2-1)*m; }
   g.translate(viewOx+sx*viewS, viewOy+sy*viewS); g.scale(viewS,viewS);
+  const biome=combatBiome(), B=BIOMES[biome];
   // sky
   const grad=g.createLinearGradient(0,0,0,WORLD_H);
-  grad.addColorStop(0,'#0d1626'); grad.addColorStop(0.55,'#0a1120'); grad.addColorStop(1,'#05070d');
+  grad.addColorStop(0,B.sky[0]); grad.addColorStop(0.55,B.sky[1]); grad.addColorStop(1,B.sky[2]);
   g.fillStyle=grad; g.fillRect(0,0,WORLD_W,WORLD_H);
   // moon
-  g.fillStyle='#c7d4ec'; g.beginPath(); g.arc(1080,110,34,0,7); g.fill();
-  g.fillStyle='#0d1626'; g.beginPath(); g.arc(1094,100,30,0,7); g.fill();
-  g.fillStyle='rgba(199,212,236,.07)'; g.beginPath(); g.arc(1080,110,70,0,7); g.fill();
-  // tree silhouettes
-  const tb=bgTrees();
-  g.fillStyle='#0a0f1c';
-  for(const tr of tb[0]){ g.beginPath(); g.moveTo(tr.x-24,430); g.lineTo(tr.x,430-tr.h); g.lineTo(tr.x+24,430); g.closePath(); g.fill(); }
-  g.fillStyle='#070b14';
-  for(const tr of tb[1]){ g.beginPath(); g.moveTo(tr.x-19,470); g.lineTo(tr.x,470-tr.h); g.lineTo(tr.x+19,470); g.closePath(); g.fill(); }
+  g.fillStyle=B.moon.c; g.beginPath(); g.arc(B.moon.x,B.moon.y,B.moon.r,0,7); g.fill();
+  if(biome!==2){ g.fillStyle=B.sky[0]; g.beginPath(); g.arc(B.moon.x+14,B.moon.y-10,B.moon.r-4,0,7); g.fill(); }
+  g.fillStyle=biome===2?'rgba(160,68,56,.1)':'rgba(199,212,236,.07)';
+  g.beginPath(); g.arc(B.moon.x,B.moon.y,B.moon.r*2.1,0,7); g.fill();
+  // trees
+  const tb=bgTrees(biome);
+  if(biome===2){
+    for(const tr of tb[0]) drawDeadTree(g,tr.x,436,tr.h,tr.lean,tr.br,B.l0);
+    for(const tr of tb[1]) drawDeadTree(g,tr.x,472,tr.h,tr.lean,tr.br,B.l1);
+    // the far beacon, unlit
+    g.strokeStyle='#0d0709'; g.lineWidth=12;
+    g.beginPath(); g.moveTo(1180,470); g.lineTo(1204,330); g.moveTo(1252,470); g.lineTo(1228,330); g.stroke();
+    g.fillStyle='#0d0709'; g.fillRect(1196,314,40,18);
+  } else {
+    g.fillStyle=B.l0;
+    for(const tr of tb[0]){ g.beginPath(); g.moveTo(tr.x-24,436); g.lineTo(tr.x,436-tr.h); g.lineTo(tr.x+24,436); g.closePath(); g.fill(); }
+    g.fillStyle=B.l1;
+    for(const tr of tb[1]){ g.beginPath(); g.moveTo(tr.x-19,472); g.lineTo(tr.x,472-tr.h); g.lineTo(tr.x+19,472); g.closePath(); g.fill(); }
+  }
   // ground
-  g.fillStyle='#141a12'; g.fillRect(0,470,WORLD_W,WORLD_H-470);
-  g.fillStyle='#1a2016'; g.fillRect(0,470,WORLD_W,10);
-  g.fillStyle='#3c3020'; g.fillRect(0,500,WORLD_W,26);
-  g.fillStyle='#463928'; g.fillRect(0,504,WORLD_W,18);
+  g.fillStyle=B.ground; g.fillRect(0,470,WORLD_W,WORLD_H-470);
+  g.fillStyle=B.road; g.fillRect(0,500,WORLD_W,26);
+  // ambient motes
+  amb=amb.filter(a=>now()-a.t0<a.life);
+  if(biome===0){ if(amb.length<10&&Math.random()<0.05) amb.push({k:'fly',x:Math.random()*WORLD_W,y:200+Math.random()*260,t0:now(),life:6000,p:Math.random()*7}); }
+  else if(biome===1){ if(amb.length<5&&Math.random()<0.03) amb.push({k:'fog',x:-260,y:400+Math.random()*130,t0:now(),life:26000,p:Math.random()*7}); }
+  else { if(amb.length<26&&Math.random()<0.3) amb.push({k:'ash',x:Math.random()*WORLD_W,y:WORLD_H,t0:now(),life:9000,p:Math.random()*7}); }
+  for(const a of amb){
+    const age=now()-a.t0;
+    if(a.k==='fly'){
+      const ax=a.x+Math.sin(age/900+a.p)*20, ay=a.y+Math.cos(age/700+a.p)*12;
+      g.globalAlpha=0.35+0.35*Math.sin(age/500+a.p); g.fillStyle='#ffd98a';
+      g.beginPath(); g.arc(ax,ay,2,0,7); g.fill();
+    } else if(a.k==='fog'){
+      g.globalAlpha=0.06*Math.min(1,age/2000)*Math.min(1,(a.life-age)/3000);
+      g.fillStyle='#8fa5c8';
+      g.beginPath(); g.ellipse(a.x+age*0.045, a.y, 240, 40, 0,0,7); g.fill();
+    } else {
+      g.globalAlpha=0.35*Math.min(1,(a.life-age)/2000); g.fillStyle='#8a8f9a';
+      g.fillRect(a.x+Math.sin(age/800+a.p)*26, a.y-age*0.032, 2.4, 2.4);
+    }
+    g.globalAlpha=1;
+  }
   if(!run||!run.combat){ g.restore(); return; }
   const c=run.combat;
+  // the wagon — what you stand to lose — waits behind you
+  if(c.nodeType!=='tutorial'){
+    drawShadow(g, 118, 512, 34);
+    drawSpr(g,'wagon',118,512,6);
+    const sacks=Math.min(5, Math.floor(run.wagon.materials/20));
+    for(let s2=0;s2<sacks;s2++){ g.fillStyle='#b39468'; g.beginPath(); g.arc(96+s2*11, 476, 6, 0, 7); g.fill();
+      g.fillStyle='#8a6f4c'; g.fillRect(94+s2*11, 468, 4, 4); }
+    if(run.wagon.smith) drawSpr(g,'maren',168,510,2.4);
+    for(let v2=0;v2<Math.min(3,run.wagon.villagers);v2++) drawSpr(g,'villager',196+v2*22,508,2.2);
+  }
   // lantern glow
   const pp=playerPos();
   const gl=1+0.06*Math.sin(t/260);
@@ -1704,18 +2370,31 @@ function drawCombat(t){
       g.beginPath(); g.ellipse(ep.x, ep.y-2, sp.w*d.scale/2+16, 15, 0,0,7); g.stroke(); g.setLineDash([]);
     }
     drawShadow(g, ep.x, ep.y, sp.w*d.scale/2*0.7);
-    drawSpr(g, d.spr, ep.x+edx, ep.y+ebob, d.scale, {sqx, sqy});
-    if(eflash) drawSpr(g, d.spr, ep.x+edx, ep.y+ebob, d.scale, {white:true, alpha:.8, sqx, sqy});
-    // intent
+    const fr2=Math.floor(t/480+i)%2;
+    const sk=(fr2&&SPR[d.spr+'2'])?d.spr+'2':d.spr;
+    drawSpr(g, sk, ep.x+edx, ep.y+ebob, d.scale, {sqx, sqy});
+    if(eflash) drawSpr(g, sk, ep.x+edx, ep.y+ebob, d.scale, {white:true, alpha:.8, sqx, sqy});
+    // intent (pixel icons)
     const it=e.intent, iy=ep.y-hgt-46;
     g.font='italic 12.5px Alegreya,serif'; g.fillStyle='#6d81a8'; g.textAlign='center';
     g.fillText(it.lbl||'', ep.x, iy-16);
-    const bits=[];
-    if(it.atk) bits.push('⚔️ '+(it.atk+e.str)+(it.times?'×'+it.times:''));
-    if(it.blk) bits.push('🛡 '+it.blk);
-    if(it.buff) bits.push('↑ Str');
-    g.font='700 17px Alegreya,serif'; g.fillStyle='#ffce7a';
-    g.fillText(bits.join('  '), ep.x, iy+2);
+    const segs=[];
+    if(it.atk) segs.push({ic:'it_atk', tx:String(it.atk+e.str)+(it.times?'×'+it.times:'')});
+    if(it.blk) segs.push({ic:'it_blk', tx:String(it.blk)});
+    if(it.buff) segs.push({ic:'it_buff', tx:'+'+it.buff});
+    if(it.junk) segs.push({ic:'i_brokenWheel', tx:'×'+it.junk});
+    if(it.heal) segs.push({ic:'it_buff', tx:'+'+it.heal+'hp'});
+    if(it.drainEmber) segs.push({ic:'i_emberToss', tx:'-'+it.drainEmber});
+    g.font='700 17px Alegreya,serif';
+    let segW=0; for(const s3 of segs) segW+=24+g.measureText(s3.tx).width+10;
+    let segX=ep.x-segW/2;
+    g.textAlign='left';
+    for(const s3 of segs){
+      drawSpr(g, s3.ic, segX+10, iy+9, 2);
+      g.fillStyle='#ffce7a'; g.fillText(s3.tx, segX+24, iy+4);
+      segX+=24+g.measureText(s3.tx).width+10;
+    }
+    g.textAlign='center';
     // nameplate + hp
     g.font='700 13px Cinzel,serif'; g.fillStyle='#c7dcf5';
     g.fillText(d.name.toUpperCase(), ep.x, ep.y+30);
@@ -1796,9 +2475,10 @@ function frame(){
   const g=ctx;
   g.clearRect(0,0,cv.width,cv.height);
   g.fillStyle='#080604'; g.fillRect(0,0,window.innerWidth,window.innerHeight);
-  if(ui.screen==='town'){ updateTown(dt); drawTown(t); }
+  if(ui.screen==='title'){ drawTitle(t); }
+  else if(ui.screen==='town'){ updateTown(dt); drawTown(t); }
   else if(ui.screen==='combat'){ drawCombat(t); }
-  else if(ui.screen==='map'&&run){ drawMap(t); }
+  else if(ui.screen==='map'&&run){ if(ui.modal&&ui.modal.kind==='beacon') drawBeaconScene(t); else drawMap(t); }
   else { g.fillStyle='#05070d'; g.fillRect(0,0,window.innerWidth,window.innerHeight); }
   drawIris(g);
 }
@@ -1837,6 +2517,35 @@ function cardTip(ci){
   if(d.unplayable) kws.push(KW_DEFS.burden);
   return `<div class="tip">${kws.map(k=>`<div class="kw">${k[0]}</div><div class="kd">${k[1]}</div>`).join('')}</div>`;
 }
+/* HUD mini-canvases: wagon that visibly fills, lantern that burns energy */
+const chipCache={};
+function wagonChipURL(mat){
+  const n=Math.min(5, Math.floor(mat/20));
+  if(chipCache['w'+n]) return chipCache['w'+n];
+  const c=document.createElement('canvas'); c.width=56; c.height=30;
+  const g=c.getContext('2d'); g.imageSmoothingEnabled=false;
+  drawSpr(g,'wagon',28,28,2.2);
+  for(let i=0;i<n;i++){ g.fillStyle='#b39468'; g.beginPath(); g.arc(15+i*7,12,4,0,7); g.fill(); }
+  return chipCache['w'+n]=c.toDataURL();
+}
+function lanternURL(e){
+  if(chipCache['l'+e]) return chipCache['l'+e];
+  const c=document.createElement('canvas'); c.width=44; c.height=62;
+  const g=c.getContext('2d'); g.imageSmoothingEnabled=false;
+  g.fillStyle='#5a3c16'; g.fillRect(19,0,6,7);
+  g.fillStyle='#33220e'; g.fillRect(8,7,28,44); g.fillRect(12,51,20,6);
+  g.fillStyle='#1a1109'; g.fillRect(12,11,20,36);
+  if(e>0){
+    const fh=8+e*9;
+    const fg=g.createLinearGradient(0,47-fh,0,47);
+    fg.addColorStop(0,'#ffd98a'); fg.addColorStop(1,'#d1461f');
+    g.fillStyle=fg;
+    g.beginPath(); g.moveTo(15,47); g.quadraticCurveTo(17,47-fh*0.7,22,47-fh);
+    g.quadraticCurveTo(27,47-fh*0.7,29,47); g.closePath(); g.fill();
+  }
+  g.strokeStyle='#6b4d20'; g.lineWidth=2; g.strokeRect(8,7,28,44);
+  return chipCache['l'+e]=c.toDataURL();
+}
 function cardHTML(ci, cls='', attrs='', style=''){
   const d=CARDS[ci.key];
   const cost=d.unplayable?'—':cval(ci,'cost');
@@ -1852,6 +2561,7 @@ function cardHTML(ci, cls='', attrs='', style=''){
     <div class="cost">${cost}</div>
     <div class="wt">${d.w}⚖</div>
     <div class="cname ${ci.up?'upg':''}">${esc2(d.name)}${ci.up?'+':''}</div>
+    ${ci.up?'<div class="upfil">✦</div>':''}
     <div class="cart">${icon}</div>
     <div class="ctext">${cardText(ci, live)}</div>
     <div class="ctype">${d.type==='atk'?'ATTACK':d.type==='skl'?'SKILL':'BURDEN'}</div>
@@ -1873,6 +2583,8 @@ function render(){
   }
   dom.innerHTML=html;
   bind();
+  refreshAmbience();
+  if(ui.screen==='map') saveRun();
   if(ui.screen==='combat'){
     dom.querySelectorAll('.hand .card[data-play]').forEach(el=>{
       const old=oldRects[el.dataset.play]; if(!old) return;
@@ -1892,9 +2604,10 @@ function townDom(){
     <span class="chip warm">⛏ ${town.materials}</span>
     <span class="chip warm">🕊 ${town.villagers.smith?'Maren':'—'}</span>
     <span class="grow"></span>
+    <span class="linkish" data-act="mute">${sndMuted?'🔇':'🔊'}</span>
     <span class="linkish" data-act="codex">codex</span>
   </div>
-  <div class="hintbar">WASD / arrows to walk · E to interact</div>`;
+  <div class="hintbar">WASD / arrows to walk · E to interact · M to mute</div>`;
 }
 
 /* ----- map dom (the map itself is painted on canvas) ----- */
@@ -1907,12 +2620,14 @@ function runHud(title){
   return `<div class="hud">
     <span class="font-title" style="color:var(--cold)">${title}</span>
     <span class="chip" style="color:#f0a09a">❤ ${run.hp}/${run.maxHp}</span>
-    <span class="chip">⛏ ${w.materials}</span>
+    <span class="chip"><img src="${wagonChipURL(w.materials)}" style="height:17px;image-rendering:pixelated;vertical-align:-4px"> ⛏ ${w.materials}</span>
     ${w.smith?'<span class="chip">🕊 Maren</span>':''}
     ${w.villagers?`<span class="chip">🕊 ×${w.villagers}</span>`:''}
+    ${(run.relics||[]).map(k=>`<span class="chip warm" title="${esc2(RELICS[k].name)}: ${esc2(RELICS[k].desc)}" style="cursor:help">${RELICS[k].icon}</span>`).join('')}
     <span class="grow"></span>
     <span class="linkish" data-act="viewdeck">deck (${run.deck.length})</span>
     <span class="linkish" data-act="codex">codex</span>
+    <span class="linkish" data-act="mute">${sndMuted?'🔇':'🔊'}</span>
   </div>`;
 }
 
@@ -1934,7 +2649,7 @@ function combatDom(){
   return `${runHud(c.nodeType==='tutorial'?'THE PROVING GROUND':'THE WILDS')}
   <div class="combat-ui">
     <div class="logline">${esc2(ui.log)}${ui.targeting!==null?' — choose a target':''}</div>
-    <div class="orbwrap"><div class="orb">${c.energy}</div><div class="orblabel">ENERGY</div></div>
+    <div class="orbwrap"><div class="lantorb"><img src="${lanternURL(c.energy)}"><span>${c.energy}</span></div><div class="orblabel">LANTERN</div></div>
     <div class="statuscluster">
       <div class="embers">${Array.from({length:Math.min(c.embers,12)},()=>'<div class="ember"></div>').join('')}
         <span class="muted" style="font-size:12px">${c.embers} Ember${c.embers===1?'':'s'}</span></div>
@@ -1942,6 +2657,7 @@ function combatDom(){
         <div class="weightbar ${c.packFull?'full':''}"><div class="wfill" style="width:${Math.min(100,hw/CAPACITY*100)}%"></div></div>
         <span class="muted" style="font-size:12px">pack ${hw}/${CAPACITY}${c.packFull?' — FULL':''}</span>
       </div>
+      ${(run.potions&&run.potions.length)?`<div style="display:flex; gap:6px;">${run.potions.map((k,i)=>`<button class="btn" data-potion="${i}" title="${esc2(POTIONS[k].name)}: ${esc2(POTIONS[k].desc)}" style="padding:4px 10px; font-size:16px;" ${c.busy||c.over?'disabled':''}>${POTIONS[k].icon}</button>`).join('')}</div>`:''}
     </div>
     <div class="endturnwrap"><button class="btn cold endturn" data-act="endturn" ${c.over||c.busy?'disabled':''}>End Turn</button></div>
     <div class="pilewrap drawp" data-act="pile-draw"><div class="pileicon">🂠</div><div class="pilecount">draw ${c.draw.length}</div></div>
@@ -1956,7 +2672,7 @@ function modalHTML(){
   if(m.kind==='gate'){
     return ovl(`<h2>🔥 The Gate</h2>
       <div class="story">Beyond the fence the road bends north into the dark. The wagon is hitched; the lantern is full.${town.tutorialDone?'':'<br><b>First time out? The signpost by the plaza offers a lesson.</b>'}</div>
-      <div class="choicerow"><button class="btn" data-act="gate-go">Set Out</button>
+      <div class="choicerow"><button class="btn" data-act="${town.buildings.apothecary?'brew-open':'gate-go'}">Set Out</button>
       <button class="btn cold" data-act="closemodal">Not yet</button></div>`);
   }
   if(m.kind==='signpost'){
@@ -1978,6 +2694,15 @@ function modalHTML(){
       <div class="choicerow"><button class="btn cold" data-act="closemodal">Close</button>
       <button class="btn" style="opacity:.6" data-act="reset">Burn the ledger (reset save)</button></div>`);
   }
+  if(m.kind==='well'){
+    const can=town.materials>0;
+    return ovl(`<h2>🪣 The Old Well</h2>
+      <div class="story">Older than the town, older than the road. The water is black and patient, and it has heard every wish the valley ever made.</div>
+      <div class="choicerow">
+        <button class="btn" data-act="well-wish" ${can?'':'disabled'}>Toss in a material — for luck</button>
+        <button class="btn cold" data-act="closemodal">Keep your luck</button>
+      </div>`);
+  }
   if(m.kind==='hearthflavor'){
     return ovl(`<h2>🔥 The Hearth</h2>
       <div class="story">The fire has never gone out — not once, not through the worst of it. As long as it burns, there is somewhere to walk back to.</div>
@@ -1996,6 +2721,8 @@ function modalHTML(){
       <div class="story">${k==='forge'
         ? (needSmith?'Cold stone and stacked timber, but no one to work it. Rumor says a smith is held caged somewhere on the road…'
                     :'Maren paces the lot, already pointing where the anvil goes. "30 materials. I\'ll do the rest."')
+        : k==='apothecary'
+        ? 'Copper stills and green glass, waiting on a roof. 25 materials, and the road gets a little kinder. <b>Brew up to two potions before each expedition.</b>'
         : 'Salvaged books wait under oilcloth. A roof, some shelves — 20 materials — and the valley\'s lore comes home. <b>Adds 5 rare cards to the wilds\' reward pool.</b>'}</div>
       <div class="wagonbox">cost <b class="amber">${L.cost} ⛏</b> · you have ${town.materials} ⛏${L.needsSmith?` · requires a smith ${town.villagers.smith?'✓':'✗'}`:''}</div>
       <div class="choicerow">
@@ -2007,6 +2734,8 @@ function modalHTML(){
     const k=m.lot;
     return ovl(k==='forge'
       ? `<h2>⚒️ The Forge</h2><div class="story">Heat rolls off the doorway. Maren barely looks up. "Pick your card at the gate — I'll have it glowing before you're past the fence."<br><br><b>Choose one card to start each expedition upgraded.</b></div><button class="btn cold" data-act="closemodal">Leave her to it</button>`
+      : k==='apothecary'
+      ? `<h2>⚗️ The Apothecary</h2><div class="story">Something green bubbles on the sill. Something amber hums beside it.<br><br><b>Brew up to two potions at the gate before each expedition (${BREW_COST} materials each).</b></div><button class="btn cold" data-act="closemodal">Breathe through your mouth</button>`
       : `<h2>📚 The Library</h2><div class="story">Lantern-lit shelves, recovered page by page. Strange and potent techniques now surface in the wilds' rewards.<br><br><b>+5 rare cards in the reward pool.</b></div><button class="btn cold" data-act="closemodal">Close the door gently</button>`);
   }
   if(m.kind==='dialogue'){
@@ -2023,7 +2752,7 @@ function modalHTML(){
   }
   if(m.kind==='reward'){
     return ovl(`<h2>Victory</h2>
-      <div class="story">You strip what the dark left behind. <b class="amber">+${m.mat} materials</b> into the wagon.</div>
+      ${m.mat>0?`<div class="story">You strip what the dark left behind. <b class="amber">+${m.mat} materials</b> into the wagon.</div>`:''}
       <div class="story" style="margin-bottom:4px">Add a card to your pack?</div>
       <div class="cardrow">${m.picks.map((k,i)=>cardHTML(mk(k),'mini pickable',`data-pickcard="${i}"`)).join('')}</div>
       <button class="btn cold" data-act="skipcard">Travel light — skip</button>`,'cold-panel');
@@ -2096,6 +2825,32 @@ function modalHTML(){
       <div class="wagonbox"><span class="bignum">+${m.mat}</span> ⛏ materials to the stores
       ${m.smith?'<br>🕊 <b>Maren the Smith settles in Hearthspire.</b> The Forge can rise.':''}</div>
       <button class="btn" data-act="townreturn">Enter the Town</button>`);
+  }
+  if(m.kind==='removeCard'){
+    return ovl(`<h2>👻 One Burden, Off Your Hands</h2>
+      <div class="story">The ghost waits, palm open. Choose a card — it will carry it into whatever comes after.</div>
+      <div class="cardrow">${run.deck.map(ci=>cardHTML(ci,'mini pickable',`data-remove="${ci.iid}"`)).join('')}</div>
+      <button class="btn cold" data-act="closemodal">Keep everything</button>`,'cold-panel wide');
+  }
+  if(m.kind==='relicReward'){
+    return ovl(`<h2>💀 The Strong Keep Trophies</h2>
+      <div class="story">It carried this a long time. Now you will. <b class="amber">+${m.mat} materials</b> — and choose a relic:</div>
+      <div class="choicerow">${m.rpicks.map(k=>`<button class="btn" data-pickrelic="${k}" style="max-width:300px; text-align:left;">
+        <span style="font-size:20px">${RELICS[k].icon}</span> <b>${RELICS[k].name}</b><br><span style="font-size:12px; color:var(--parch-dim); font-family:Alegreya,serif; font-weight:400">${RELICS[k].desc}</span></button>`).join('')}</div>`);
+  }
+  if(m.kind==='brew'){
+    const sel=m.sel||[];
+    return ovl(`<h2>⚗️ The Apothecary</h2>
+      <div class="story">Shelves of stoppered glass catch the lamplight. Brew up to <b>two</b> draughts for the road — ${BREW_COST} materials each. You hold <b class="amber">${town.materials}</b> ⛏.</div>
+      <div class="choicerow">${Object.keys(POTIONS).map(k=>{
+        const n=sel.filter(x=>x===k).length;
+        return `<button class="btn ${n?'':'cold'}" data-brew="${k}">${POTIONS[k].icon} ${POTIONS[k].name}${n?' ×'+n:''}<br><span style="font-size:11.5px; color:var(--parch-dim); font-family:Alegreya,serif; font-weight:400">${POTIONS[k].desc}</span></button>`;
+      }).join('')}</div>
+      <div class="story" style="margin-top:10px">${sel.length}/2 chosen · cost ${sel.length*BREW_COST} ⛏</div>
+      <div class="choicerow">
+        <button class="btn" data-act="brew-depart">Depart${sel.length?` with ${sel.length} draught${sel.length>1?'s':''}`:''}</button>
+        <button class="btn cold" data-act="closemodal">Stay home</button>
+      </div>`);
   }
   if(m.kind==='viewdeck'){
     return ovl(`<h2>Your Pack</h2>
@@ -2182,6 +2937,13 @@ function codexHTML(){
         <div class="cetext">${e.pattern}</div>
         <div class="cestat">${e.hp} HP</div></div></div>`;
     }).join('')}</div>`;
+  } else if(tab==='relics'){
+    body=`<div class="codexlist">${Object.keys(RELICS).map(k=>`<div class="codexentry"><div class="cicon">${RELICS[k].icon}</div><div>
+      <div class="cename">${RELICS[k].name}${hasRelic(k)?' · CARRIED':''}</div>
+      <div class="cetext">${RELICS[k].desc}</div></div></div>`).join('')}
+      <div class="codexentry"><div class="cicon">⚗️</div><div><div class="cename">Potions</div>
+      <div class="cetext">Brewed at the Apothecary before setting out (${BREW_COST} materials each, carry two). ${Object.keys(POTIONS).map(k=>`${POTIONS[k].icon} <b>${POTIONS[k].name}</b> — ${POTIONS[k].desc}`).join(' · ')}</div></div></div>
+    </div>`;
   } else {
     const all=Object.keys(CARDS);
     body=`<div class="cardrow">${all.map(k=>cardHTML(mk(k),'mini')).join('')}</div>`;
@@ -2191,6 +2953,7 @@ function codexHTML(){
       <div class="codextab ${tab==='mech'?'on':''}" data-tab="mech">Mechanics</div>
       <div class="codextab ${tab==='foes'?'on':''}" data-tab="foes">Enemies</div>
       <div class="codextab ${tab==='cards'?'on':''}" data-tab="cards">Cards</div>
+      <div class="codextab ${tab==='relics'?'on':''}" data-tab="relics">Relics</div>
     </div>${body}
     <button class="btn cold" style="margin-top:10px" data-act="closemodal">Close</button>`,'wide');
 }
@@ -2199,7 +2962,7 @@ function codexHTML(){
 const TUT_STEPS=[
   {t:'<b>Welcome to the Proving Ground, Lamplighter.</b> Out here, the light you carry is the only rule that matters. Let\'s learn to fight for it.', require:'next'},
   {t:'A <b>Mire Wolf</b>. Above its head is its <b>intent</b> — exactly what it will do on its turn. ⚔ 6 means a 6-damage bite is coming. Nothing in the wilds hides its plans.', anchor:'enemy', require:'next'},
-  {t:'Your <b>Energy</b>. You get <b>3</b> every turn, and cards cost Energy to play — the number on each card\'s amber orb.', anchor:'.orb', require:'next'},
+  {t:'Your <b>Lantern</b> holds your Energy. You get <b>3</b> every turn, and cards cost Energy to play — the number on each card\'s amber orb. Spend it and the flame burns low.', anchor:'.lantorb', require:'next'},
   {t:'Your <b>pack</b>. Every card has a <b>Weight</b> (blue badge). Each turn you draw toward 5 cards — but never past <b>10 weight</b>. Heavy cards hit hard and crowd everything else out.', anchor:'.weightbar', require:'next'},
   {t:'Start simple: play <b>Lantern Sweep</b> — 1 Energy, 5 damage.', anchor:'card:sweep', require:'play:sweep'},
   {t:'Now <b>Light the Wick</b>. It costs nothing, <b>Kindles an Ember</b>, and draws a card. Embers are the Lamplighter\'s fuel — watch them orbit your lantern.', anchor:'card:wick', require:'play:wick'},
@@ -2300,20 +3063,42 @@ function bind(){
   dom.querySelectorAll('[data-upgrade]').forEach(el=>el.addEventListener('click',()=>{
     const ci=run.deck.find(x=>x.iid===Number(el.dataset.upgrade));
     if(ci) ci.up=true;
+    run.nodeResolved=true;
     ui.modal=null; render();
   }));
   dom.querySelectorAll('[data-event]').forEach(el=>el.addEventListener('click',()=>{
-    ui.modal.ev.choices[Number(el.dataset.event)].fx();
-    ui.modal=null; render();
+    const ev=ui.modal.ev;
+    run.nodeResolved=true;
+    ui.modal=null;
+    ev.choices[Number(el.dataset.event)].fx(); // fx may open a follow-up modal
+    render();
   }));
   dom.querySelectorAll('[data-build]').forEach(el=>el.addEventListener('click',()=>{
     const k=el.dataset.build, L=LOTS[k];
     if(town.materials>=L.cost&&!(L.needsSmith&&!town.villagers.smith)){
-      town.materials-=L.cost; town.buildings[k]=true; saveTown();
+      town.materials-=L.cost; town.buildings[k]=true; saveTown(); SFX.build();
     }
     ui.modal=null; render();
   }));
   dom.querySelectorAll('[data-tab]').forEach(el=>el.addEventListener('click',()=>{ ui.codexTab=el.dataset.tab; render(); }));
+  dom.querySelectorAll('[data-remove]').forEach(el=>el.addEventListener('click',()=>{
+    const i=run.deck.findIndex(x=>x.iid===Number(el.dataset.remove));
+    if(i>=0) run.deck.splice(i,1);
+    ui.modal=null; render();
+  }));
+  dom.querySelectorAll('[data-pickrelic]').forEach(el=>el.addEventListener('click',()=>{
+    grantRelic(el.dataset.pickrelic);
+    ui.modal={kind:'reward', mat:0, picks:ui.modal.picks};
+    render();
+  }));
+  dom.querySelectorAll('[data-brew]').forEach(el=>el.addEventListener('click',()=>{
+    const k=el.dataset.brew, sel=ui.modal.sel=(ui.modal.sel||[]);
+    const idx=sel.indexOf(k);
+    if(idx>=0) sel.splice(idx,1);
+    else if(sel.length<2&&town.materials>=(sel.length+1)*BREW_COST) sel.push(k);
+    render();
+  }));
+  dom.querySelectorAll('[data-potion]').forEach(el=>el.addEventListener('click',()=>usePotion(Number(el.dataset.potion))));
 }
 function flyCard(el){
   const r=el.getBoundingClientRect();
@@ -2332,17 +3117,31 @@ function flyCard(el){
 function act(a){
   switch(a){
     case 'gate-go': ui.modal=null; render(); withIris(newRun); break;
+    case 'brew-open': ui.modal={kind:'brew', sel:[]}; render(); break;
+    case 'brew-depart': {
+      const sel=(ui.modal&&ui.modal.sel)||[];
+      town.materials-=sel.length*BREW_COST; saveTown();
+      pendingPotions=sel.slice();
+      ui.modal=null; render(); withIris(newRun);
+      break;
+    }
     case 'tut-start': ui.modal=null; render(); withIris(startTutorial); break;
     case 'tut-next': ui.tutorial.step++; render(); break;
     case 'tut-finish': withIris(endTutorial); break;
     case 'codex': ui.modal={kind:'codex'}; render(); break;
+    case 'well-wish':
+      if(town.materials>0){ town.materials--; saveTown(); }
+      ui.modal={kind:'dialogue', who:'The Well', spr:'villager', text:'"…plunk."<br><br>Somewhere far below, the water keeps your coin, and your wish with it.'};
+      render();
+      break;
     case 'reset':
       if(confirm('Burn it all down and start a fresh save?')){
-        localStorage.removeItem(SAVE_KEY); town=defaultTown(); run=null;
-        ui={screen:'town', modal:null, targeting:null, log:'', dealt:false, tutorial:null, codexTab:'mech'};
+        localStorage.removeItem(SAVE_KEY); clearRun(); town=defaultTown(); run=null; folk=[];
+        ui={screen:'title', modal:null, targeting:null, log:'', dealt:false, tutorial:null, codexTab:'mech'};
         render();
       }
       break;
+    case 'mute': toggleMute(); break;
     case 'endturn': endTurn(); break;
     case 'viewdeck': ui.modal={kind:'viewdeck'}; render(); break;
     case 'pile-draw': ui.modal={kind:'pile', which:'draw'}; render(); break;
@@ -2352,9 +3151,9 @@ function act(a){
     case 'camp-rest': campRest(); break;
     case 'camp-forge': ui.modal={kind:'campUpgrade'}; render(); break;
     case 'rescue-fight': ui.modal=null; render(); withIris(startRescueFight); break;
-    case 'rescue-leave': ui.modal=null; render(); break;
+    case 'rescue-leave': run.nodeResolved=true; ui.modal=null; render(); break;
     case 'beacon-home': ui.modal=null; extractHome(false); break;
-    case 'beacon-press': run.depthPressed++; ui.modal=null; render(); break;
+    case 'beacon-press': run.depthPressed++; run.nodeResolved=true; ui.modal=null; render(); break;
     case 'skipcard': ui.modal=null; render(); break;
     case 'townreturn': withIris(backToTown); break;
   }
@@ -2379,6 +3178,7 @@ window.__dbg={
   tut:()=>startTutorial(),
 };
 
+run=loadRun(); // resume a saved expedition if one survives
 render();
 
 </script>
